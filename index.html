@@ -265,7 +265,7 @@
   .sponsors{padding:64px 0;background:var(--paper2);text-align:center;position:relative;z-index:2;}
   .sponsors .slbl{text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:600;color:var(--blue);margin-bottom:30px;}
   .sprow{display:flex;flex-wrap:wrap;gap:32px 48px;justify-content:center;align-items:center;max-width:980px;margin:0 auto 30px;}
-  .sprow img{height:40px;width:auto;}
+  .sprow img{height:34px;width:auto;}
   .sprow img:hover{opacity:1;filter:none;}
 
   /* --- FOOTER drive banner --- */
@@ -417,7 +417,7 @@
           <div class="spkpanel-grid">
             <figure><span class="sp" style="background-image:url('assets/speakers/anuj-shah.jpg')"></span><b>Dr. Anuj R. Shah</b><i>Speaker</i></figure>
             <figure><span class="sp" style="background-image:url('assets/speakers/olamide-alabi.jpg')"></span><b>Dr. Olamide Alabi</b><i>Speaker</i></figure>
-            <figure><span class="sp" style="background-image:url('assets/speakers/benjamin-zwierzchowski.jpg')"></span><b>Dr. Benjamin Zwierzchowski</b><i>Speaker</i></figure>
+            <figure><span class="sp" style="background-image:url('assets/speakers/benjamin-zwierzchowski.jpg');background-position:center center"></span><b>Dr. Benjamin Zwierzchowski</b><i>Speaker</i></figure>
           </div>
         </div>
       </div>
@@ -430,10 +430,24 @@
           </div>
         </div>
       </div>
+      <div class="slide">
+        <div class="libpanel">
+          <div class="ph"><span class="playbig">&#9654;</span> On-demand library</div>
+          <div class="libcap">Watch every recorded session, free, anytime.</div>
+          <div class="libgrid">
+            <span class="face" style="background-image:url('assets/speakers/matthew-myntti.jpg')"></span>
+            <span class="face" style="background-image:url('assets/speakers/matthew-regulski.jpg')"></span>
+            <span class="face" style="background-image:url('assets/speakers/karen-bauer.jpg')"></span>
+            <span class="face" style="background-image:url('assets/speakers/mark-melin.jpg')"></span>
+            <span class="face" style="background-image:url('assets/speakers/alton-johnson.jpg')"></span>
+            <span class="more">8 webinars<small>and counting</small></span>
+          </div>
+        </div>
+      </div>
       <div class="vig"></div>
       <span class="ph-tag" id="phtag"><span class="live"></span> Community screening &middot; 2026</span>
       <div class="evcard" id="evcard">
-        <div class="pg"><i class="on"></i><i></i><i></i></div>
+        <div class="pg"><i class="on"></i><i></i><i></i><i></i></div>
         <div class="ev on">
           <span class="evtag scr">Free Screening</span>
           <h3>Find a free limb screening near you</h3>
@@ -451,6 +465,12 @@
           <h3>IPC for PAD: A Proven Technology, Revitalized</h3>
           <div class="meta">Sep 30, 2026 &middot; 7:30 PM ET &middot; free</div>
           <a class="go" href="webinars/ipc-for-pad/">Register free <span class="arw">&rsaquo;</span></a>
+        </div>
+        <div class="ev">
+          <span class="evtag lib">On-Demand Library</span>
+          <h3><span class="playbig">&#9654;</span> Watch more webinars anytime</h3>
+          <div class="meta">Our full library of recorded sessions, free</div>
+          <a class="go" href="webinars/">Browse the library <span class="arw">&rsaquo;</span></a>
         </div>
       </div>
     </div>
@@ -626,7 +646,7 @@
   const evs=[...document.querySelectorAll('#evcard .ev')];
   const pgs=[...document.querySelectorAll('#evcard .pg i')];
   const phtag=document.getElementById('phtag');
-  const caps=['<span class="live"></span> Community screening &middot; 2026','',''];
+  const caps=['<span class="live"></span> Community screening &middot; 2026','','',''];
   let i=0;
   setInterval(()=>{
     i=(i+1)%slides.length;
