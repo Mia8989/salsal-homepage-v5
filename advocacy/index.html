@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Advocacy | Save a Leg, Save a Life Foundation</title>
+<meta name="description" content="Advocacy is how limb-preservation gets written into law. Learn the 2026 legislation to know, how a bill becomes law, and seven ways you can take action.">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .step-c{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 22px 22px 22px;}
+  .step-c::before{counter-increment:s;content:counter(s);font-family:'Fraunces',serif;font-weight:600;font-size:30px;color:var(--sky);display:block;margin-bottom:6px;}
+  .step-c p{font-size:14.5px;color:#38495d;line-height:1.55;}
+  .bills{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .bill{background:#fff;border:1px solid var(--line);border-left:4px solid var(--red);border-radius:14px;padding:22px;}
+  .bill .status{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--blue);padding:4px 10px;border-radius:999px;margin-bottom:10px;}
+  .bill .status.passed{background:#2f9e5f;}
+  .bill h3{font-size:19px;margin-bottom:8px;}
+  .bill p{font-size:14px;color:#4a5d72;line-height:1.55;}
+  .actions{columns:2;column-gap:34px;max-width:820px;margin:0 auto;}
+  .actions li{break-inside:avoid;margin-bottom:14px;list-style:none;padding-left:30px;position:relative;color:#38495d;line-height:1.5;}
+  .actions li::before{content:'\2713';position:absolute;left:0;top:0;color:#fff;background:var(--red);width:20px;height:20px;border-radius:50%;font-size:11px;display:flex;align-items:center;justify-content:center;}
+  .spk{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .spk .s{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;}
+  .spk .s h3{font-size:18px;margin-bottom:4px;}
+  .spk .s .role{font-size:12.5px;color:var(--sky);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;}
+  .spk .s p{font-size:13.5px;color:#4a5d72;line-height:1.55;}
+  @media(max-width:820px){.steps,.bills,.spk{grid-template-columns:1fr;} .actions{columns:1;}}
+</style>
+</head>
+<body>
+<div class="bgfx"></div>
+<img class="ribbon-wm" src="../assets/ribbon-mark.png" alt="">
+
+<!-- NAV:START -->
+<!-- SALSAL canonical nav (ribbon design). Single source of truth.
+     Edit this file, then run `python3 build.py` to stamp every page.
+     ../ = base path to site root (build.py fills: "" at root, "../" per depth). -->
+<style>
+  .navwrap{position:sticky;top:0;z-index:50;padding:16px 24px;font-family:'Inter',system-ui,sans-serif;}
+  .navwrap .nav{max-width:1240px;margin:0 auto;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);
+    border:1px solid rgba(28,53,87,.08);border-radius:18px;box-shadow:0 10px 30px rgba(16,35,59,.09);
+    display:flex;align-items:center;gap:22px;padding:10px 14px 10px 20px;}
+  .navwrap .logo{height:44px;display:block;}
+  .navwrap .links{display:flex;gap:20px;align-items:center;margin-left:6px;}
+  .navwrap .links > a,.navwrap .ddt{font-weight:600;font-size:14.5px;color:#1C3557;white-space:nowrap;position:relative;padding:6px 0;cursor:pointer;text-decoration:none;}
+  .navwrap .links > a::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:2px;background:#E63947;transition:right .25s;}
+  .navwrap .links > a:hover::after{right:0;}
+  .navwrap .dd{position:relative;}
+  .navwrap .dd .ddt{display:inline-flex;align-items:center;gap:6px;}
+  .navwrap .caret{font-size:10px;transition:transform .22s;color:#00AEDF;}
+  .navwrap .dd:hover .caret{transform:rotate(180deg);}
+  .navwrap .ddmenu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);min-width:260px;
+    background:#fff;border:1px solid rgba(28,53,87,.08);border-radius:16px;box-shadow:0 22px 55px rgba(16,35,59,.18);
+    padding:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:70;}
+  .navwrap .ddmenu.wide{min-width:300px;}
+  .navwrap .dd:hover .ddmenu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+  .navwrap .ddi{display:block;padding:10px 14px;border-radius:12px;text-decoration:none;}
+  .navwrap .ddi:hover{background:#F1F6FB;}
+  .navwrap .ddi b{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;color:#1C3557;}
+  .navwrap .ddi span{display:block;font-size:12.5px;color:#467C9B;margin-top:3px;}
+  .navwrap .ddi .play{width:18px;height:18px;border-radius:50%;background:#E63947;color:#fff;font-size:8px;display:inline-flex;align-items:center;justify-content:center;padding-left:1px;}
+  .navwrap .sp{flex:1;}
+  .navwrap .btn{font-weight:700;font-size:14.5px;border-radius:12px;padding:11px 20px;display:inline-flex;align-items:center;gap:8px;
+    border:2px solid transparent;white-space:nowrap;text-decoration:none;transition:transform .18s,background .18s,box-shadow .18s;}
+  .navwrap .btn.red{background:#E63947;color:#fff;box-shadow:0 8px 22px rgba(230,57,71,.26);}
+  .navwrap .btn.red:hover{background:#C62C3A;transform:translateY(-2px);}
+  @media(max-width:980px){.navwrap .links{display:none;}}
+</style>
+<div class="navwrap">
+  <nav class="nav">
+    <a href="../" class="logo-link"><img class="logo" src="../assets/logo.png" alt="Save a Leg, Save a Life Foundation"></a>
+    <div class="links">
+      <div class="dd">
+        <span class="ddt">About <span class="caret">&#9662;</span></span>
+        <div class="ddmenu">
+          <a class="ddi" href="../mission-vision/"><b>Mission &amp; Vision</b><span>Why SALSAL exists</span></a>
+          <a class="ddi" href="../how-we-help/"><b>How We Help</b><span>Our programs and working groups</span></a>
+          <a class="ddi" href="../board-of-directors/"><b>Board of Directors</b><span>The people behind the mission</span></a>
+          <a class="ddi" href="../news/"><b>News</b><span>What's new at SALSAL</span></a>
+        </div>
+      </div>
+      <div class="dd">
+        <span class="ddt">Learning Hub <span class="caret">&#9662;</span></span>
+        <div class="ddmenu wide">
+          <a class="ddi" href="../learning-hub/"><b>The Hub</b><span>Everything we teach, in one place</span></a>
+          <a class="ddi" href="../provider-education/"><b>Provider Education</b><span>Clinical training and the SALSAL Challenge</span></a>
+          <a class="ddi" href="../resources/"><b>Resources</b><span>Free fact sheets and guides</span></a>
+          <a class="ddi" href="../webinars/"><b><span class="play">&#9654;</span> On-Demand Webinars</b><span>Watch every recorded session, free</span></a>
+          <a class="ddi" href="../upcoming-webinars/"><b>Upcoming Webinars</b><span>Register for the next live session</span></a>
+        </div>
+      </div>
+      <div class="dd">
+        <span class="ddt">Impact <span class="caret">&#9662;</span></span>
+        <div class="ddmenu">
+          <a class="ddi" href="../community-screening-events/"><b>Screening &amp; Events</b><span>Free community screenings</span></a>
+          <a class="ddi" href="../white-sock-campaign/"><b>The White Sock Campaign</b><span>Take the pledge for PAD Awareness Month</span></a>
+          <a class="ddi" href="../toba/"><b>TOBA</b><span>Time Out Before Amputation</span></a>
+          <a class="ddi" href="../advocacy/"><b>Advocacy</b><span>Policy reform for limb preservation</span></a>
+        </div>
+      </div>
+      <a href="../get-involved/">Get Involved</a>
+      <a href="../sponsorship/">Sponsorship</a>
+      <div class="dd">
+        <span class="ddt">Ways to Give <span class="caret">&#9662;</span></span>
+        <div class="ddmenu">
+          <a class="ddi" href="../shop/"><b>Donate by Shopping</b><span>Every purchase funds the mission</span></a>
+          <a class="ddi" href="../donate/"><b>Donate</b><span>Give directly to limb preservation</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="sp"></div>
+    <a class="btn red" href="../donate/">Donate</a>
+  </nav>
+</div>
+<!-- NAV:END -->
+
+<main>
+  <section class="phero">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span> Impact &middot; Advocacy</span>
+          <h1>Community screening finds the problem. Advocacy <span class="phero-underline">writes the fix into law<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M4,14 C60,6 120,4 180,9 C224,12 268,10 296,6"/></svg></span>.</h1>
+          <p class="sub">Advocacy is not separate from our clinical work, it is how that work becomes policy. You do not need a title or a law degree to move it forward.</p>
+          <div class="cta"><a class="btn red" href="#take-action">See the 7 ways to act</a><a class="btn ghost" href="../webinars/advocacy-legislation/">Watch the webinar <span class="arw">&rsaquo;</span></a></div>
+        </div>
+        <div class="hero-img"><img src="../assets/photos/Dr.-Bell-AMP-2019.webp" alt="SALSAL leaders at an advocacy and policy gathering"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW A BILL BECOMES LAW -->
+  <section class="band paper">
+    <div class="wrap">
+      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> The fundamentals</span><h2>How an idea becomes law</h2><p>Every law starts as someone's problem, often a screening insurance would not cover, or a referral that never came. Here is the path from there to policy.</p></div>
+      <div class="creed">
+        <div class="cr reveal"><div class="crn">01</div><div class="crt"><h3>Identify the problem</h3><p>An advocate names a real gap, often a screening insurance would not cover, and drafts a proposed solution.</p></div></div>
+        <div class="cr reveal"><div class="crn">02</div><div class="crt"><h3>Find a sponsor</h3><p>A legislator agrees to sponsor the bill, and it is formally introduced.</p></div></div>
+        <div class="cr reveal"><div class="crn">03</div><div class="crt"><h3>Committee review</h3><p>The bill goes to committee for review, hearings, and amendment, where testimony matters most.</p></div></div>
+        <div class="cr reveal"><div class="crn">04</div><div class="crt"><h3>Floor vote</h3><p>If it advances out of committee, the bill goes to a floor vote in its chamber.</p></div></div>
+        <div class="cr reveal"><div class="crn">05</div><div class="crt"><h3>The second chamber</h3><p>If passed, it moves to the other chamber and the process repeats.</p></div></div>
+        <div class="cr reveal"><div class="crn">06</div><div class="crt"><h3>It becomes law</h3><p>Once passed by both chambers and signed, the idea becomes law.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGISLATION TO KNOW -->
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> 2026</span><h2>Legislation to know</h2><p>Four bills show how limb preservation is advancing at the state and federal level.</p></div>
+      <div class="creed">
+        <div class="cr reveal"><div class="crn">IL</div><div class="crt"><span class="status passed">Passed &middot; first in the nation</span><h3>Illinois SB 1418</h3><p>Requires all Illinois insurance carriers to cover PAD screening for at-risk individuals, anyone over 65, and younger people with risk factors like smoking, heart disease, or diabetes.</p></div></div>
+        <div class="cr reveal"><div class="crn">US</div><div class="crt"><span class="status">Introduced &middot; 119th Congress</span><h3>HB 7905: Diabetes Foot Health Access &amp; Modernization Act</h3><p>Would expand Medicaid coverage for podiatric services and update Medicare's diabetic shoe requirements, closing access gaps in foot and ankle care.</p></div></div>
+        <div class="cr reveal"><div class="crn">US</div><div class="crt"><span class="status">Introduced &middot; bipartisan</span><h3>SB 4189: The INSULIN Act of 2026</h3><p>Would cap out-of-pocket insulin at $35 per month for commercially insured Americans and fund pilot programs for uninsured access.</p></div></div>
+        <div class="cr reveal"><div class="crn">MA</div><div class="crt"><span class="status">Favorable committee reports</span><h3>HB 2433: Amputation Prevention Task Force</h3><p>Sponsored by Rep. Jessica Giannino, would create a public-private task force to advise on amputation prevention, coverage, and a statewide approach.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 WAYS TO ACT -->
+  <section class="band navy" id="take-action">
+    <div class="wrap">
+      <div class="band-head reveal"><h2>Seven ways to take action</h2><p>Consistency matters more than any single action. Legislators respond to constituents they hear from more than once.</p></div>
+      <ul class="actions reveal">
+        <li>Educate yourself on relevant legislation, in your state and nationally.</li>
+        <li>Connect with your professional association's advocacy committee, and join.</li>
+        <li>Call, write, and visit your legislators. Ask them to support and co-sponsor bills.</li>
+        <li>Follow up. Call, write, and visit again.</li>
+        <li>Consider donating to legislators' campaign funds.</li>
+        <li>Donate to your association's PAC fund.</li>
+        <li>Help your patients advocate for themselves.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SPEAKERS -->
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head reveal"><h2>Meet the advocates</h2><p>From our June 2026 advocacy webinar.</p></div>
+      <div class="creed">
+        <div class="cr reveal"><div class="crn">01</div><div class="crt"><span class="status">Moderator &middot; SALSAL Board</span><h3>Dr. David Alper, DPM</h3><p>Retired podiatric physician with 39 years in practice, Emeritus Surgical Staff at Mt. Auburn Hospital, and an elected member of the APMA Board of Trustees who has testified before Congress.</p></div></div>
+        <div class="cr reveal"><div class="crn">02</div><div class="crt"><span class="status">Massachusetts House</span><h3>Rep. Jessica Giannino</h3><p>Lead sponsor of House Bill 2433, she convened the State House's first Amputation Prevention Roundtable, drawn to the cause by her family's own story.</p></div></div>
+        <div class="cr reveal"><div class="crn">03</div><div class="crt"><span class="status">Cascade Strategies</span><h3>Mark Molloy, Esq.</h3><p>Represents healthcare clients before the Massachusetts Legislature, including the Massachusetts Foot &amp; Ankle Society on its amputation-prevention task force bill.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSER (light, singular) -->
+  <section class="band">
+    <div class="wrap">
+      <div class="closer reveal">
+        <h2>Turn awareness into <span class="uln">action</span>.</h2>
+        <p>Watch the full advocacy session, then take the first of the seven steps this week.</p>
+        <div class="cta"><a class="btn red" href="../webinars/advocacy-legislation/">Watch the webinar</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER:START -->
+<!-- SALSAL canonical footer (ribbon design). Single source of truth.
+     Edit this file, then run `python3 build.py`. ../ = base path to site root. -->
+<footer class="site-footer">
+  <style>
+    .site-footer{background:#10233b;color:#cdddea;font-family:'Inter',system-ui,sans-serif;margin-top:0;}
+    .site-footer .sf-in{max-width:1240px;margin:0 auto;padding:64px 24px 30px;}
+    .site-footer .sf-drive{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+      padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12);}
+    .site-footer .sf-tag{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:30px;color:#fff;letter-spacing:-.02em;line-height:1.05;margin-bottom:10px;}
+    .site-footer .sf-drive p{font-size:15px;max-width:46ch;margin-bottom:16px;color:#b9cbdd;}
+    .site-footer .sf-act{display:flex;gap:12px;flex-wrap:wrap;}
+    .site-footer .sf-btn{font-weight:700;font-size:14.5px;border-radius:12px;padding:12px 22px;display:inline-flex;align-items:center;gap:8px;border:2px solid transparent;transition:transform .18s;}
+    .site-footer .sf-btn.red{background:#E63947;color:#fff;} .site-footer .sf-btn.red:hover{transform:translateY(-2px);}
+    .site-footer .sf-btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3);} .site-footer .sf-btn.ghost:hover{border-color:#fff;transform:translateY(-2px);}
+    .site-footer .sf-news{min-width:280px;flex:1;max-width:420px;}
+    .site-footer .sf-news label{display:block;font-weight:600;font-size:13px;color:#eaf3fa;margin-bottom:8px;}
+    .site-footer .sf-news-row{display:flex;gap:8px;}
+    .site-footer .sf-news input{flex:1;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;border-radius:10px;padding:11px 14px;font-size:14px;}
+    .site-footer .sf-news input::placeholder{color:#8fa8c0;}
+    .site-footer .sf-news button{background:#00AEDF;color:#062134;font-weight:700;border:0;border-radius:10px;padding:11px 18px;font-size:14px;cursor:pointer;}
+    .site-footer .sf-fine{font-size:11.5px;color:#7fa0bb;margin-top:8px;}
+    .site-footer .sf-cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;}
+    .site-footer .sf-about img{height:44px;margin-bottom:14px;background:#fff;border-radius:10px;padding:7px 10px;}
+    .site-footer .sf-about p{font-size:13px;line-height:1.6;color:#a9bfd4;margin-bottom:10px;max-width:38ch;}
+    .site-footer h4{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7fd3ef;margin-bottom:14px;}
+    .site-footer .sf-cols a{display:block;color:#cdddea;font-size:14px;padding:5px 0;transition:color .15s;}
+    .site-footer .sf-cols a:hover{color:#fff;}
+    .site-footer .sf-bar{max-width:1240px;margin:0 auto;padding:18px 24px 40px;border-top:1px solid rgba(255,255,255,.1);
+      display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;font-size:12px;color:#8fa8c0;}
+    .site-footer .sf-social{display:flex;gap:14px;}
+    .site-footer .sf-social a{color:#a9bfd4;} .site-footer .sf-social a:hover{color:#fff;}
+    @media(max-width:820px){.site-footer .sf-cols{grid-template-columns:1fr 1fr;gap:26px;}}
+    @media(max-width:520px){.site-footer .sf-cols{grid-template-columns:1fr;}}
+  </style>
+  <div class="sf-in">
+    <div class="sf-drive">
+      <div>
+        <div class="sf-tag">Put your support behind prevention.</div>
+        <p>SALSAL is an all-volunteer 501(c)(3). Every gift funds a free screening, a resource, or a clinician trained to look in time.</p>
+        <div class="sf-act">
+          <a class="sf-btn red" href="../donate/">Donate now</a>
+          <a class="sf-btn ghost" href="../shop/">Donate by shopping</a>
+        </div>
+      </div>
+      <form class="sf-news" action="https://thesalsal.us11.list-manage.com/subscribe/post?u=c31278d2251f4b5f2bd3fa1f4&amp;id=cf440d2f8b&amp;f_id=00d596e0f0" method="post" target="_blank" novalidate>
+        <label for="sf-news-email">Get SALSAL news and event alerts</label>
+        <div class="sf-news-row">
+          <input id="sf-news-email" type="email" name="EMAIL" placeholder="Your email address" autocomplete="email" required>
+          <button type="submit">Sign up</button>
+        </div>
+        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_c31278d2251f4b5f2bd3fa1f4_cf440d2f8b" tabindex="-1" value=""></div>
+        <p class="sf-fine">No spam. Unsubscribe anytime.</p>
+      </form>
+    </div>
+
+    <div class="sf-cols">
+      <div class="sf-about">
+        <img src="../assets/logo.png" alt="Save a Leg, Save a Life Foundation">
+        <p>The Save A Leg, Save A Life Foundation is a 501(c)(3) nonprofit working to reduce preventable lower extremity amputations. Federal Tax ID 32-0467696. Florida Solicitation Registration CH47375.</p>
+        <p>4403 5th Ave NE, Bradenton, FL 34208<br>+1 813-445-3857 &middot; info@thesalsal.org</p>
+      </div>
+      <div>
+        <h4>About</h4>
+        <a href="../mission-vision/">Mission &amp; Vision</a>
+        <a href="../how-we-help/">How We Help</a>
+        <a href="../board-of-directors/">Board of Directors</a>
+        <a href="../news/">News</a>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <a href="../learning-hub/">Learning Hub</a>
+        <a href="../provider-education/">Provider Education</a>
+        <a href="../resources/">Resources</a>
+        <a href="../webinars/">On-Demand Webinars</a>
+        <a href="../upcoming-webinars/">Upcoming Webinars</a>
+      </div>
+      <div>
+        <h4>Act</h4>
+        <a href="../community-screening-events/">Screening &amp; Events</a>
+        <a href="../toba/">TOBA</a>
+        <a href="../advocacy/">Advocacy</a>
+        <a href="../get-involved/">Get Involved</a>
+        <a href="../sponsorship/">Sponsorship</a>
+        <a href="../donate/">Ways to Give</a>
+      </div>
+    </div>
+  </div>
+  <div class="sf-bar">
+    <span>&copy; 2026 Save a Leg, Save a Life Foundation. A registered 501(c)(3) nonprofit. Contributions are tax-deductible to the extent allowed by law.</span>
+    <span class="sf-social">
+      <a href="https://www.facebook.com/TheSALSALorg" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/thesalsalfoundation" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/the-save-a-leg-save-a-life-foundation/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.youtube.com/channel/UC62XP_YydDhyI1agjEe9Rcw" target="_blank" rel="noopener">YouTube</a>
+    </span>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

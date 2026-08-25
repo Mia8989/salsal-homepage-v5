@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Save a Leg, Save a Life Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1C3557; --navy2:#10233b; --red:#E63947; --red-dk:#C62C3A;
+    --blue:#467C9B; --sky:#00AEDF; --sky-l:#7fd3ef; --ink:#17263a;
+    --paper:#FBFCFE; --paper2:#F1F6FB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;}
+  a{text-decoration:none;color:inherit;}
+
+  /* distinctive light background: cool white + one soft sky glow (no beige, no flat white) */
+  .bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(46% 42% at 90% 4%, rgba(0,174,223,.08), transparent 62%),
+      linear-gradient(180deg,#FFFFFF 0%,#F6FAFD 100%);}
+  .ribbon-wm{position:fixed;left:-70px;bottom:-70px;width:min(40vw,520px);height:auto;z-index:0;
+    opacity:.06;pointer-events:none;transform:rotate(-6deg);}
+
+  /* nav */
+  .navwrap{position:sticky;top:0;z-index:50;padding:16px 24px;}
+  .nav{max-width:1240px;margin:0 auto;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
+    border:1px solid rgba(28,53,87,.08);border-radius:18px;box-shadow:0 10px 30px rgba(16,35,59,.08);
+    display:flex;align-items:center;gap:26px;padding:10px 14px 10px 20px;}
+  .nav .logo{height:44px;}
+  .nav .links{display:flex;gap:22px;margin-left:6px;}
+  .nav .links a,.nav .ddt{font-weight:600;font-size:14.5px;color:var(--navy);white-space:nowrap;position:relative;padding:6px 0;cursor:pointer;}
+  .nav .links a::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--red);transition:right .25s;}
+  .nav .links a:hover::after{right:0;}
+  .dd{position:relative;}
+  .dd .ddt{display:inline-flex;align-items:center;gap:6px;}
+  .dd .caret{font-size:10px;transition:transform .22s;color:var(--sky);}
+  .dd:hover .caret{transform:rotate(180deg);}
+  .ddmenu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);min-width:270px;
+    background:#fff;border:1px solid rgba(28,53,87,.08);border-radius:16px;box-shadow:0 22px 55px rgba(16,35,59,.18);
+    padding:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:70;}
+  .dd:hover .ddmenu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+  .ddi{display:block;padding:11px 14px;border-radius:12px;}
+  .ddi:hover{background:var(--paper2);}
+  .ddi b{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;color:var(--navy);}
+  .ddi span{display:block;font-size:12.5px;color:var(--blue);margin-top:3px;}
+  .ddi .play{width:20px;height:20px;border-radius:50%;background:var(--red);color:#fff;font-size:9px;display:inline-flex;align-items:center;justify-content:center;padding-left:1px;}
+  .nav .sp{flex:1;}
+  .btn{font-weight:700;font-size:14.5px;border-radius:12px;padding:11px 20px;display:inline-flex;align-items:center;gap:8px;
+    cursor:pointer;border:2px solid transparent;transition:transform .18s,background .18s,box-shadow .18s,border-color .18s;white-space:nowrap;}
+  .btn.red{background:var(--red);color:#fff;box-shadow:0 8px 22px rgba(230,57,71,.26);}
+  .btn.red:hover{background:var(--red-dk);transform:translateY(-2px);box-shadow:0 12px 28px rgba(230,57,71,.36);}
+  .btn.outline{background:transparent;color:var(--navy);border-color:rgba(28,53,87,.22);}
+  .btn.outline:hover{border-color:var(--navy);transform:translateY(-2px);}
+  .btn.ghost{background:transparent;color:var(--navy);border-color:rgba(28,53,87,.22);}
+  .btn.ghost:hover{border-color:var(--navy);transform:translateY(-2px);}
+  .btn .arw{transition:transform .2s;} .btn.ghost:hover .arw{transform:translateX(4px);}
+  .btn.lg{padding:15px 26px;font-size:16px;}
+
+  /* hero */
+  .hero{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:36px 24px 60px;
+    display:grid;grid-template-columns:1.04fr .96fr;gap:52px;align-items:center;min-height:calc(100vh - 92px);}
+  .hero>.lead,.hero>.rail{min-width:0;}
+  .marq{max-width:100%;}
+  .kicker{display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.13em;
+    font-size:12px;font-weight:600;color:var(--blue);margin-bottom:24px;}
+  .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--sky);box-shadow:0 0 0 0 rgba(0,174,223,.5);animation:pulse 2.2s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,174,223,.5);}70%{box-shadow:0 0 0 8px rgba(0,174,223,0);}100%{box-shadow:0 0 0 0 rgba(0,174,223,0);}}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(44px,5.3vw,80px);line-height:1.0;
+    letter-spacing:-0.022em;color:var(--navy);margin-bottom:24px;}
+  h1 em{font-style:italic;font-weight:600;color:var(--red);position:relative;white-space:nowrap;}
+  h1 em svg{position:absolute;left:-2%;right:-2%;bottom:-.15em;width:104%;height:.26em;overflow:visible;}
+  h1 em svg path{fill:none;stroke:var(--sky);stroke-width:9;stroke-linecap:round;
+    stroke-dasharray:640;stroke-dashoffset:640;animation:draw 1.05s .55s cubic-bezier(.6,.05,.2,1) forwards;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .sub{font-size:19px;line-height:1.6;color:#41546b;max-width:33em;margin-bottom:30px;}
+  .cta{display:flex;gap:13px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+  .trust{display:flex;gap:9px;flex-wrap:wrap;align-items:center;font-size:13px;color:#6a7c92;margin-bottom:28px;}
+  .trust .tk{color:var(--navy);font-weight:700;}
+  .trust i{width:4px;height:4px;border-radius:50%;background:#c3d0dc;display:inline-block;}
+
+  /* moving marquee (brought back, restyled for light bg) */
+  .marq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
+  .marq .trk{display:inline-flex;white-space:nowrap;animation:scroll 24s linear infinite;color:#607590;font-weight:600;font-size:14px;letter-spacing:.02em;}
+  .marq .trk span{display:inline-flex;align-items:center;}
+  .marq .trk b{color:var(--navy);}
+  .marq i{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;margin:0 20px;}
+  @keyframes scroll{to{transform:translateX(-50%);}}
+
+  /* entrance (this whole block can be triggered AFTER the ribbon/logo intro) */
+  .lead>*{opacity:0;transform:translateY(16px);animation:rise .7s ease forwards;}
+  .lead .kicker{animation-delay:.05s;} .lead h1{animation-delay:.16s;} .lead .sub{animation-delay:.3s;}
+  .lead .cta{animation-delay:.42s;} .lead .trust{animation-delay:.5s;} .lead .marq{animation-delay:.58s;}
+  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+
+  /* ===== right rail: original rotating webinars/speakers card (natural photos) ===== */
+  .rail{position:relative;height:min(72vh,580px);opacity:0;transform:translateY(20px);animation:rise .8s .4s ease forwards;}
+  .photo{position:absolute;inset:0;border-radius:26px;overflow:hidden;
+    box-shadow:0 2px 8px rgba(28,53,87,.10),0 30px 66px rgba(16,35,59,.26);background:var(--navy);}
+  .photo .slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;}
+  .photo .slide.on{opacity:1;}
+  .photo .bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.05);}
+  .photo .slide.on .bg{animation:zoomFace 8s ease-out forwards;}
+  @keyframes zoomFace{from{transform:scale(1.05);}to{transform:scale(1.16);}}
+  .photo .vig{position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,35,59,0) 46%,rgba(16,35,59,.55));z-index:1;}
+  .photo .ph-tag{position:absolute;top:16px;left:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;
+    background:rgba(16,35,59,.5);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#eaf3fa;
+    font-weight:600;font-size:12px;letter-spacing:.03em;padding:7px 12px;border-radius:999px;}
+  .ph-tag .live{width:8px;height:8px;border-radius:50%;background:#39d98a;box-shadow:0 0 0 0 rgba(57,217,138,.6);animation:pulse2 1.8s infinite;}
+  @keyframes pulse2{0%{box-shadow:0 0 0 0 rgba(57,217,138,.6);}70%{box-shadow:0 0 0 7px rgba(57,217,138,0);}100%{box-shadow:0 0 0 0 rgba(57,217,138,0);}}
+  /* speaker panel */
+  .spkpanel{position:absolute;inset:0;background:linear-gradient(160deg,#1C3557 0%,#10233b 55%,#234465 100%);padding:32px 28px 0;overflow:hidden;}
+  .spkpanel::after{content:'';position:absolute;inset:0;background:radial-gradient(60% 48% at 82% 8%,rgba(0,174,223,.28),transparent 60%),radial-gradient(50% 40% at 6% 96%,rgba(230,57,71,.14),transparent 60%);pointer-events:none;}
+  .spkpanel .ph,.libpanel .ph{font-family:'Inter',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#7fd3ef;margin-bottom:18px;position:relative;display:flex;align-items:center;gap:9px;}
+  .spkpanel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;}
+  .spkpanel figure{margin:0;text-align:center;opacity:0;transform:translateY(12px);}
+  .slide.on .spkpanel figure{animation:rise .55s ease forwards;}
+  .slide.on .spkpanel figure:nth-child(2){animation-delay:.1s;} .slide.on .spkpanel figure:nth-child(3){animation-delay:.2s;}
+  .spkpanel figure .sp{display:block;width:100%;aspect-ratio:1/1.18;border-radius:16px;background:#467C9B center 14%/cover no-repeat;box-shadow:0 12px 26px rgba(0,0,0,.4);border:2px solid rgba(255,255,255,.16);}
+  .spkpanel figure b{display:block;font-weight:700;font-size:14px;color:#fff;margin-top:11px;line-height:1.15;}
+  .spkpanel figure i{display:block;font-size:11px;color:#9fc4dd;font-style:normal;margin-top:3px;letter-spacing:.02em;}
+  /* library wall */
+  .libpanel{position:absolute;inset:0;background:linear-gradient(160deg,#1C3557 0%,#10233b 55%,#1a3a5a 100%);padding:30px 28px 0;overflow:hidden;}
+  .libpanel::after{content:'';position:absolute;inset:0;background:radial-gradient(55% 45% at 88% 8%,rgba(0,174,223,.26),transparent 60%),radial-gradient(45% 38% at 4% 98%,rgba(230,57,71,.14),transparent 60%);pointer-events:none;}
+  .libcap{font-size:13.5px;color:#c2d6e7;margin:-6px 0 16px;position:relative;}
+  .libgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;position:relative;}
+  .libgrid .face{height:118px;border-radius:14px;background:#467C9B center 10%/cover no-repeat;border:2px solid rgba(255,255,255,.14);box-shadow:0 8px 20px rgba(0,0,0,.35);opacity:0;transform:translateY(10px);}
+  .slide.on .libgrid .face{animation:rise .5s ease forwards;}
+  .slide.on .libgrid .face:nth-child(2){animation-delay:.06s;} .slide.on .libgrid .face:nth-child(3){animation-delay:.12s;}
+  .slide.on .libgrid .face:nth-child(4){animation-delay:.18s;} .slide.on .libgrid .face:nth-child(5){animation-delay:.24s;} .slide.on .libgrid .face:nth-child(6){animation-delay:.3s;}
+  .libgrid .more{height:118px;border-radius:14px;border:2px dashed rgba(255,255,255,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#9fc4dd;font-weight:700;font-size:15px;text-align:center;line-height:1.15;gap:2px;}
+  .libgrid .more small{font-size:11px;font-weight:600;color:#7fa6c4;}
+  /* rotating glass event card */
+  .evcard{position:absolute;left:22px;right:22px;bottom:22px;z-index:3;
+    background:rgba(255,255,255,.15);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.3);
+    border-radius:20px;padding:18px 20px;box-shadow:0 18px 40px rgba(4,14,26,.35);}
+  .evcard .ev{display:none;}
+  .evcard .ev.on{display:block;animation:evlift .5s ease;}
+  @keyframes evlift{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+  .evtag{display:inline-block;font-weight:700;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:10px;color:#fff;}
+  .evtag.web{background:rgba(0,174,223,.92);} .evtag.scr{background:rgba(57,180,110,.95);} .evtag.lib{background:rgba(70,124,157,.98);}
+  .playbig{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;font-size:9px;padding-left:1px;margin-right:4px;vertical-align:middle;}
+  .evcard h3{font-family:'Fraunces',serif;font-weight:600;font-size:20px;line-height:1.14;color:#fff;margin-bottom:4px;}
+  .evcard .meta{font-size:13px;color:#dbe7f1;margin-bottom:12px;}
+  .evcard .go{font-weight:700;font-size:14px;color:#fff;display:inline-flex;align-items:center;gap:7px;}
+  .evcard .go .arw{transition:transform .2s;} .evcard .go:hover .arw{transform:translateX(4px);}
+  .evcard .pg{position:absolute;top:16px;right:18px;display:flex;gap:6px;}
+  .evcard .pg i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);}
+  .evcard .pg i.on{background:#fff;}
+  /* floating stat chip */
+  .statchip{position:absolute;top:-18px;right:-14px;z-index:4;background:#fff;color:var(--navy);border-radius:18px;
+    padding:15px 19px;box-shadow:0 16px 40px rgba(16,35,59,.2);text-align:center;border:1px solid rgba(28,53,87,.06);}
+  .statchip .n{font-family:'Fraunces',serif;font-weight:600;font-size:38px;color:var(--red);line-height:1;letter-spacing:-.02em;}
+  .statchip .n small{font-size:21px;}
+  .statchip .t{font-size:11px;color:var(--blue);font-weight:600;margin-top:4px;max-width:122px;line-height:1.28;}
+
+  /* ===================== FULL-PAGE BANDS ===================== */
+  .band{position:relative;z-index:2;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px;}
+  .band-head{text-align:center;max-width:760px;margin:0 auto 46px;}
+  .band-head .eye{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.13em;font-size:12px;font-weight:600;color:var(--blue);margin-bottom:16px;}
+  .band-head .eye .dot{width:7px;height:7px;border-radius:50%;background:var(--sky);}
+  .band-head h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;color:var(--navy);margin-bottom:14px;}
+  .band-head p{font-size:18px;line-height:1.6;color:#41546b;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none;}}
+
+  /* --- MANIFESTO (stakes) band --- */
+  .manifesto{background:linear-gradient(165deg,#10233b 0%,#1C3557 60%,#234465 100%);color:#eaf2fa;padding:104px 0;overflow:hidden;}
+  .manifesto::after{content:'';position:absolute;inset:0;background:radial-gradient(50% 45% at 88% 6%,rgba(0,174,223,.18),transparent 60%),radial-gradient(42% 40% at 4% 98%,rgba(230,57,71,.12),transparent 60%);pointer-events:none;z-index:1;}
+  .manifesto .wrap{position:relative;z-index:2;max-width:940px;text-align:center;}
+  .manifesto .eye{color:var(--sky-l);letter-spacing:.16em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin-bottom:26px;display:block;}
+  .manifesto p.big{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,4.6vw,54px);line-height:1.18;letter-spacing:-.015em;color:#fff;margin-bottom:8px;}
+  .manifesto p.big em{font-style:italic;color:var(--sky-l);}
+  .manifesto .decide{display:block;margin:30px auto 0;max-width:620px;font-size:19px;line-height:1.6;color:#c2d6e7;}
+
+  /* --- verb-first PILLARS (free actions) --- */
+  .pillars{padding:96px 0;background:var(--paper);}
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .pcard{background:#fff;border:1px solid rgba(28,53,87,.09);border-radius:22px;padding:34px 30px 30px;box-shadow:0 2px 6px rgba(16,35,59,.05),0 24px 50px rgba(16,35,59,.07);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
+  .pcard:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(16,35,59,.14);}
+  .pcard .pnum{font-family:'Fraunces',serif;font-weight:600;font-size:15px;color:var(--sky);letter-spacing:.02em;margin-bottom:16px;}
+  .pcard .picon{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px;background:rgba(0,174,223,.1);}
+  .pcard:nth-child(2) .picon{background:rgba(230,57,71,.09);}
+  .pcard:nth-child(3) .picon{background:rgba(70,124,157,.12);}
+  .pcard .picon svg{width:28px;height:28px;}
+  .pcard h3{font-family:'Fraunces',serif;font-weight:600;font-size:24px;color:var(--navy);margin-bottom:9px;letter-spacing:-.01em;}
+  .pcard p{font-size:15.5px;line-height:1.58;color:#4a5c72;margin-bottom:20px;flex:1;}
+  .pcard .plink{font-weight:700;font-size:15px;color:var(--red);display:inline-flex;align-items:center;gap:7px;}
+  .pcard .plink .arw{transition:transform .2s;} .pcard:hover .plink .arw{transform:translateX(4px);}
+
+  /* --- IMPACT band (proof) --- */
+  .impact{padding:92px 0;background:linear-gradient(180deg,#F1F6FB 0%,#FBFCFE 100%);}
+  .statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .statg{background:#fff;border:1px solid rgba(28,53,87,.08);border-radius:22px;padding:38px 26px;text-align:center;box-shadow:0 20px 44px rgba(16,35,59,.07);}
+  .statg .n{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(46px,6vw,68px);line-height:1;color:var(--red);letter-spacing:-.02em;}
+  .statg .n small{font-size:.5em;}
+  .statg .t{font-size:15.5px;color:#41546b;margin-top:12px;line-height:1.45;max-width:16em;margin-left:auto;margin-right:auto;}
+  .impact .note{text-align:center;font-size:13px;color:#8496a8;margin-top:30px;}
+
+  /* --- GIVE band (two-tab $49 supporter card) --- */
+  .give{padding:96px 0 104px;background:var(--paper);}
+  .give .wrap{max-width:1120px;display:grid;grid-template-columns:1fr .92fr;gap:56px;align-items:center;}
+  .give .gcopy h2{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.02em;color:var(--navy);margin-bottom:16px;}
+  .give .gcopy p{font-size:18px;line-height:1.62;color:#41546b;margin-bottom:22px;max-width:30em;}
+  .give .perks{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .give .perks li{display:flex;gap:11px;align-items:flex-start;font-size:16px;color:var(--ink);}
+  .give .perks li svg{flex:0 0 auto;width:22px;height:22px;margin-top:1px;}
+  .dcard{background:#fff;border:1px solid rgba(28,53,87,.1);border-radius:26px;padding:12px;box-shadow:0 2px 8px rgba(28,53,87,.08),0 34px 70px rgba(16,35,59,.16);}
+  .dtabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--paper2);border-radius:18px;padding:6px;margin-bottom:20px;}
+  .dtab{border:0;background:transparent;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700;font-size:14.5px;color:var(--blue);padding:13px 10px;border-radius:13px;transition:all .2s;line-height:1.2;}
+  .dtab small{display:block;font-weight:600;font-size:11.5px;color:var(--blue);opacity:.8;margin-top:2px;}
+  .dtab.on{background:#fff;color:var(--navy);box-shadow:0 6px 16px rgba(16,35,59,.12);}
+  .dtab.on small{color:var(--red);opacity:1;}
+  .dbody{padding:8px 20px 20px;}
+  .dpane{display:none;} .dpane.on{display:block;animation:evlift .35s ease;}
+  .amtgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+  .amt{border:2px solid rgba(28,53,87,.16);background:#fff;border-radius:13px;padding:15px 4px;font-family:'Inter',sans-serif;font-weight:700;font-size:17px;color:var(--navy);cursor:pointer;transition:all .18s;}
+  .amt:hover{border-color:var(--sky);}
+  .amt.on{border-color:var(--red);background:rgba(230,57,71,.06);color:var(--red);}
+  .amt.other{grid-column:span 3;font-size:15px;color:var(--blue);}
+  .otherwrap{display:none;margin-bottom:16px;}
+  .otherwrap.on{display:block;}
+  .otherwrap input{width:100%;border:2px solid rgba(28,53,87,.16);border-radius:13px;padding:14px 16px;font-family:'Inter';font-size:17px;font-weight:700;color:var(--navy);}
+  .otherwrap input:focus{outline:none;border-color:var(--sky);}
+  .supbox{background:var(--paper2);border-radius:16px;padding:20px 22px;margin-bottom:16px;text-align:center;}
+  .supbox .price{font-family:'Fraunces',serif;font-weight:600;font-size:44px;color:var(--red);line-height:1;}
+  .supbox .price small{font-size:18px;color:var(--blue);font-weight:500;}
+  .supbox .plabel{font-size:14px;color:#4a5c72;margin-top:6px;}
+  .dcard .give-btn{width:100%;justify-content:center;font-size:17px;padding:16px;}
+  .dcard .secure{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12.5px;color:#7d8ca0;margin-top:14px;}
+  .dcard .secure svg{width:14px;height:14px;}
+  .dcard .taxline{text-align:center;font-size:11.5px;color:#93a2b3;margin-top:8px;line-height:1.4;}
+
+  /* --- TRUST band --- */
+  .trustband{padding:70px 0;background:linear-gradient(180deg,#FBFCFE,#F1F6FB);border-top:1px solid rgba(28,53,87,.06);}
+  .trustrow{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 40px;align-items:center;}
+  .trustrow .ti{display:flex;align-items:center;gap:12px;color:var(--navy);font-weight:600;font-size:15px;max-width:250px;}
+  .trustrow .ti svg{flex:0 0 auto;width:30px;height:30px;color:var(--sky);}
+  .trustrow .ti span small{display:block;font-weight:500;font-size:13px;color:#6a7c92;margin-top:2px;}
+
+  /* --- PHOTO STORY (real screening events) --- */
+  .photostory{padding:82px 0;background:var(--paper);position:relative;z-index:2;}
+  .photostory .pshead{max-width:660px;margin:0 auto 40px;text-align:center;}
+  .photostory .pshead .eye2{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:600;color:var(--blue);margin-bottom:16px;}
+  .photostory .pshead .eye2::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--sky);}
+  .photostory .pshead h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.015em;color:var(--navy);margin-bottom:14px;}
+  .photostory .pshead p{font-size:17.5px;line-height:1.6;color:#41546b;}
+  .psgrid{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:1fr 1fr;gap:16px;max-width:1120px;margin:0 auto;}
+  .psfig{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 20px 46px rgba(16,35,59,.16);margin:0;min-height:240px;background:var(--navy);}
+  .psfig.big{grid-row:1 / span 2;}
+  .psfig img{width:100%;height:100%;object-fit:cover;display:block;}
+  .psfig .pscap{position:absolute;left:0;right:0;bottom:0;padding:34px 22px 16px;color:#fff;font-size:14.5px;line-height:1.4;font-weight:500;
+    background:linear-gradient(transparent,rgba(16,35,59,.86));}
+  .psfig.big .pscap{font-size:16px;}
+
+  /* --- SPONSORS / mission partners --- */
+  .sponsors{padding:64px 0;background:var(--paper2);text-align:center;position:relative;z-index:2;}
+  .sponsors .slbl{text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:600;color:var(--blue);margin-bottom:30px;}
+  .sprow{display:flex;flex-wrap:wrap;gap:32px 48px;justify-content:center;align-items:center;max-width:980px;margin:0 auto 30px;}
+  .sprow img{height:40px;width:auto;opacity:.72;filter:grayscale(1);transition:opacity .25s,filter .25s;}
+  .sprow img:hover{opacity:1;filter:none;}
+
+  /* --- FOOTER drive banner --- */
+  footer.drive{background:linear-gradient(165deg,#10233b,#1C3557);color:#dbe7f1;padding:72px 0 40px;position:relative;z-index:2;overflow:hidden;}
+  footer.drive::after{content:'';position:absolute;inset:0;background:radial-gradient(46% 50% at 92% 0%,rgba(0,174,223,.16),transparent 62%);pointer-events:none;}
+  footer.drive .wrap{position:relative;z-index:2;}
+  .drivetop{text-align:center;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:44px;margin-bottom:38px;}
+  .drivetop .tag{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(26px,3.4vw,40px);color:#fff;letter-spacing:-.01em;margin-bottom:22px;}
+  .drivetop .dbtns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;}
+  .drivecols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;font-size:14.5px;}
+  .drivecols h4{font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--sky-l);margin-bottom:14px;}
+  .drivecols a{display:block;color:#c2d6e7;padding:5px 0;}
+  .drivecols a:hover{color:#fff;}
+  .drivecols .discl{font-size:12px;color:#8fa6bd;line-height:1.55;margin-top:10px;}
+  .drivebottom{border-top:1px solid rgba(255,255,255,.12);margin-top:34px;padding-top:22px;font-size:12.5px;color:#8fa6bd;text-align:center;line-height:1.6;}
+
+  @media(max-width:960px){
+    .nav .links{display:none;}
+    .hero{grid-template-columns:1fr;gap:32px;min-height:auto;padding:28px 20px 48px;}
+    .rail{height:62vh;min-height:400px;}
+    .statchip{right:6px;top:-14px;}
+    .pgrid,.statrow{grid-template-columns:1fr;}
+    .give .wrap{grid-template-columns:1fr;gap:34px;}
+    .drivecols{grid-template-columns:1fr;gap:24px;}
+    .manifesto,.pillars,.impact,.give{padding:66px 0;}
+  }
+</style>
+</head>
+<body>
+<div class="bgfx"></div>
+<img class="ribbon-wm" src="assets/ribbon-mark.png" alt="">
+
+
+<!-- NAV:START -->
+<!-- SALSAL canonical nav (ribbon design). Single source of truth.
+     Edit this file, then run `python3 build.py` to stamp every page.
+      = base path to site root (build.py fills: "" at root, "../" per depth). -->
+<style>
+  .navwrap{position:sticky;top:0;z-index:50;padding:16px 24px;font-family:'Inter',system-ui,sans-serif;}
+  .navwrap .nav{max-width:1240px;margin:0 auto;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);
+    border:1px solid rgba(28,53,87,.08);border-radius:18px;box-shadow:0 10px 30px rgba(16,35,59,.09);
+    display:flex;align-items:center;gap:22px;padding:10px 14px 10px 20px;}
+  .navwrap .logo{height:44px;display:block;}
+  .navwrap .links{display:flex;gap:20px;align-items:center;margin-left:6px;}
+  .navwrap .links > a,.navwrap .ddt{font-weight:600;font-size:14.5px;color:#1C3557;white-space:nowrap;position:relative;padding:6px 0;cursor:pointer;text-decoration:none;}
+  .navwrap .links > a::after{content:'';position:absolute;left:0;right:100%;bottom:0;height:2px;background:#E63947;transition:right .25s;}
+  .navwrap .links > a:hover::after{right:0;}
+  .navwrap .dd{position:relative;}
+  .navwrap .dd .ddt{display:inline-flex;align-items:center;gap:6px;}
+  .navwrap .caret{font-size:10px;transition:transform .22s;color:#00AEDF;}
+  .navwrap .dd:hover .caret{transform:rotate(180deg);}
+  .navwrap .ddmenu{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);min-width:260px;
+    background:#fff;border:1px solid rgba(28,53,87,.08);border-radius:16px;box-shadow:0 22px 55px rgba(16,35,59,.18);
+    padding:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:70;}
+  .navwrap .ddmenu.wide{min-width:300px;}
+  .navwrap .dd:hover .ddmenu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+  .navwrap .ddi{display:block;padding:10px 14px;border-radius:12px;text-decoration:none;}
+  .navwrap .ddi:hover{background:#F1F6FB;}
+  .navwrap .ddi b{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;color:#1C3557;}
+  .navwrap .ddi span{display:block;font-size:12.5px;color:#467C9B;margin-top:3px;}
+  .navwrap .ddi .play{width:18px;height:18px;border-radius:50%;background:#E63947;color:#fff;font-size:8px;display:inline-flex;align-items:center;justify-content:center;padding-left:1px;}
+  .navwrap .sp{flex:1;}
+  .navwrap .btn{font-weight:700;font-size:14.5px;border-radius:12px;padding:11px 20px;display:inline-flex;align-items:center;gap:8px;
+    border:2px solid transparent;white-space:nowrap;text-decoration:none;transition:transform .18s,background .18s,box-shadow .18s;}
+  .navwrap .btn.red{background:#E63947;color:#fff;box-shadow:0 8px 22px rgba(230,57,71,.26);}
+  .navwrap .btn.red:hover{background:#C62C3A;transform:translateY(-2px);}
+  @media(max-width:980px){.navwrap .links{display:none;}}
+</style>
+<div class="navwrap">
+  <nav class="nav">
+    <a href="" class="logo-link"><img class="logo" src="assets/logo.png" alt="Save a Leg, Save a Life Foundation"></a>
+    <div class="links">
+      <div class="dd">
+        <span class="ddt">About <span class="caret">&#9662;</span></span>
+        <div class="ddmenu">
+          <a class="ddi" href="mission-vision/"><b>Mission &amp; Vision</b><span>Why SALSAL exists</span></a>
+          <a class="ddi" href="how-we-help/"><b>How We Help</b><span>Our programs and working groups</span></a>
+          <a class="ddi" href="board-of-directors/"><b>Board of Directors</b><span>The people behind the mission</span></a>
+          <a class="ddi" href="news/"><b>News</b><span>What's new at SALSAL</span></a>
+        </div>
+      </div>
+      <div class="dd">
+        <span class="ddt">Learning Hub <span class="caret">&#9662;</span></span>
+        <div class="ddmenu wide">
+          <a class="ddi" href="learning-hub/"><b>The Hub</b><span>Everything we teach, in one place</span></a>
+          <a class="ddi" href="provider-education/"><b>Provider Education</b><span>Clinical training and the SALSAL Challenge</span></a>
+          <a class="ddi" href="resources/"><b>Resources</b><span>Free fact sheets and guides</span></a>
+          <a class="ddi" href="webinars/"><b><span class="play">&#9654;</span> On-Demand Webinars</b><span>Watch every recorded session, free</span></a>
+          <a class="ddi" href="upcoming-webinars/"><b>Upcoming Webinars</b><span>Register for the next live session</span></a>
+        </div>
+      </div>
+      <div class="dd">
+        <span class="ddt">Impact <span class="caret">&#9662;</span></span>
+        <div class="ddmenu">
+          <a class="ddi" href="community-screening-events/"><b>Screening &amp; Events</b><span>Free community screenings</span></a>
+          <a class="ddi" href="white-sock-campaign/"><b>The White Sock Campaign</b><span>Take the pledge for PAD Awareness Month</span></a>
+          <a class="ddi" href="toba/"><b>TOBA</b><span>Time Out Before Amputation</span></a>
+          <a class="ddi" href="advocacy/"><b>Advocacy</b><span>Policy reform for limb preservation</span></a>
+        </div>
+      </div>
+      <a href="get-involved/">Get Involved</a>
+      <a href="sponsorship/">Sponsorship</a>
+      <div class="dd">
+        <span class="ddt">Ways to Give <span class="caret">&#9662;</span></span>
+        <div class="ddmenu">
+          <a class="ddi" href="shop/"><b>Donate by Shopping</b><span>Every purchase funds the mission</span></a>
+          <a class="ddi" href="donate/"><b>Donate</b><span>Give directly to limb preservation</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="sp"></div>
+    <a class="btn red" href="donate/">Donate</a>
+  </nav>
+</div>
+<!-- NAV:END -->
+
+<section class="hero">
+  <div class="lead">
+    <span class="kicker"><span class="dot"></span> Amputation prevention &middot; advocacy &middot; education</span>
+    <h1>Most amputations are
+      <em>preventable<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M4,14 C60,6 120,4 180,9 C224,12 268,10 296,6"/></svg></em>.</h1>
+    <p class="sub">Evidence shows up to 85% are preventable with early, expert care. Know your risk, get screened, and act before amputation is ever on the table.</p>
+    <div class="cta">
+      <a class="btn red lg">Find a free screening</a>
+      <a class="btn ghost lg">How we help <span class="arw">&rsaquo;</span></a>
+    </div>
+    <p class="trust"><span class="tk">501(c)(3) nonprofit</span><i></i> Evidence-based limb preservation<i></i> Physician-founded</p>
+    <div class="marq"><div class="trk">
+      <span><b>Free community screenings</b><i></i> Provider training<i></i> Patient resources<i></i> Live webinars<i></i> Policy advocacy<i></i></span>
+      <span><b>Free community screenings</b><i></i> Provider training<i></i> Patient resources<i></i> Live webinars<i></i> Policy advocacy<i></i></span>
+    </div></div>
+  </div>
+
+  <div class="rail">
+    <div class="photo" id="photo">
+      <div class="slide on"><div class="bg" style="background-image:url('assets/hero-group.jpg');background-position:50% 40%"></div></div>
+      <div class="slide">
+        <div class="spkpanel">
+          <div class="ph"><span class="playbig">&#9654;</span> Featured speakers</div>
+          <div class="spkpanel-grid">
+            <figure><span class="sp" style="background-image:url('assets/speakers/matthew-myntti.jpg')"></span><b>Matthew Myntti, PhD</b><i>Speaker</i></figure>
+            <figure><span class="sp" style="background-image:url('assets/speakers/matthew-regulski.jpg')"></span><b>Dr. Matthew Regulski</b><i>Speaker</i></figure>
+            <figure><span class="sp" style="background-image:url('assets/speakers/karen-bauer.jpg')"></span><b>Karen Bauer, DNP</b><i>Moderator</i></figure>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="libpanel">
+          <div class="ph"><span class="playbig">&#9654;</span> On-demand library</div>
+          <div class="libcap">Watch past webinars from leading limb-preservation experts.</div>
+          <div class="libgrid">
+            <span class="face" style="background-image:url('assets/speakers/alton-johnson.jpg')"></span>
+            <span class="face" style="background-image:url('assets/speakers/mark-melin.jpg')"></span>
+            <span class="face" style="background-image:url('assets/speakers/matthew-regulski.jpg')"></span>
+            <span class="face" style="background-image:url('assets/speakers/karen-bauer.jpg')"></span>
+            <span class="face" style="background-image:url('assets/speakers/matthew-myntti.jpg')"></span>
+            <span class="more">7 webinars<small>and counting</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="vig"></div>
+      <span class="ph-tag" id="phtag"><span class="live"></span> Community screening &middot; 2026</span>
+      <div class="evcard" id="evcard">
+        <div class="pg"><i class="on"></i><i></i><i></i></div>
+        <div class="ev on">
+          <span class="evtag scr">Free Screening</span>
+          <h3>Find a free limb screening near you</h3>
+          <div class="meta">Early detection saves limbs</div>
+          <a class="go">See screening events <span class="arw">&rsaquo;</span></a>
+        </div>
+        <div class="ev">
+          <span class="evtag web">Featured Webinar</span>
+          <h3>Time Is Tissue: disrupting biofilm to prevent amputation</h3>
+          <div class="meta">On demand &middot; free to watch</div>
+          <a class="go">Watch on demand <span class="arw">&rsaquo;</span></a>
+        </div>
+        <div class="ev">
+          <span class="evtag lib">On-Demand Library</span>
+          <h3><span class="playbig">&#9654;</span> Watch past webinars anytime</h3>
+          <div class="meta">Our full library of recorded sessions</div>
+          <a class="go">Browse the library <span class="arw">&rsaquo;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="statchip">
+      <div class="n"><span id="cnt">85</span><small>%</small></div>
+      <div class="t">of amputations are preventable with early care</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STAKES / MANIFESTO ===== -->
+<section class="band manifesto">
+  <div class="wrap">
+    <span class="eye reveal">The time-out</span>
+    <p class="big reveal">Most amputations are not inevitable.<br>They are a <em>decision</em>.</p>
+    <p class="decide reveal">We exist to make sure it is the right one, made with early testing, expert eyes, and every evidence-based option on the table first.</p>
+  </div>
+</section>
+
+<!-- ===== VERB-FIRST PILLARS (free actions) ===== -->
+<section class="band pillars">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <span class="eye"><span class="dot"></span> Start here, free</span>
+      <h2>Three ways to protect a limb today</h2>
+      <p>You do not have to wait for a diagnosis to act. Each of these is free, and each one is a step away from a preventable amputation.</p>
+    </div>
+    <div class="pgrid">
+      <div class="pcard reveal">
+        <div class="pnum">01 &middot; Educate</div>
+        <div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="#00AEDF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 4 14.5 4 8.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 2.5C20 14.5 12 21 12 21Z"/><circle cx="12" cy="8.5" r="1.6"/></svg></div>
+        <h3>Find a free screening</h3>
+        <p>Early detection is the single biggest factor in saving a limb. Locate a free community screening near you.</p>
+        <a class="plink">See screening events <span class="arw">&rsaquo;</span></a>
+      </div>
+      <div class="pcard reveal">
+        <div class="pnum">02 &middot; Advocate</div>
+        <div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="#E63947" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5Z"/></svg></div>
+        <h3>Know your right to ask</h3>
+        <p>You have the right to a second opinion and a full vascular evaluation before amputation. Get the questions to bring to your care team.</p>
+        <a class="plink">Get the patient checklist <span class="arw">&rsaquo;</span></a>
+      </div>
+      <div class="pcard reveal">
+        <div class="pnum">03 &middot; Communicate</div>
+        <div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="#467C9B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M10 8.5l5 2.5-5 2.5z" fill="#467C9B" stroke="none"/></svg></div>
+        <h3>Learn from the experts</h3>
+        <p>Watch free, on-demand webinars from leading limb-preservation clinicians, no cost, no login required.</p>
+        <a class="plink">Browse the library <span class="arw">&rsaquo;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHOTO STORY (real community screenings) ===== -->
+<section class="photostory">
+  <div class="wrap">
+    <div class="pshead reveal">
+      <span class="eye2">In the community</span>
+      <h2>This is what prevention looks like.</h2>
+      <p>Not a slogan, a folding table in a church hall. We bring free screenings to the neighborhoods where a caught-in-time problem means a limb saved.</p>
+    </div>
+    <div class="psgrid">
+      <figure class="psfig big reveal">
+        <img src="assets/story/story-setup.jpg" alt="A SALSAL free community screening set up in a local hall">
+        <figcaption class="pscap">We bring free screenings into the community, one hall, senior center, and clinic at a time.</figcaption>
+      </figure>
+      <figure class="psfig reveal">
+        <img src="assets/story/story-talk.jpg" alt="A clinician talking with an attendee at a SALSAL screening">
+        <figcaption class="pscap">A few minutes with a clinician can change the course of a limb.</figcaption>
+      </figure>
+      <figure class="psfig reveal">
+        <img src="assets/story/story-stations.jpg" alt="Volunteer clinicians running screening stations at a SALSAL event">
+        <figcaption class="pscap">Every station checks a different risk, from circulation to mobility.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPACT / PROOF ===== -->
+<section class="band impact">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <span class="eye"><span class="dot"></span> The proof</span>
+      <h2>Prevention works. The evidence is clear.</h2>
+      <p>Your support does not fund hope, it funds screening, education, and access, the things that actually keep limbs attached.</p>
+    </div>
+    <div class="statrow">
+      <div class="statg reveal"><div class="n"><span data-count="85">0</span><small>%</small></div><div class="t">of lower-limb amputations are preventable with early, evidence-based care</div></div>
+      <div class="statg reveal"><div class="n"><span data-count="7">0</span><small>+</small></div><div class="t">free on-demand webinars from limb-preservation experts</div></div>
+      <div class="statg reveal"><div class="n"><span data-count="5">0</span><small>+</small></div><div class="t">clinical faculty educating patients and providers nationwide</div></div>
+    </div>
+    <p class="note reveal">Impact figures shown are placeholders pending SALSAL's confirmed program data.</p>
+  </div>
+</section>
+
+<!-- ===== GIVE (two-tab $49-supporter-led card) ===== -->
+<section class="band give">
+  <div class="wrap">
+    <div class="gcopy reveal">
+      <h2>Put your support behind prevention.</h2>
+      <p>Every gift funds the screenings, patient resources, and provider education that catch what an amputation would have cost someone their leg.</p>
+      <ul class="perks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#E63947" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Become a supporter and receive a full-color SALSAL certificate</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#E63947" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Plus an enamel lapel pin to wear the mission proudly</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#E63947" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Prefer a one-time gift? That works too, every amount helps</li>
+      </ul>
+    </div>
+    <div class="dcard reveal">
+      <div class="dtabs">
+        <button class="dtab on" data-pane="sup">Become a supporter<small>$49 / year</small></button>
+        <button class="dtab" data-pane="once">One-time gift<small>Any amount</small></button>
+      </div>
+      <div class="dbody">
+        <div class="dpane on" id="pane-sup">
+          <div class="supbox">
+            <div class="price">$49<small> / year</small></div>
+            <div class="plabel">Full-color certificate + enamel lapel pin &middot; please allow 6&ndash;8 weeks</div>
+          </div>
+          <a class="btn red give-btn">Become a supporter</a>
+        </div>
+        <div class="dpane" id="pane-once">
+          <div class="amtgrid">
+            <button class="amt" data-amt="25">$25</button>
+            <button class="amt on" data-amt="50">$50</button>
+            <button class="amt" data-amt="100">$100</button>
+            <button class="amt" data-amt="250">$250</button>
+            <button class="amt" data-amt="500">$500</button>
+            <button class="amt other" id="amtOther">Other</button>
+          </div>
+          <div class="otherwrap" id="otherWrap"><input type="number" min="1" placeholder="Enter amount ($)" id="otherInput"></div>
+          <a class="btn red give-btn" id="giveBtn">Give $50</a>
+        </div>
+        <div class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="#7d8ca0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Secure donation &middot; Stripe &amp; PayPal</div>
+        <div class="taxline">Save a Leg, Save a Life Foundation is a registered 501(c)(3) nonprofit. Contributions are tax-deductible to the extent allowed by law.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST ===== -->
+<section class="band trustband">
+  <div class="wrap">
+    <div class="trustrow">
+      <div class="ti reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>Registered 501(c)(3)<small>Nonprofit foundation</small></span></div>
+      <div class="ti reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 1 5 5c0 2-1 3.5-2.5 4.5L15 22l-3-2-3 2 .5-10.5A5.6 5.6 0 0 1 7 7a5 5 0 0 1 5-5z"/></svg><span>Physician-founded<small>Clinically led &amp; reviewed</small></span></div>
+      <div class="ti reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6a5.5 5.5 0 0 0-8.8-1.4l-.9.9-.9-.9a5.5 5.5 0 1 0-7.8 7.8l8.7 8.7 8.7-8.7a5.5 5.5 0 0 0 1-6.4z"/></svg><span>Every gift funds prevention<small>Screening, education, access</small></span></div>
+      <div class="ti reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Evidence-based<small>Sources cited, claims verified</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPONSORS / MISSION PARTNERS ===== -->
+<section class="sponsors">
+  <div class="wrap">
+    <div class="slbl reveal">Made possible by our mission partners</div>
+    <div class="sprow reveal">
+      <img src="assets/partners/organogenesis-logo-1.png" alt="Organogenesis">
+      <img src="assets/partners/MC-WM-transparent-1.png" alt="Medline">
+      <img src="assets/partners/imgi_1_halliburton-logo.svg" alt="Halliburton">
+      <img src="assets/partners/Advanced-Solution-Logo-Color-MAIN-1024x332.png" alt="Advanced Solution">
+      <img src="assets/partners/AIROS-MEDICAL-HORIZONTAL-NO-MARGINS-2.png" alt="Airos Medical">
+      <img src="assets/partners/MIMOSA-Logo-Blue-1-1024x229.jpg" alt="Mimosa">
+      <img src="assets/partners/SweetBio_Logo_Manuka.png" alt="SweetBio">
+    </div>
+    <a class="btn ghost reveal" href="#">Become a sponsor <span class="arw">&rsaquo;</span></a>
+  </div>
+</section>
+
+<!-- ===== FOOTER DRIVE ===== -->
+<footer class="drive">
+  <div class="wrap">
+    <div class="drivetop">
+      <div class="tag">Put your support behind prevention.</div>
+      <div class="dbtns">
+        <a class="btn red lg">Donate now</a>
+        <a class="btn lg" style="background:rgba(255,255,255,.12);color:#fff;border:2px solid rgba(255,255,255,.28);">Become a supporter</a>
+      </div>
+    </div>
+    <div class="drivecols">
+      <div>
+        <h4>Save a Leg, Save a Life Foundation</h4>
+        <a>Our mission &amp; vision</a>
+        <a>Meet the board</a>
+        <a>Contact us</a>
+        <p class="discl">This information is for educational purposes only and is not intended to replace professional medical advice. Always consult your healthcare provider.</p>
+      </div>
+      <div>
+        <h4>Get involved</h4>
+        <a>Find a free screening</a>
+        <a>Watch free webinars</a>
+        <a>Patient checklist</a>
+        <a>Donate by shopping</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a>Donate now</a>
+        <a>Become a supporter</a>
+        <a>Honor &amp; memorial gifts</a>
+        <a>Newsletter</a>
+      </div>
+    </div>
+    <div class="drivebottom">
+      &copy; 2026 Save a Leg, Save a Life Foundation. A registered 501(c)(3) nonprofit organization. Contributions are tax-deductible to the extent allowed by law.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // rotate photo + event card together (original behavior)
+  const slides=[...document.querySelectorAll('#photo .slide')];
+  const evs=[...document.querySelectorAll('#evcard .ev')];
+  const pgs=[...document.querySelectorAll('#evcard .pg i')];
+  const phtag=document.getElementById('phtag');
+  const caps=['<span class="live"></span> Community screening &middot; 2026','',''];
+  let i=0;
+  setInterval(()=>{
+    i=(i+1)%slides.length;
+    slides.forEach((s,idx)=>{
+      s.classList.toggle('on',idx===i);
+      if(idx===i){const bg=s.querySelector('.bg'); if(bg){bg.style.animation='none';void bg.offsetWidth;bg.style.animation='';}}
+    });
+    evs.forEach((e,idx)=>e.classList.toggle('on',idx===i));
+    pgs.forEach((p,idx)=>p.classList.toggle('on',idx===i));
+    if(phtag){ phtag.innerHTML=caps[i]||''; phtag.style.display=caps[i]?'inline-flex':'none'; }
+  },4200);
+
+  // count-up stat (timer-based so it settles reliably)
+  const cnt=document.getElementById('cnt');let v=0;
+  setTimeout(()=>{ cnt.textContent='0';
+    const t=setInterval(()=>{v+=2;if(v>=85){v=85;clearInterval(t);}cnt.textContent=v;},22);
+  },700);
+
+  // ---- scroll reveals (every band) ----
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ---- count-up for impact stats when they enter view ----
+  const countUp=(el)=>{const target=+el.dataset.count;let n=0;const step=Math.max(1,Math.round(target/40));
+    const t=setInterval(()=>{n+=step;if(n>=target){n=target;clearInterval(t);}el.textContent=n;},26);};
+  const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target);}});},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+  // ---- give card: tabs ----
+  document.querySelectorAll('.dtab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('on'));
+      document.querySelectorAll('.dpane').forEach(p=>p.classList.remove('on'));
+      tab.classList.add('on');
+      document.getElementById('pane-'+tab.dataset.pane).classList.add('on');
+    });
+  });
+
+  // ---- give card: amount grid + live button label ----
+  const giveBtn=document.getElementById('giveBtn');
+  const otherWrap=document.getElementById('otherWrap');
+  const otherInput=document.getElementById('otherInput');
+  const setLabel=(val)=>{giveBtn.textContent = val ? 'Give $'+val : 'Choose an amount';};
+  document.querySelectorAll('.amt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.amt').forEach(b=>b.classList.remove('on'));
+      btn.classList.add('on');
+      if(btn.id==='amtOther'){otherWrap.classList.add('on');otherInput.focus();setLabel(otherInput.value||'');}
+      else{otherWrap.classList.remove('on');setLabel(btn.dataset.amt);}
+    });
+  });
+  otherInput.addEventListener('input',()=>setLabel(otherInput.value||''));
+</script>
+<!-- FOOTER:START -->
+<!-- SALSAL canonical footer (ribbon design). Single source of truth.
+     Edit this file, then run `python3 build.py`.  = base path to site root. -->
+<footer class="site-footer">
+  <style>
+    .site-footer{background:#10233b;color:#cdddea;font-family:'Inter',system-ui,sans-serif;margin-top:0;}
+    .site-footer .sf-in{max-width:1240px;margin:0 auto;padding:64px 24px 30px;}
+    .site-footer .sf-drive{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+      padding-bottom:40px;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12);}
+    .site-footer .sf-tag{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:30px;color:#fff;letter-spacing:-.02em;line-height:1.05;margin-bottom:10px;}
+    .site-footer .sf-drive p{font-size:15px;max-width:46ch;margin-bottom:16px;color:#b9cbdd;}
+    .site-footer .sf-act{display:flex;gap:12px;flex-wrap:wrap;}
+    .site-footer .sf-btn{font-weight:700;font-size:14.5px;border-radius:12px;padding:12px 22px;display:inline-flex;align-items:center;gap:8px;border:2px solid transparent;transition:transform .18s;}
+    .site-footer .sf-btn.red{background:#E63947;color:#fff;} .site-footer .sf-btn.red:hover{transform:translateY(-2px);}
+    .site-footer .sf-btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3);} .site-footer .sf-btn.ghost:hover{border-color:#fff;transform:translateY(-2px);}
+    .site-footer .sf-news{min-width:280px;flex:1;max-width:420px;}
+    .site-footer .sf-news label{display:block;font-weight:600;font-size:13px;color:#eaf3fa;margin-bottom:8px;}
+    .site-footer .sf-news-row{display:flex;gap:8px;}
+    .site-footer .sf-news input{flex:1;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;border-radius:10px;padding:11px 14px;font-size:14px;}
+    .site-footer .sf-news input::placeholder{color:#8fa8c0;}
+    .site-footer .sf-news button{background:#00AEDF;color:#062134;font-weight:700;border:0;border-radius:10px;padding:11px 18px;font-size:14px;cursor:pointer;}
+    .site-footer .sf-fine{font-size:11.5px;color:#7fa0bb;margin-top:8px;}
+    .site-footer .sf-cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:34px;}
+    .site-footer .sf-about img{height:44px;margin-bottom:14px;background:#fff;border-radius:10px;padding:7px 10px;}
+    .site-footer .sf-about p{font-size:13px;line-height:1.6;color:#a9bfd4;margin-bottom:10px;max-width:38ch;}
+    .site-footer h4{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7fd3ef;margin-bottom:14px;}
+    .site-footer .sf-cols a{display:block;color:#cdddea;font-size:14px;padding:5px 0;transition:color .15s;}
+    .site-footer .sf-cols a:hover{color:#fff;}
+    .site-footer .sf-bar{max-width:1240px;margin:0 auto;padding:18px 24px 40px;border-top:1px solid rgba(255,255,255,.1);
+      display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;font-size:12px;color:#8fa8c0;}
+    .site-footer .sf-social{display:flex;gap:14px;}
+    .site-footer .sf-social a{color:#a9bfd4;} .site-footer .sf-social a:hover{color:#fff;}
+    @media(max-width:820px){.site-footer .sf-cols{grid-template-columns:1fr 1fr;gap:26px;}}
+    @media(max-width:520px){.site-footer .sf-cols{grid-template-columns:1fr;}}
+  </style>
+  <div class="sf-in">
+    <div class="sf-drive">
+      <div>
+        <div class="sf-tag">Put your support behind prevention.</div>
+        <p>SALSAL is an all-volunteer 501(c)(3). Every gift funds a free screening, a resource, or a clinician trained to look in time.</p>
+        <div class="sf-act">
+          <a class="sf-btn red" href="donate/">Donate now</a>
+          <a class="sf-btn ghost" href="shop/">Donate by shopping</a>
+        </div>
+      </div>
+      <form class="sf-news" action="https://thesalsal.us11.list-manage.com/subscribe/post?u=c31278d2251f4b5f2bd3fa1f4&amp;id=cf440d2f8b&amp;f_id=00d596e0f0" method="post" target="_blank" novalidate>
+        <label for="sf-news-email">Get SALSAL news and event alerts</label>
+        <div class="sf-news-row">
+          <input id="sf-news-email" type="email" name="EMAIL" placeholder="Your email address" autocomplete="email" required>
+          <button type="submit">Sign up</button>
+        </div>
+        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_c31278d2251f4b5f2bd3fa1f4_cf440d2f8b" tabindex="-1" value=""></div>
+        <p class="sf-fine">No spam. Unsubscribe anytime.</p>
+      </form>
+    </div>
+
+    <div class="sf-cols">
+      <div class="sf-about">
+        <img src="assets/logo.png" alt="Save a Leg, Save a Life Foundation">
+        <p>The Save A Leg, Save A Life Foundation is a 501(c)(3) nonprofit working to reduce preventable lower extremity amputations. Federal Tax ID 32-0467696. Florida Solicitation Registration CH47375.</p>
+        <p>4403 5th Ave NE, Bradenton, FL 34208<br>+1 813-445-3857 &middot; info@thesalsal.org</p>
+      </div>
+      <div>
+        <h4>About</h4>
+        <a href="mission-vision/">Mission &amp; Vision</a>
+        <a href="how-we-help/">How We Help</a>
+        <a href="board-of-directors/">Board of Directors</a>
+        <a href="news/">News</a>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <a href="learning-hub/">Learning Hub</a>
+        <a href="provider-education/">Provider Education</a>
+        <a href="resources/">Resources</a>
+        <a href="webinars/">On-Demand Webinars</a>
+        <a href="upcoming-webinars/">Upcoming Webinars</a>
+      </div>
+      <div>
+        <h4>Act</h4>
+        <a href="community-screening-events/">Screening &amp; Events</a>
+        <a href="toba/">TOBA</a>
+        <a href="advocacy/">Advocacy</a>
+        <a href="get-involved/">Get Involved</a>
+        <a href="sponsorship/">Sponsorship</a>
+        <a href="donate/">Ways to Give</a>
+      </div>
+    </div>
+  </div>
+  <div class="sf-bar">
+    <span>&copy; 2026 Save a Leg, Save a Life Foundation. A registered 501(c)(3) nonprofit. Contributions are tax-deductible to the extent allowed by law.</span>
+    <span class="sf-social">
+      <a href="https://www.facebook.com/TheSALSALorg" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/thesalsalfoundation" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/company/the-save-a-leg-save-a-life-foundation/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.youtube.com/channel/UC62XP_YydDhyI1agjEe9Rcw" target="_blank" rel="noopener">YouTube</a>
+    </span>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+</body>
+</html>
