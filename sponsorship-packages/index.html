@@ -16,15 +16,16 @@
   .pk-note b{color:var(--navy);}
   .tiers{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:stretch;}
   .tier{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 20px;box-shadow:0 1px 2px rgba(28,53,87,.05),0 14px 34px rgba(16,35,59,.07);}
-  .tier.feat{border:2px solid var(--red);box-shadow:0 20px 46px rgba(230,57,71,.16);}
+  .tier.feat{border:2px solid var(--navy);box-shadow:0 20px 46px rgba(28,53,87,.16);}
+  .tier.feat .lvl{color:var(--navy);}
   .tier .lvl{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px;color:var(--navy);}
   .tier .limit{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--sky);margin-top:2px;min-height:15px;}
-  .tier .amt{font-family:'Fraunces',serif;font-weight:600;font-size:30px;color:var(--red);line-height:1;margin:12px 0 2px;}
+  .tier .amt{font-family:'Fraunces',serif;font-weight:600;font-size:30px;color:var(--navy);line-height:1;margin:12px 0 2px;}
   .tier .per{font-size:12px;color:#7a8ba0;margin-bottom:16px;}
   .tier ul{list-style:none;margin:0;padding:0;flex:1;}
   .tier li{position:relative;padding-left:22px;margin-bottom:9px;font-size:13px;color:#41546b;line-height:1.45;}
   .tier li::before{content:'\2713';position:absolute;left:0;top:1px;color:#fff;background:var(--sky);width:15px;height:15px;border-radius:50%;font-size:9px;display:flex;align-items:center;justify-content:center;}
-  .tier.feat li::before{background:var(--red);}
+  .tier.feat li::before{background:var(--navy);}
   .tier .base{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:10px;text-transform:uppercase;letter-spacing:.04em;}
   .matrix-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;}
   table.matrix{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px;background:#fff;}
@@ -253,7 +254,8 @@
       <div class="closer reveal">
         <h2>Ready to <span class="uln">partner</span>?</h2>
         <p>Tell us the level you have in mind or ask us to tailor one to your goals. The Save a Leg, Save a Life Foundation is a 501(c)(3) nonprofit, Tax ID 32-0467696.</p>
-        <div class="cta"><a class="btn red" href="../sponsorship/#inquiry">Start a sponsorship inquiry</a><a class="btn ghost" href="mailto:info@thesalsal.org?subject=SALSAL%20Sponsorship">Email the team <span class="arw">&rsaquo;</span></a></div>
+        <div class="cta"><a class="btn red" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor now</a><a class="btn ghost" href="../sponsorship/#inquiry">Have questions? Start an inquiry <span class="arw">&rsaquo;</span></a></div>
+        <p style="margin-top:14px;font-size:13.5px;color:#7a8ba0;">Once you confirm, we will email your invoice, W-9, and welcome letter with payment instructions.</p>
       </div>
     </div>
   </section>
