@@ -39,7 +39,32 @@
   .navwrap .ddt.donate-btn .caret{color:#fff;}
   .navwrap .dd.dd-right .ddmenu{left:auto;right:0;transform:translateX(0) translateY(8px);}
   .navwrap .dd.dd-right:hover .ddmenu{transform:translateX(0) translateY(0);}
-  @media(max-width:980px){.navwrap .links{display:none;} .navwrap .btn.outline{display:none;}}
+  /* mobile hamburger + slide-down panel */
+  .navwrap .nav{position:relative;}
+  .navwrap .navtoggle{display:none;margin-left:auto;flex-direction:column;gap:5px;width:44px;height:44px;
+    align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;flex:0 0 auto;}
+  .navwrap .navtoggle span{display:block;width:24px;height:2px;background:#1C3557;border-radius:2px;transition:transform .25s,opacity .2s;}
+  .navwrap .navtoggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .navwrap .navtoggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .navwrap .navtoggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .navwrap .mnav{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;background:#fff;
+    border:1px solid rgba(28,53,87,.1);border-radius:16px;box-shadow:0 22px 55px rgba(16,35,59,.2);
+    padding:10px;max-height:76vh;overflow:auto;z-index:80;}
+  .navwrap .mnav.open{display:block;}
+  .navwrap .mnav a{display:block;padding:11px 14px;border-radius:10px;color:#1C3557;font-weight:600;font-size:15px;text-decoration:none;}
+  .navwrap .mnav a:hover,.navwrap .mnav a:active{background:#F1F6FB;}
+  .navwrap .mnav .mh{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#7fa0bb;font-weight:700;padding:14px 14px 4px;}
+  .navwrap .mnav .mdonate{background:#E63947;color:#fff;text-align:center;margin-top:10px;}
+  .navwrap .mnav .mshop{border:1.5px solid rgba(28,53,87,.2);text-align:center;margin-top:8px;}
+  @media(max-width:980px){
+    .navwrap .links{display:none;}
+    .navwrap .btn.outline{display:none;}
+    .navwrap .sp{display:none;}
+    .navwrap .dd.dd-right{display:none;}
+    .navwrap .navtoggle{display:flex;}
+    .navwrap .nav{gap:12px;padding:8px 12px 8px 16px;}
+    .navwrap .logo{height:38px;}
+  }
 </style>
 <div class="navwrap">
   <nav class="nav">
@@ -86,5 +111,44 @@
         <a class="ddi" href="{{B}}shop/"><b>Donate by Shopping</b><span>Every purchase funds the mission</span></a>
       </div>
     </div>
+    <button class="navtoggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+    <div class="mnav" id="mnav">
+      <div class="mh">About</div>
+      <a href="{{B}}mission-vision/">Mission &amp; Vision</a>
+      <a href="{{B}}how-we-help/">How We Help</a>
+      <a href="{{B}}board-of-directors/">Board of Directors</a>
+      <a href="{{B}}news/">News</a>
+      <div class="mh">Learning Center</div>
+      <a href="{{B}}provider-education/">Provider Education</a>
+      <a href="{{B}}resources/">Resources</a>
+      <a href="{{B}}webinars/">On-Demand Webinars</a>
+      <a href="{{B}}upcoming-webinars/">Upcoming Webinars</a>
+      <div class="mh">Impact</div>
+      <a href="{{B}}community-screening-events/">Screening &amp; Events</a>
+      <a href="{{B}}white-sock-campaign/">The White Sock Campaign</a>
+      <a href="{{B}}toba/">TOBA</a>
+      <a href="{{B}}advocacy/">Advocacy</a>
+      <div class="mh">Get Involved</div>
+      <a href="{{B}}get-involved/">Get Involved</a>
+      <a href="{{B}}sponsorship/">Sponsorship</a>
+      <a href="{{B}}contact/">Contact</a>
+      <a class="mdonate" href="{{B}}donate/">Donate</a>
+      <a class="mshop" href="{{B}}shop/">Donate by Shopping</a>
+    </div>
   </nav>
 </div>
+<script>
+(function(){
+  var t=document.querySelector('.navwrap .navtoggle'), m=document.getElementById('mnav');
+  if(!t||!m) return;
+  t.addEventListener('click',function(){
+    var open=m.classList.toggle('open');
+    t.setAttribute('aria-expanded', open?'true':'false');
+  });
+  document.addEventListener('click',function(e){
+    if(m.classList.contains('open') && !m.contains(e.target) && !t.contains(e.target)){
+      m.classList.remove('open'); t.setAttribute('aria-expanded','false');
+    }
+  });
+})();
+</script>
