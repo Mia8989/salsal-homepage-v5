@@ -167,7 +167,7 @@
             <li>Company logo displayed on the website</li>
             <li>Certificate of appreciation</li>
           </ul>
-          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
+          <a class="tbtn" href="../become-a-sponsor/">Become a sponsor</a>
         </div>
         <div class="tier">
           <div class="lvl">Bronze</div>
@@ -180,7 +180,7 @@
             <li>Certificate of appreciation</li>
             <li>1 social media post highlighting the sponsorship</li>
           </ul>
-          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
+          <a class="tbtn" href="../become-a-sponsor/">Become a sponsor</a>
         </div>
         <div class="tier">
           <div class="lvl">Silver</div>
@@ -192,7 +192,7 @@
             <li>Logo on the SALSAL newsletter and website for one year</li>
             <li>2 social media posts highlighting the sponsorship</li>
           </ul>
-          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
+          <a class="tbtn" href="../become-a-sponsor/">Become a sponsor</a>
         </div>
         <div class="tier feat">
           <div class="lvl">Gold</div>
@@ -207,7 +207,7 @@
             <li>Quarterly recognition in the SALSAL newsletter</li>
             <li>Webinar Sponsor recognition: logo during the webinar and verbal acknowledgment</li>
           </ul>
-          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
+          <a class="tbtn" href="../become-a-sponsor/">Become a sponsor</a>
         </div>
         <div class="tier feat">
           <div class="lvl">Platinum</div>
@@ -223,7 +223,7 @@
             <li>Networking opportunities at community roundtable events</li>
             <li>Guest column or article in the SALSAL newsletter, subject to editor discretion</li>
           </ul>
-          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
+          <a class="tbtn" href="../become-a-sponsor/">Become a sponsor</a>
         </div>
       </div>
     </div>
@@ -263,7 +263,7 @@
       <div class="closer reveal">
         <h2>Ready to <span class="uln">partner</span>?</h2>
         <p>Tell us the level you have in mind or ask us to tailor one to your goals. The Save a Leg, Save a Life Foundation is a 501(c)(3) nonprofit, Tax ID 32-0467696.</p>
-        <div class="cta"><a class="btn red" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor now</a><a class="btn ghost" href="../sponsorship/#inquiry">Have questions? Start an inquiry <span class="arw">&rsaquo;</span></a></div>
+        <div class="cta"><a class="btn red" href="../become-a-sponsor/">Become a sponsor now</a><a class="btn ghost" href="../sponsorship/#inquiry">Have questions? Start an inquiry <span class="arw">&rsaquo;</span></a></div>
         <p style="margin-top:14px;font-size:13.5px;color:#7a8ba0;">Once you confirm, we will email your invoice, W-9, and welcome letter with payment instructions.</p>
       </div>
     </div>
@@ -391,14 +391,13 @@
 <!-- FOOTER:END -->
 
 <script>
-  /* prefill the sponsor form with each tier's level */
+  /* route each tier button to the sponsor landing page with its level preselected */
   document.querySelectorAll('.tier').forEach(function(t){
     var lvl=(t.querySelector('.lvl')||{}).textContent||'';
-    var amt=(t.querySelector('.amt')||{}).textContent||'';
     var btn=t.querySelector('.tbtn');
-    if(btn && lvl && amt){
-      var opt=lvl.trim()+' ( '+amt.trim()+' )';
-      btn.href='https://form.jotform.com/262368988346173?sponsorshipLevel='+encodeURIComponent(opt);
+    if(btn && lvl){
+      var word=lvl.trim().split(' ')[0].toLowerCase();
+      btn.href='../become-a-sponsor/?level='+encodeURIComponent(word);
     }
   });
 </script>
