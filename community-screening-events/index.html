@@ -47,6 +47,14 @@
   .vwrap43 iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
   .vidline .vwrap43{height:440px;width:auto;}
   @media(max-width:600px){.vidline .vwrap.v,.vidline .vwrap43{height:360px;}}
+  /* What happens at a screening: 3 editorial columns with big numerals */
+  .swhat{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:1040px;margin:0 auto;}
+  .swhat .it{padding:6px 30px;border-left:1px solid var(--line);}
+  .swhat .it:first-child{border-left:0;}
+  .swhat .it .n{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:52px;line-height:1;color:var(--sky);letter-spacing:-.02em;margin-bottom:14px;}
+  .swhat .it h3{font-size:19px;color:var(--navy);margin-bottom:8px;}
+  .swhat .it p{font-size:14.5px;color:#4a5d72;line-height:1.6;}
+  @media(max-width:820px){.swhat{grid-template-columns:1fr;gap:0;} .swhat .it{border-left:0;border-top:1px solid var(--line);padding:22px 0;} .swhat .it:first-child{border-top:0;} .swhat .it .n{margin-bottom:8px;}}
   .egal{columns:4 220px;column-gap:12px;}
   .egal img{width:100%;margin:0 0 12px;border-radius:12px;display:block;break-inside:avoid;box-shadow:0 2px 8px rgba(16,35,59,.10);}
   @media(max-width:600px){.egal{columns:2 140px;}}
@@ -191,10 +199,10 @@
   <section class="band paper">
     <div class="wrap">
       <div class="band-head reveal"><h2>What happens at a screening</h2></div>
-      <div class="creed">
-        <div class="cr reveal"><div class="crn">01</div><div class="crt"><h3>No cost, no appointment</h3><p>Every screening is free and open to the community. Just show up, no insurance, no paperwork, no barrier.</p></div></div>
-        <div class="cr reveal"><div class="crn">02</div><div class="crt"><h3>A quick, simple check</h3><p>A clinician checks circulation and risk factors in a few minutes, the early signals that matter most.</p></div></div>
-        <div class="cr reveal"><div class="crn">03</div><div class="crt"><h3>Guidance if you need it</h3><p>If something needs a closer look, we help you understand the right next step and the questions to bring to your care team.</p></div></div>
+      <div class="swhat reveal">
+        <div class="it"><div class="n">01</div><h3>No cost, no appointment</h3><p>Every screening is free and open to the community. Just show up, no insurance, no paperwork, no barrier.</p></div>
+        <div class="it"><div class="n">02</div><h3>A quick, simple check</h3><p>A clinician checks circulation and risk factors in a few minutes, the early signals that matter most.</p></div>
+        <div class="it"><div class="n">03</div><h3>Guidance if you need it</h3><p>If something needs a closer look, we help you understand the right next step and the questions to bring to your care team.</p></div>
       </div>
     </div>
   </section>
