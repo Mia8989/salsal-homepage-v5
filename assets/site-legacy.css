@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,600&family=Inter:wght@400;500;600;700&display=swap');
 :root{
   --navy:#1C3557; --navy2:#10233b; --navy3:#0b1a2e; --red:#E63947; --red-dk:#C62C3A;
-  --blue:#467C9B; --sky:#00AEDF; --sky-l:#7fd3ef; --sand:#F2E8DE; --paper:#FBF7F2;
-  --ink:#1C3557; --muted:#5c6f84; --line:#e9dfd2;
+  --blue:#467C9B; --sky:#00AEDF; --sky-l:#7fd3ef; --sand:#F1F6FB; --paper:#FBFCFE;
+  --paper2:#F1F6FB;
+  --ink:#17263a; --muted:#5c6f84; --line:rgba(28,53,87,.10);
   --shadow:0 1px 2px rgba(28,53,87,.05), 0 14px 40px rgba(28,53,87,.10);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.6;position:relative;}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;line-height:1.6;position:relative;}
 ::selection{background:var(--sky);color:#06263a;}
 a{text-decoration:none;color:inherit;}
 h1,h2,h3,h4,.disp{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-0.02em;line-height:1.08;}
 .container{max-width:1160px;margin:0 auto;padding:0 24px;}
-/* film grain over everything */
-body::before{content:'';position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.045;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+/* v5 identity: cool page wash + ribbon watermark (matches homepage) */
+body::before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:radial-gradient(46% 42% at 90% 4%,rgba(0,174,223,.08),transparent 62%),linear-gradient(180deg,#fff,#F6FAFD);}
+body::after{content:'';position:fixed;left:-70px;bottom:-70px;width:min(38vw,480px);height:min(38vw,480px);z-index:-1;pointer-events:none;opacity:.05;transform:rotate(-6deg);
+  background:url("ribbon-mark.png") left bottom / contain no-repeat;}
 
 /* ---------- buttons ---------- */
 .btn{font-family:'Inter',sans-serif;font-weight:700;font-size:15px;border-radius:14px;padding:12px 22px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:2px solid transparent;white-space:nowrap;transition:transform .18s,background .18s,box-shadow .18s,color .18s;position:relative;overflow:hidden;}
