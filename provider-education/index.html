@@ -59,6 +59,20 @@
   .navwrap .dd.dd-right .ddmenu{left:auto;right:0;transform:translateX(0) translateY(8px);}
   .navwrap .dd.dd-right:hover .ddmenu{transform:translateX(0) translateY(0);}
   @media(max-width:980px){.navwrap .links{display:none;} .navwrap .btn.outline{display:none;}}
+  /* Provider-education: "what we teach" icon-led grid (replaces numbered list) */
+  .teachgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:1040px;margin:0 auto;}
+  .tcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 24px;box-shadow:0 1px 2px rgba(28,53,87,.05),0 12px 30px rgba(16,35,59,.06);display:flex;gap:18px;align-items:flex-start;}
+  .tcard .tic{flex:0 0 auto;width:52px;height:52px;border-radius:13px;background:var(--paper2);display:flex;align-items:center;justify-content:center;}
+  .tcard .tic svg{width:26px;height:26px;fill:none;stroke:var(--blue);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .tcard h3{font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:var(--navy);line-height:1.18;margin-bottom:7px;letter-spacing:-.01em;}
+  .tcard p{font-size:15.5px;line-height:1.58;color:#41546b;}
+  .tcard.cta{grid-column:1/-1;background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 70%);border-color:transparent;align-items:center;}
+  .tcard.cta .tic{background:rgba(255,255,255,.12);}
+  .tcard.cta .tic svg{stroke:#fff;}
+  .tcard.cta h3{color:#fff;}
+  .tcard.cta p{color:#cddcec;}
+  .tcard.cta p a{color:var(--sky-l);font-weight:700;text-decoration:none;}
+  @media(max-width:760px){.teachgrid{grid-template-columns:1fr;}}
 </style>
 <div class="navwrap">
   <nav class="nav">
@@ -127,12 +141,27 @@
   <section class="band">
     <div class="wrap">
       <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Provider education</span><h2>What we teach, and how to bring it in</h2></div>
-      <div class="creed">
-        <div class="cr reveal"><div class="crn">01</div><div class="crt"><h3>Recognize PAD early</h3><p>Evidence-based assessment of peripheral arterial disease, so risk is caught while the outcome is still open.</p></div></div>
-        <div class="cr reveal"><div class="crn">02</div><div class="crt"><h3>Refer at the right moment</h3><p>When and how to escalate, so patients reach vascular and wound specialists before a limb is lost.</p></div></div>
-        <div class="cr reveal"><div class="crn">03</div><div class="crt"><h3>The SALSAL Challenge</h3><p>A call to clinicians to put limb-preservation screening into everyday practice, one patient, one check, at a time.</p></div></div>
-        <div class="cr reveal"><div class="crn">04</div><div class="crt"><h3>Earn education credits</h3><p>Our partner Healiant Training Solutions offers expert-led, evidence-based wound care programs.</p></div></div>
-        <div class="cr reveal"><div class="crn">05</div><div class="crt"><h3>Teach it where it counts</h3><p>Bring SALSAL education, or a screening, to your facility. <a href="../get-involved/" style="color:var(--red);font-weight:600;text-decoration:none;">Get involved &rsaquo;</a></p></div></div>
+      <div class="teachgrid">
+        <div class="tcard reveal">
+          <div class="tic"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div><h3>Recognize PAD early</h3><p>Evidence-based assessment of peripheral arterial disease, so risk is caught while the outcome is still open.</p></div>
+        </div>
+        <div class="tcard reveal">
+          <div class="tic"><svg viewBox="0 0 24 24"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg></div>
+          <div><h3>Refer at the right moment</h3><p>When and how to escalate, so patients reach vascular and wound specialists before a limb is lost.</p></div>
+        </div>
+        <div class="tcard reveal">
+          <div class="tic"><svg viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg></div>
+          <div><h3>The SALSAL Challenge</h3><p>A call to clinicians to put limb-preservation screening into everyday practice, one patient, one check, at a time.</p></div>
+        </div>
+        <div class="tcard reveal">
+          <div class="tic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L7.5 21l4.5-2.5L16.5 21 15 13.5"/></svg></div>
+          <div><h3>Earn education credits</h3><p>Earn continuing education credits through evidence-based wound care training offered by our education partners.</p></div>
+        </div>
+        <div class="tcard cta reveal">
+          <div class="tic"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/></svg></div>
+          <div><h3>Teach it where it counts</h3><p>Bring SALSAL education, or a screening, to your facility. <a href="../get-involved/">Get involved &rsaquo;</a></p></div>
+        </div>
       </div>
     </div>
   </section>
