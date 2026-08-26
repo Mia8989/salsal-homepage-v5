@@ -30,6 +30,22 @@
   <!-- OG:END -->
 <meta name="description" content="Evidence-based training for the clinicians who catch peripheral arterial disease first. Provider education and the SALSAL Challenge.">
 <link rel="stylesheet" href="../assets/site.css">
+<style>
+  /* "What we teach" icon-card grid (kept in page head so build.py's nav restamp can't wipe it) */
+  .teachgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:1040px;margin:0 auto;}
+  .tcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 24px;box-shadow:0 1px 2px rgba(28,53,87,.05),0 12px 30px rgba(16,35,59,.06);display:flex;gap:18px;align-items:flex-start;}
+  .tcard .tic{flex:0 0 auto;width:52px;height:52px;border-radius:13px;background:var(--paper2);display:flex;align-items:center;justify-content:center;}
+  .tcard .tic svg{width:26px;height:26px;fill:none;stroke:var(--blue);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .tcard h3{font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:var(--navy);line-height:1.18;margin-bottom:7px;letter-spacing:-.01em;}
+  .tcard p{font-size:15.5px;line-height:1.58;color:#41546b;}
+  .tcard.cta{grid-column:1/-1;background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 70%);border-color:transparent;align-items:center;}
+  .tcard.cta .tic{background:rgba(255,255,255,.12);}
+  .tcard.cta .tic svg{stroke:#fff;}
+  .tcard.cta h3{color:#fff;}
+  .tcard.cta p{color:#cddcec;}
+  .tcard.cta p a{color:var(--sky-l);font-weight:700;text-decoration:none;}
+  @media(max-width:760px){.teachgrid{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
 <div class="bgfx"></div>
