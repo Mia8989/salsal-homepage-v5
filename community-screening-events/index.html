@@ -12,6 +12,17 @@
 <meta name="description" content="Free SALSAL community limb screenings bring early detection to the neighborhoods that need it, a few minutes with a clinician that can change the course of a life.">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
+  .vwrap{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0b1a2c;box-shadow:0 2px 8px rgba(28,53,87,.10),0 20px 48px rgba(16,35,59,.18);}
+  .vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .vwrap.v{aspect-ratio:9/16;max-width:330px;margin:20px auto 0;}
+  .newscard{display:flex;flex-direction:column;justify-content:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;text-decoration:none;box-shadow:0 2px 8px rgba(28,53,87,.06),0 20px 48px rgba(16,35,59,.10);transition:transform .18s,box-shadow .18s;}
+  .newscard:hover{transform:translateY(-3px);box-shadow:0 24px 54px rgba(16,35,59,.16);}
+  .newscard .tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);}
+  .newscard h3{font-family:'Fraunces',Georgia,serif;color:var(--navy);font-size:20px;margin:2px 0;}
+  .newscard p{color:#4a5d72;font-size:14.5px;}
+  .newscard .go{color:var(--red);font-weight:700;font-size:14px;margin-top:4px;}
+  @media(max-width:820px){.vgrid{grid-template-columns:1fr;}}
   .hero-full{border-radius:24px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 2px 8px rgba(28,53,87,.10),0 26px 60px rgba(16,35,59,.20);margin-top:8px;}
   .hero-full img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
   .events{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -159,6 +170,18 @@
     </div>
   </section>
 
+  <!-- SEE A SCREENING IN ACTION -->
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> In the news</span><h2>See a screening in action</h2></div>
+      <div class="vgrid">
+        <div class="vwrap reveal"><iframe src="https://www.youtube.com/embed/rcL7N9h70J8" title="WKRG: SALSAL screening event" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <a class="newscard reveal" href="https://www.fox10tv.com/video/2025/05/28/save-leg-save-life-foundation-health-screening/" target="_blank" rel="noopener"><span class="tag">In the news</span><h3>Watch on FOX10</h3><p>Save a Leg, Save a Life Foundation health screening.</p><span class="go">Watch on FOX10 &rsaquo;</span></a>
+      </div>
+      <div class="vwrap v reveal"><iframe src="https://player.vimeo.com/video/1221328921?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Screening event" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    </div>
+  </section>
+
   <!-- INTERLINK / CTA -->
   <section class="band">
     <div class="wrap">
@@ -237,7 +260,8 @@
       <div class="sf-about">
         <img src="../assets/logo.png" alt="Save a Leg, Save a Life Foundation">
         <p>The Save A Leg, Save A Life Foundation is a 501(c)(3) nonprofit working to reduce preventable lower extremity amputations. Federal Tax ID 32-0467696. Florida Solicitation Registration CH47375.</p>
-        <p>4403 5th Ave NE, Bradenton, FL 34208<br>+1 813-445-3857 &middot; info@thesalsal.org</p>
+        <p>4403 5th Ave NE, Bradenton, FL 34208<br><a href="tel:+18134453857" style="color:inherit;text-decoration:none;">+1 813-445-3857</a> &middot; <a href="mailto:info@thesalsal.org" style="color:inherit;text-decoration:none;">info@thesalsal.org</a></p>
+        <a href="../contact/" class="sf-contact-link" style="display:inline-flex;align-items:center;gap:6px;color:#7fd3ef;font-weight:700;font-size:14px;text-decoration:none;margin-top:4px;">Contact us &rsaquo;</a>
       </div>
       <div>
         <h4>About</h4>
@@ -262,6 +286,7 @@
         <a href="../sponsorship/">Sponsorship</a>
         <a href="../donate/">Donate</a>
         <a href="../donate/#supporter">Become a Supporter</a>
+        <a href="../contact/">Contact</a>
       </div>
     </div>
 

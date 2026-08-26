@@ -32,6 +32,8 @@
   .ws-strip{max-width:1000px;margin:0 auto 44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   .ws-strip img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:16px;box-shadow:0 2px 8px rgba(28,53,87,.08),0 16px 34px rgba(16,35,59,.10);background:#e7eef5;}
   @media(max-width:600px){.ws-strip{grid-template-columns:1fr;}}
+  .vwrap{position:relative;aspect-ratio:16/9;max-width:860px;margin:0 auto;border-radius:18px;overflow:hidden;background:#0b1a2c;box-shadow:0 2px 8px rgba(28,53,87,.10),0 20px 48px rgba(16,35,59,.18);}
+  .vwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
 </style>
 </head>
 <body>
@@ -143,6 +145,13 @@
         </div>
         <div class="hero-img"><img src="../assets/photos/white-sock/b0ef434e-da4a-fd5a-d610-b1c940dba346.jpg" alt="Supporters showing their single white socks for the campaign"></div>
       </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Watch</span><h2>See the campaign in action</h2></div>
+      <div class="vwrap reveal"><iframe src="https://www.youtube.com/embed/VpemVH8jGwU" title="The White Sock Campaign" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
     </div>
   </section>
 
@@ -278,7 +287,8 @@
       <div class="sf-about">
         <img src="../assets/logo.png" alt="Save a Leg, Save a Life Foundation">
         <p>The Save A Leg, Save A Life Foundation is a 501(c)(3) nonprofit working to reduce preventable lower extremity amputations. Federal Tax ID 32-0467696. Florida Solicitation Registration CH47375.</p>
-        <p>4403 5th Ave NE, Bradenton, FL 34208<br>+1 813-445-3857 &middot; info@thesalsal.org</p>
+        <p>4403 5th Ave NE, Bradenton, FL 34208<br><a href="tel:+18134453857" style="color:inherit;text-decoration:none;">+1 813-445-3857</a> &middot; <a href="mailto:info@thesalsal.org" style="color:inherit;text-decoration:none;">info@thesalsal.org</a></p>
+        <a href="../contact/" class="sf-contact-link" style="display:inline-flex;align-items:center;gap:6px;color:#7fd3ef;font-weight:700;font-size:14px;text-decoration:none;margin-top:4px;">Contact us &rsaquo;</a>
       </div>
       <div>
         <h4>About</h4>
@@ -303,6 +313,7 @@
         <a href="../sponsorship/">Sponsorship</a>
         <a href="../donate/">Donate</a>
         <a href="../donate/#supporter">Become a Supporter</a>
+        <a href="../contact/">Contact</a>
       </div>
     </div>
 
