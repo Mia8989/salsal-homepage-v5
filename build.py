@@ -94,9 +94,10 @@ for path in sorted(glob.glob(os.path.join(HERE, "**", "*.html"), recursive=True)
     html = read(path); orig = html
     b = base_for(path)
 
-    # nav / footer
-    nav_block  = "<!-- NAV:START -->\n" + nav_src.replace("{{B}}", b) + "\n<!-- NAV:END -->"
-    foot_block = "<!-- FOOTER:START -->\n" + foot_src.replace("{{B}}", b) + "\n<!-- FOOTER:END -->"
+    # nav / footer  ({{HOME}} = clean link to site root: "./" at root, "../" per depth)
+    home = b if b else "./"
+    nav_block  = "<!-- NAV:START -->\n"    + nav_src.replace("{{HOME}}", home).replace("{{B}}", b)  + "\n<!-- NAV:END -->"
+    foot_block = "<!-- FOOTER:START -->\n" + foot_src.replace("{{HOME}}", home).replace("{{B}}", b) + "\n<!-- FOOTER:END -->"
     if RE_NAV.search(html):  html = RE_NAV.sub(lambda m: nav_block, html, count=1)
     else: nomarker.append(os.path.relpath(path, HERE) + " (nav)")
     if RE_FOOT.search(html): html = RE_FOOT.sub(lambda m: foot_block, html, count=1)
