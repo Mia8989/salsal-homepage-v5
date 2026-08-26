@@ -149,9 +149,10 @@
   .evcard .meta{font-size:13px;color:#dbe7f1;margin-bottom:12px;}
   .evcard .go{font-weight:700;font-size:14px;color:#fff;display:inline-flex;align-items:center;gap:7px;}
   .evcard .go .arw{transition:transform .2s;} .evcard .go:hover .arw{transform:translateX(4px);}
-  .evcard .pg{position:absolute;top:16px;right:18px;display:flex;gap:6px;}
-  .evcard .pg i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);}
-  .evcard .pg i.on{background:#fff;}
+  .evcard .pg{position:absolute;top:14px;right:16px;display:flex;gap:9px;z-index:5;}
+  .evcard .pg i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .2s,transform .2s;}
+  .evcard .pg i:hover{background:rgba(255,255,255,.85);transform:scale(1.3);}
+  .evcard .pg i.on{background:#fff;transform:scale(1.15);}
   /* floating stat chip */
   .statchip{position:absolute;top:-18px;right:-14px;z-index:4;background:#fff;color:var(--navy);border-radius:18px;
     padding:15px 19px;box-shadow:0 16px 40px rgba(16,35,59,.2);text-align:center;border:1px solid rgba(28,53,87,.06);}
@@ -376,6 +377,7 @@
       </div>
       <a href="get-involved/">Get Involved</a>
       <a href="sponsorship/">Sponsorship</a>
+      <a href="contact/">Contact</a>
     </div>
     <div class="sp"></div>
     <a class="btn outline" href="shop/">Donate by Shopping</a>
@@ -417,7 +419,7 @@
           <div class="spkpanel-grid">
             <figure><span class="sp" style="background-image:url('assets/speakers/anuj-shah.jpg')"></span><b>Dr. Anuj R. Shah</b><i>Speaker</i></figure>
             <figure><span class="sp" style="background-image:url('assets/speakers/olamide-alabi.jpg')"></span><b>Dr. Olamide Alabi</b><i>Speaker</i></figure>
-            <figure><span class="sp" style="background-image:url('assets/speakers/benjamin-zwierzchowski.jpg');background-position:58% 28%"></span><b>Dr. Benjamin Zwierzchowski</b><i>Speaker</i></figure>
+            <figure><span class="sp" style="background-image:url('assets/speakers/benjamin-zwierzchowski.jpg');background-position:62% 45%"></span><b>Dr. Benjamin Zwierzchowski</b><i>Speaker</i></figure>
           </div>
         </div>
       </div>
@@ -647,9 +649,9 @@
   const pgs=[...document.querySelectorAll('#evcard .pg i')];
   const phtag=document.getElementById('phtag');
   const caps=['<span class="live"></span> Community screening &middot; 2026','','',''];
-  let i=0;
-  setInterval(()=>{
-    i=(i+1)%slides.length;
+  let i=0, timer=null;
+  function show(n){
+    i=(n+slides.length)%slides.length;
     slides.forEach((s,idx)=>{
       s.classList.toggle('on',idx===i);
       if(idx===i){const bg=s.querySelector('.bg'); if(bg){bg.style.animation='none';void bg.offsetWidth;bg.style.animation='';}}
@@ -657,7 +659,19 @@
     evs.forEach((e,idx)=>e.classList.toggle('on',idx===i));
     pgs.forEach((p,idx)=>p.classList.toggle('on',idx===i));
     if(phtag){ phtag.innerHTML=caps[i]||''; phtag.style.display=caps[i]?'inline-flex':'none'; }
-  },4200);
+  }
+  function start(){ stop(); timer=setInterval(()=>show(i+1),4200); }
+  function stop(){ if(timer){clearInterval(timer);timer=null;} }
+  // clickable dots: jump to a slide and restart the timer so it holds there
+  pgs.forEach((p,idx)=>{
+    p.setAttribute('role','button'); p.setAttribute('tabindex','0');
+    p.setAttribute('aria-label','Show slide '+(idx+1));
+    p.addEventListener('click',()=>{ show(idx); start(); });
+    p.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(idx); start(); }});
+  });
+  // pause while the pointer is over the hero so people can read a slide
+  ['photo','evcard'].forEach(id=>{ const el=document.getElementById(id); if(el){ el.addEventListener('mouseenter',stop); el.addEventListener('mouseleave',start); }});
+  start();
 
   // count-up stat (timer-based so it settles reliably)
   const cnt=document.getElementById('cnt');let v=0;

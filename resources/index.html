@@ -4,9 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Learning Hub | Save a Leg, Save a Life Foundation</title>
-<meta name="description" content="A free library of limb preservation education: fact sheets on PAD and diabetes, recorded expert webinars, and the SALSAL Challenge time-out policy for hospitals.">
+<title>Learning Center | Save a Leg, Save a Life Foundation</title>
+<meta name="description" content="A free library of limb preservation education: fact sheets on PAD and diabetes, recorded expert webinars, and the SALSAL Challenge for clinicians, patients, and caregivers.">
 <link rel="stylesheet" href="../assets/site-legacy.css">
+<style>
+  .pfunnel .pg i{cursor:pointer;transition:background .2s,transform .2s;}
+  .pfunnel .pg i:hover{background:rgba(255,255,255,.85);transform:scale(1.3);}
+  .pfunnel .pg i.on{transform:scale(1.15);}
+</style>
 </head>
 <body>
 
@@ -87,6 +92,7 @@
       </div>
       <a href="../get-involved/">Get Involved</a>
       <a href="../sponsorship/">Sponsorship</a>
+      <a href="../contact/">Contact</a>
     </div>
     <div class="sp"></div>
     <a class="btn outline" href="../shop/">Donate by Shopping</a>
@@ -108,37 +114,39 @@
   <div class="in herogrid"><div class="plead">
     <span class="kicker"><span class="d"></span> Learning Center &middot; Resources</span>
     <h1>The resource <span class="hl">library</span>.</h1>
-    <p class="sub">One free library for the evidence, the policy, and the plain-language resources that help providers and patients catch peripheral arterial disease before it costs a limb.</p>
+    <p class="sub">One free library of evidence, clinical guidance, and plain-language resources that help providers, patients, and caregivers catch peripheral arterial disease before it costs a limb.</p>
     <div class="cta">
       <a class="btn btn-red btn-lg" href="#library">Browse the library</a>
       <a class="btn btn-ghost btn-lg" href="../provider-education/">Provider education <span class="arw">&rsaquo;</span></a>
     </div>
   </div><div class="pvisual">
-      <div class="ptile"><div class="pslide on"><div class="pimg" style="background-image:url('../assets/event-clinicians.jpg');background-position:center 40%;"></div></div>
+      <div class="ptile">
+        <div class="pslide on"><div class="pimg" style="background-image:url('../assets/resources-hero.jpg');background-position:center 30%;"></div></div>
+        <div class="pslide"><div class="pimg" style="background-image:url('../assets/photos/screening-in-progress.jpg');background-position:center 35%;"></div></div>
+        <div class="pslide"><div class="pimg" style="background-image:url('../assets/hero-clinicians.jpg');background-position:center 30%;"></div></div>
         <span class="ptag" id="phtag"><span class="live"></span> For providers</span>
       </div>
       <div class="pfunnel">
       <div class="pg"><i class="on"></i><i></i><i></i></div>
-      <div class="pf on" data-cap="For providers">
+      <div class="pf on">
         <span class="pftag">For Providers</span>
         <h3>The SALSAL Challenge</h3>
         <div class="pfmeta">Call a time-out before amputation</div>
-        <a class="pfgo" href="../provider-education/#challenge">See the policy <span class="arw">&rsaquo;</span></a>
+        <a class="pfgo" href="../toba/">Learn more <span class="arw">&rsaquo;</span></a>
       </div>
-      <div class="pf" data-cap="Patient resources">
+      <div class="pf">
         <span class="pftag red">Patient Resources</span>
         <h3>5 free fact sheets</h3>
         <div class="pfmeta">PAD and diabetes, plain language</div>
         <a class="pfgo" href="#library">Browse the library <span class="arw">&rsaquo;</span></a>
       </div>
-      <div class="pf" data-cap="On-demand learning">
+      <div class="pf">
         <span class="pftag blue">Keep Learning</span>
         <h3>6 recorded webinars</h3>
         <div class="pfmeta">Watch anytime, free</div>
         <a class="pfgo" href="#library">Watch on demand <span class="arw">&rsaquo;</span></a>
       </div>
     </div>
-      <div class="pchip"><b>11</b><span>free resources, no sign-up</span></div>
     </div></div>
 </header>
 
@@ -662,6 +670,36 @@
   }catch(e){}
 
   sync();
+})();
+</script>
+
+<script>
+/* hero funnel carousel: auto-rotate, clickable dots, pause on hover */
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.pvisual .pslide'));
+  var pfs=[].slice.call(document.querySelectorAll('.pfunnel .pf'));
+  var dots=[].slice.call(document.querySelectorAll('.pfunnel .pg i'));
+  if(slides.length<2||!dots.length) return;
+  var tag=document.getElementById('phtag');
+  var caps=['<span class="live"></span> For providers','<span class="live"></span> For patients','<span class="live"></span> Keep learning'];
+  var i=0,timer=null;
+  function show(n){
+    i=(n+slides.length)%slides.length;
+    slides.forEach(function(s,idx){s.classList.toggle('on',idx===i);});
+    pfs.forEach(function(p,idx){p.classList.toggle('on',idx===i);});
+    dots.forEach(function(d,idx){d.classList.toggle('on',idx===i);});
+    if(tag){tag.innerHTML=caps[i]||'';}
+  }
+  function start(){stop();timer=setInterval(function(){show(i+1);},4600);}
+  function stop(){if(timer){clearInterval(timer);timer=null;}}
+  dots.forEach(function(d,idx){
+    d.setAttribute('role','button');d.setAttribute('tabindex','0');d.setAttribute('aria-label','Show slide '+(idx+1));
+    d.addEventListener('click',function(){show(idx);start();});
+    d.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(idx);start();}});
+  });
+  var pvis=document.querySelector('.pvisual');
+  if(pvis){pvis.addEventListener('mouseenter',stop);pvis.addEventListener('mouseleave',start);}
+  start();
 })();
 </script>
 
