@@ -29,6 +29,23 @@
   .pfunnel .pg i{cursor:pointer;transition:background .2s,transform .2s;}
   .pfunnel .pg i:hover{background:rgba(255,255,255,.85);transform:scale(1.3);}
   .pfunnel .pg i.on{transform:scale(1.15);}
+  /* "Free forever" strip: subtle secondary link instead of a 2nd button */
+  .givelink{display:inline-flex;align-items:center;gap:7px;color:#cfe6f2;font-weight:600;font-size:15px;margin-top:16px;transition:color .2s;}
+  .givelink:hover{color:#fff;}
+  .givelink .arw{transition:transform .2s;} .givelink:hover .arw{transform:translateX(3px);}
+  /* "Go further" two-up cards (replaces the empty numlead + live-sessions band) */
+  .gofurther{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .gcard{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(28,53,87,.05),0 18px 44px rgba(16,35,59,.08);transition:transform .2s,box-shadow .2s;}
+  .gcard:hover{transform:translateY(-4px);box-shadow:0 26px 58px rgba(16,35,59,.15);}
+  .gcard .gim{aspect-ratio:16/9;background-size:cover;background-position:center;}
+  .gcard .gbody{padding:26px 28px 28px;display:flex;flex-direction:column;gap:11px;flex:1;}
+  .gcard .gk{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);}
+  .gcard .gk .live{width:8px;height:8px;border-radius:50%;background:#39d98a;box-shadow:0 0 0 0 rgba(57,217,138,.6);animation:kpulse 1.9s infinite;}
+  .gcard h3{font-family:'Fraunces',serif;font-weight:600;font-size:23px;line-height:1.16;color:var(--navy);letter-spacing:-.01em;}
+  .gcard p{font-size:15.5px;line-height:1.6;color:#41566c;flex:1;}
+  .gcard .glink{display:inline-flex;align-items:center;gap:7px;color:var(--red);font-weight:700;font-size:15px;margin-top:4px;}
+  .gcard .glink .arw{transition:transform .2s;} .gcard:hover .glink .arw{transform:translateX(3px);}
+  @media(max-width:820px){.gofurther{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -358,7 +375,7 @@
 </section>
 
 
-<!-- GIVE STRIP: short, mid-scroll, no hard sell -->
+<!-- GIVE STRIP: short, mid-scroll, no hard sell. One button + one quiet link. -->
 <section class="room room-navy tightpad">
   <div class="wrap givestrip">
     <div>
@@ -368,27 +385,42 @@
     </div>
     <div class="giveact">
       <a class="btn btn-red btn-lg" href="../donate/">Donate</a>
-      <a class="btn btn-outline light btn-lg" href="../shop/">Donate by Shopping</a>
+      <a class="givelink" href="../shop/">or shop to support <span class="arw">&rsaquo;</span></a>
     </div>
   </div>
 </section>
 
 
-<!-- LIVE WEBINARS: evergreen, no dates to maintain -->
-<section class="room room-sand">
+<!-- GO FURTHER: two matched cards, one link each (merges live sessions + providers) -->
+<section class="room room-paper tightpad">
   <div class="wrap">
-    <div class="kick">Live sessions</div>
-    <h2 class="display sm">We run live webinars with the clinicians doing this work.</h2>
-    <p class="body-lg mt-s" style="max-width:62ch;">Every session is free to attend, open to providers and to the public, and recorded into the library above once the call ends. The schedule is always on the upcoming webinars page.</p>
-    <div class="mt-m">
-      <a class="btn btn-red btn-lg" href="../upcoming-webinars/">Register for the next webinar</a>
-      <a class="btn btn-outline btn-lg" href="#library">Watch a past session <span class="arw">&rsaquo;</span></a>
+    <div class="kick">Go further</div>
+    <h2 class="display sm">Two ways to take this deeper.</h2>
+    <div class="gofurther mt-m">
+      <article class="gcard reveal">
+        <div class="gim" style="background-image:url('../assets/hero-audience.jpg');background-position:center 42%;"></div>
+        <div class="gbody">
+          <div class="gk"><span class="live"></span> Live sessions</div>
+          <h3>Free live webinars with the clinicians doing this work.</h3>
+          <p>Open to providers and to the public. Every session is recorded into the library above once the call ends.</p>
+          <a class="glink" href="../upcoming-webinars/">See upcoming webinars <span class="arw">&rsaquo;</span></a>
+        </div>
+      </article>
+      <article class="gcard reveal">
+        <div class="gim" style="background-image:url('../assets/event-clinicians.jpg');background-position:center 35%;"></div>
+        <div class="gbody">
+          <div class="gk">For providers</div>
+          <h3>We bring this training in person, at no cost.</h3>
+          <p>Vascular screening, care-team workflow, revascularization, and the SALSAL Challenge: our ask that hospitals require vascular testing before an amputation.</p>
+          <a class="glink" href="../provider-education/">See provider education <span class="arw">&rsaquo;</span></a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 
-<!-- BLEEDBAND: why free education matters -->
+<!-- BLEEDBAND: why free education matters. Emotional closer, no buttons. -->
 <section class="bleedband">
   <div class="bg" style="background-image:url('../assets/events/team-talking.jpg');background-position:center 30%;"></div>
   <div class="scrim"></div>
@@ -396,25 +428,6 @@
     <div class="kick">Why it matters</div>
     <h2 class="display sm">Free education keeps working long after the room empties.</h2>
     <p class="mt-s">Every fact sheet and every recorded session stays free, forever, so the evidence reaches the clinician or the patient who needed it months after the live moment passed.</p>
-  </div>
-</section>
-
-
-<!-- FOR PROVIDERS: full detail lives on its own page -->
-<section class="room room-paper">
-  <div class="wrap">
-    <div class="numlead bleed-r">
-      <div class="ncol">
-        <div class="kick">For providers</div>
-        <h3 class="statement">We also teach this in person.</h3>
-        <p class="body-lg mt-s">Provider education covers vascular screening before amputation, care team workflow, revascularization, the economic case, and real cases in limb salvage. It closes with the SALSAL Challenge, our ask that hospitals require vascular testing before approving an amputation. There is no fee to host a session.</p>
-        <div class="mt-m">
-          <a class="btn btn-red btn-lg" href="../provider-education/">See provider education</a>
-          <a class="btn btn-outline btn-lg" href="?aud=clinicians#library">Clinician materials <span class="arw">&rsaquo;</span></a>
-        </div>
-      </div>
-      <div class="shot"><div class="im" style="background-image:url('../assets/event-audience.jpg');background-position:center 40%;"></div></div>
-    </div>
   </div>
 </section>
 
