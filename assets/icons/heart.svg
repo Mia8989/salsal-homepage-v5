@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75.288" height="81" viewBox="0 0 75.288 81">
+  <defs>
+    <filter id="Heart" x="0" y="0" width="75.288" height="81" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="1" input="SourceAlpha"/>
+      <feGaussianBlur result="blur"/>
+      <feFlood flood-color="#fff"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Heart)">
+    <path id="Heart-2" data-name="Heart" d="M94.524,19.363C83.9,11.9,72.572,18.746,68.461,20.871a3.606,3.606,0,0,1-3.315,0C60.8,18.746,48.883,11.9,38.264,19.363,11.7,38.024,51.481,82.184,63.556,94.579a4.55,4.55,0,0,0,6.564-.022c11.911-12.431,50.952-56.544,24.4-75.194" transform="translate(-29.3 -15.97)" fill="#dd2036"/>
+  </g>
+</svg>
