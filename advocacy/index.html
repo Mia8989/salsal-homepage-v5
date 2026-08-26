@@ -37,7 +37,18 @@
   .advrow .adv .role{font-size:12px;color:var(--sky);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
   .advrow .adv h3{font-family:'Fraunces',serif;font-size:19px;color:var(--navy);margin-bottom:8px;line-height:1.15;}
   .advrow .adv p{font-size:13.5px;color:#4a5d72;line-height:1.55;max-width:30ch;margin:0 auto;}
-  @media(max-width:820px){.steps,.bills,.spk{grid-template-columns:1fr;} .actions{columns:1;} .advrow{grid-template-columns:1fr;gap:34px;}}
+  /* How an idea becomes law: horizontal process timeline (distinct from the creed lanes) */
+  .lawpath{max-width:1060px;margin:0 auto;}
+  .lawrow{display:grid;grid-template-columns:repeat(6,1fr);position:relative;}
+  .lawrow::before{content:'';position:absolute;top:23px;left:9%;right:9%;height:2px;background:linear-gradient(90deg,var(--sky),var(--red));}
+  .lawnode{text-align:center;padding:0 9px;position:relative;}
+  .lawnode .dot{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--sky);color:var(--navy);font-family:'Fraunces',serif;font-weight:600;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;position:relative;z-index:1;box-shadow:0 4px 12px rgba(16,35,59,.12);}
+  .lawnode:last-child .dot{border-color:var(--red);color:var(--red);}
+  .lawnode h3{font-size:15px;margin-bottom:5px;line-height:1.2;}
+  .lawnode p{font-size:12.5px;color:#4a5d72;line-height:1.45;}
+  @media(max-width:820px){.steps,.bills,.spk{grid-template-columns:1fr;} .actions{columns:1;} .advrow{grid-template-columns:1fr;gap:34px;}
+    .lawrow{grid-template-columns:1fr;gap:22px;} .lawrow::before{left:23px;right:auto;top:8px;bottom:8px;width:2px;height:auto;background:linear-gradient(180deg,var(--sky),var(--red));}
+    .lawnode{display:grid;grid-template-columns:48px 1fr;gap:16px;text-align:left;align-items:start;padding:0;} .lawnode .dot{margin:0;}}
 </style>
 </head>
 <body>
@@ -156,13 +167,15 @@
   <section class="band paper">
     <div class="wrap">
       <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> The fundamentals</span><h2>How an idea becomes law</h2><p>Every law starts as someone's problem, often a screening insurance would not cover, or a referral that never came. Here is the path from there to policy.</p></div>
-      <div class="creed">
-        <div class="cr reveal"><div class="crn">01</div><div class="crt"><h3>Identify the problem</h3><p>An advocate names a real gap, often a screening insurance would not cover, and drafts a proposed solution.</p></div></div>
-        <div class="cr reveal"><div class="crn">02</div><div class="crt"><h3>Find a sponsor</h3><p>A legislator agrees to sponsor the bill, and it is formally introduced.</p></div></div>
-        <div class="cr reveal"><div class="crn">03</div><div class="crt"><h3>Committee review</h3><p>The bill goes to committee for review, hearings, and amendment, where testimony matters most.</p></div></div>
-        <div class="cr reveal"><div class="crn">04</div><div class="crt"><h3>Floor vote</h3><p>If it advances out of committee, the bill goes to a floor vote in its chamber.</p></div></div>
-        <div class="cr reveal"><div class="crn">05</div><div class="crt"><h3>The second chamber</h3><p>If passed, it moves to the other chamber and the process repeats.</p></div></div>
-        <div class="cr reveal"><div class="crn">06</div><div class="crt"><h3>It becomes law</h3><p>Once passed by both chambers and signed, the idea becomes law.</p></div></div>
+      <div class="lawpath reveal">
+        <div class="lawrow">
+          <div class="lawnode"><div class="dot">1</div><h3>Identify the problem</h3><p>An advocate names a real gap and drafts a proposed solution.</p></div>
+          <div class="lawnode"><div class="dot">2</div><h3>Find a sponsor</h3><p>A legislator agrees to sponsor the bill, and it is introduced.</p></div>
+          <div class="lawnode"><div class="dot">3</div><h3>Committee review</h3><p>Hearings and amendment, where testimony matters most.</p></div>
+          <div class="lawnode"><div class="dot">4</div><h3>Floor vote</h3><p>If it advances, the bill goes to a floor vote in its chamber.</p></div>
+          <div class="lawnode"><div class="dot">5</div><h3>The second chamber</h3><p>If passed, it moves to the other chamber and repeats.</p></div>
+          <div class="lawnode"><div class="dot">6</div><h3>It becomes law</h3><p>Passed by both chambers and signed, the idea is law.</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -201,9 +214,9 @@
     <div class="wrap">
       <div class="band-head reveal"><h2>Meet the advocates</h2><p>From our June 2026 advocacy webinar.</p></div>
       <div class="advrow reveal">
-        <div class="adv"><div class="ph" style="background-image:url('../assets/speakers/david-alper.jpg')"></div><div class="role">Moderator &middot; SALSAL Board</div><h3>Dr. David Alper, DPM</h3><p>Retired podiatric physician, 39 years in practice, APMA Board of Trustees, and has testified before Congress.</p></div>
+        <div class="adv"><div class="ph" style="background-image:url('../assets/speakers/david-alper.jpg');background-position:center 18%"></div><div class="role">Moderator &middot; SALSAL Board</div><h3>Dr. David Alper, DPM</h3><p>Retired podiatric physician, 39 years in practice, APMA Board of Trustees, and has testified before Congress.</p></div>
         <div class="adv"><div class="ph" style="background-image:url('../assets/speakers/jessica-giannino.jpg')"></div><div class="role">Massachusetts House</div><h3>Rep. Jessica Giannino</h3><p>Lead sponsor of HB 2433, she convened the State House's first Amputation Prevention Roundtable.</p></div>
-        <div class="adv"><div class="ph" style="background-image:url('../assets/speakers/mark-molloy.jpg')"></div><div class="role">Cascade Strategies</div><h3>Mark Molloy, Esq.</h3><p>Represents healthcare clients before the Massachusetts Legislature on amputation-prevention legislation.</p></div>
+        <div class="adv"><div class="ph" style="background-image:url('../assets/speakers/mark-molloy.jpg');background-position:center 22%"></div><div class="role">Cascade Strategies</div><h3>Mark Molloy, Esq.</h3><p>Represents healthcare clients before the Massachusetts Legislature on amputation-prevention legislation.</p></div>
       </div>
     </div>
   </section>
@@ -285,7 +298,7 @@
       <div class="sf-about">
         <img src="../assets/logo.png" alt="Save a Leg, Save a Life Foundation">
         <p>The Save A Leg, Save A Life Foundation is a 501(c)(3) nonprofit working to reduce preventable lower extremity amputations. Federal Tax ID 32-0467696. Florida Solicitation Registration CH47375.</p>
-        <p>4403 5th Ave NE, Bradenton, FL 34208<br><a href="tel:+18134453857" style="color:inherit;text-decoration:none;">+1 813-445-3857</a> &middot; <a href="mailto:info@thesalsal.org" style="color:inherit;text-decoration:none;">info@thesalsal.org</a></p>
+        <p>4403 5th Ave NE, Bradenton, FL 34208<br><a href="tel:+18134453857" style="color:inherit;text-decoration:none;">+1 813-445-3857</a></p>
         <a href="../contact/" class="sf-contact-link" style="display:inline-flex;align-items:center;gap:6px;color:#7fd3ef;font-weight:700;font-size:14px;text-decoration:none;margin-top:4px;">Contact us &rsaquo;</a>
       </div>
       <div>

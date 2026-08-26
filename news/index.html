@@ -140,12 +140,8 @@
 
   <section class="band">
     <div class="wrap">
-      <div class="creed">
-        <a class="cr reveal" href="../advocacy/" style="text-decoration:none;"><div class="crn">Jun</div><div class="crt"><span class="status">2026 &middot; Advocacy</span><h3>Advocacy and Legislation webinar brings policy to the community</h3><p>Rep. Jessica Giannino and Mark Molloy, Esq. joined Dr. David Alper to break down the bills shaping limb preservation. Watch it on demand.</p><span class="lnk">Read more &rsaquo;</span></div></a>
-        <a class="cr reveal" href="../community-screening-events/" style="text-decoration:none;"><div class="crn">May</div><div class="crt"><span class="status">2026 &middot; Screening</span><h3>Free screenings reach Buffalo</h3><p>Our team partnered with local health organizations to bring free limb screenings to at-risk residents in Buffalo, NY.</p><span class="lnk">See our events &rsaquo;</span></div></a>
-        <a class="cr reveal" href="../webinars/time-is-tissue/" style="text-decoration:none;"><div class="crn">Mar</div><div class="crt"><span class="status">2026 &middot; Education</span><h3>Time Is Tissue: new webinar on biofilm and amputation</h3><p>Matthew Myntti, PhD and Dr. Matthew Regulski on how disrupting biofilm changes wound outcomes. Now free to watch.</p><span class="lnk">Watch on demand &rsaquo;</span></div></a>
-        <a class="cr reveal" href="../white-sock-campaign/" style="text-decoration:none;"><div class="crn">Sep</div><div class="crt"><span class="status">Campaign</span><h3>The White Sock Campaign returns for PAD Awareness Month</h3><p>One white sock, one conversation. Take the pledge and help us start the conversation that saves limbs.</p><span class="lnk">Take the pledge &rsaquo;</span></div></a>
-      </div>
+      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Newsroom</span><h2>The latest from SALSAL</h2><p>Screenings, webinars, campaigns, and coverage, updated as the work happens.</p></div>
+      <div id="newsFeed" class="nfeed reveal"></div>
     </div>
   </section>
 
@@ -247,7 +243,7 @@
       <div class="sf-about">
         <img src="../assets/logo.png" alt="Save a Leg, Save a Life Foundation">
         <p>The Save A Leg, Save A Life Foundation is a 501(c)(3) nonprofit working to reduce preventable lower extremity amputations. Federal Tax ID 32-0467696. Florida Solicitation Registration CH47375.</p>
-        <p>4403 5th Ave NE, Bradenton, FL 34208<br><a href="tel:+18134453857" style="color:inherit;text-decoration:none;">+1 813-445-3857</a> &middot; <a href="mailto:info@thesalsal.org" style="color:inherit;text-decoration:none;">info@thesalsal.org</a></p>
+        <p>4403 5th Ave NE, Bradenton, FL 34208<br><a href="tel:+18134453857" style="color:inherit;text-decoration:none;">+1 813-445-3857</a></p>
         <a href="../contact/" class="sf-contact-link" style="display:inline-flex;align-items:center;gap:6px;color:#7fd3ef;font-weight:700;font-size:14px;text-decoration:none;margin-top:4px;">Contact us &rsaquo;</a>
       </div>
       <div>
@@ -301,6 +297,9 @@
   </div>
 </footer>
 <!-- FOOTER:END -->
+<script src="../assets/news-data.js"></script>
+<script src="../assets/news-render.js"></script>
+<script>salsalRenderNews('newsFeed','../',0,true);</script>
 <script>
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
