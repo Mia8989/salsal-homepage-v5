@@ -17,7 +17,7 @@ Single source of truth: partials/nav.html and partials/footer.html.
 Pages mark regions with <!-- NAV:START/END -->, <!-- FOOTER:START/END -->.
 {{B}} in the partials = relative path back to site root.
 """
-import re, os, glob, datetime
+import re, os, glob, datetime, json, html as _html
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -71,19 +71,36 @@ ORG_JSONLD = (
     '</script>'
 )
 
-def seo_block(path):
+SEG_NAMES = {"webinars": "On-Demand Webinars"}   # friendly names for path segments
+
+def breadcrumb_jsonld(path, leaf):
     d = rel_dir(path)
-    if d in ALWAYS_NOINDEX or not LIVE:
-        robots = "noindex, nofollow"
-    else:
-        robots = "index, follow"
+    if not d:
+        return None                                  # no breadcrumb on home
+    segs = d.split("/")
+    items = [{"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"}]
+    for i, seg in enumerate(segs):
+        last = (i == len(segs) - 1)
+        name = leaf if last else SEG_NAMES.get(seg, seg.replace("-", " ").title())
+        items.append({"@type": "ListItem", "position": i + 2, "name": name,
+                      "item": SITE + "/" + "/".join(segs[:i + 1]) + "/"})
+    obj = {"@context": "https://schema.org", "@type": "BreadcrumbList",
+           "itemListElement": items}
+    return '<script type="application/ld+json">' + json.dumps(obj, separators=(",", ":")) + "</script>"
+
+def seo_block(path, leaf):
+    d = rel_dir(path)
+    robots = "noindex, nofollow" if (d in ALWAYS_NOINDEX or not LIVE) else "index, follow"
     lines = [
         "  <!-- SEO:START -->",
         f'  <link rel="canonical" href="{clean_url(path)}">',
         f'  <meta name="robots" content="{robots}">',
         "  " + ORG_JSONLD,
-        "  <!-- SEO:END -->",
     ]
+    crumb = breadcrumb_jsonld(path, leaf)
+    if crumb:
+        lines.append("  " + crumb)
+    lines.append("  <!-- SEO:END -->")
     return "\n" + "\n".join(lines)
 
 changed, skipped, nomarker, pages = [], [], [], []
@@ -111,7 +128,9 @@ for path in sorted(glob.glob(os.path.join(HERE, "**", "*.html"), recursive=True)
     # strip old SEO block + any raw robots meta, then stamp fresh SEO block after </title>
     html = RE_SEO.sub("\n", html)
     html = RE_ROBOTS.sub("", html)
-    html = re.sub(r"(</title>)", lambda m: m.group(1) + seo_block(path), html, count=1)
+    tm = re.search(r"<title>(.*?)</title>", html, re.S)
+    leaf = _html.unescape(re.split(r"\s*\|\s*", tm.group(1).strip())[0]) if tm else "Page"
+    html = re.sub(r"(</title>)", lambda m: m.group(1) + seo_block(path, leaf), html, count=1)
 
     if html != orig:
         with open(path, "w", encoding="utf-8") as f: f.write(html)
