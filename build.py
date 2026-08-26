@@ -88,7 +88,47 @@ def breadcrumb_jsonld(path, leaf):
            "itemListElement": items}
     return '<script type="application/ld+json">' + json.dumps(obj, separators=(",", ":")) + "</script>"
 
-def seo_block(path, leaf):
+MONTHS = {m: i + 1 for i, m in enumerate(
+    ["January","February","March","April","May","June","July","August",
+     "September","October","November","December"])}
+
+def _ld(obj):
+    return '<script type="application/ld+json">' + json.dumps(obj, separators=(",", ":")) + "</script>"
+
+def webinar_schema(path, html, leaf):
+    """VideoObject for recorded (Vimeo) webinars, EducationEvent for upcoming ones."""
+    d = rel_dir(path)
+    if not d.startswith("webinars/"):
+        return None
+    dm = re.search(r'<meta name="description" content="([^"]*)"', html)
+    desc = _html.unescape(dm.group(1)) if dm else leaf
+    thumb = f"{SITE}/assets/og/{d.replace('/', '-')}.png"
+    vid = re.search(r'player\.vimeo\.com/video/(\d+)', html)
+    if vid:
+        return _ld({"@context": "https://schema.org", "@type": "VideoObject",
+            "name": leaf, "description": desc, "thumbnailUrl": thumb,
+            "embedUrl": f"https://player.vimeo.com/video/{vid.group(1)}",
+            "publisher": {"@type": "Organization", "name": "Save a Leg, Save a Life Foundation",
+                          "logo": {"@type": "ImageObject", "url": f"{SITE}/assets/logo.png"}}})
+    dt = re.search(r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s+(\d{4})', html)
+    if dt:
+        tm = re.search(r'(\d{1,2}):(\d{2})\s*(AM|PM)\s*ET', html)
+        hh, mm = 12, 0
+        if tm:
+            hh, mm = int(tm.group(1)), int(tm.group(2))
+            if tm.group(3) == "PM" and hh != 12: hh += 12
+            if tm.group(3) == "AM" and hh == 12: hh = 0
+        start = f"{int(dt.group(3)):04d}-{MONTHS[dt.group(1)]:02d}-{int(dt.group(2)):02d}T{hh:02d}:{mm:02d}:00-04:00"
+        return _ld({"@context": "https://schema.org", "@type": "EducationEvent",
+            "name": leaf, "description": desc, "startDate": start, "image": thumb,
+            "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {"@type": "VirtualLocation", "url": clean_url(path)},
+            "organizer": {"@type": "Organization", "name": "Save a Leg, Save a Life Foundation", "url": SITE + "/"},
+            "isAccessibleForFree": True})
+    return None
+
+def seo_block(path, leaf, extra=None):
     d = rel_dir(path)
     robots = "noindex, nofollow" if (d in ALWAYS_NOINDEX or not LIVE) else "index, follow"
     lines = [
@@ -100,6 +140,8 @@ def seo_block(path, leaf):
     crumb = breadcrumb_jsonld(path, leaf)
     if crumb:
         lines.append("  " + crumb)
+    if extra:
+        lines.append("  " + extra)
     lines.append("  <!-- SEO:END -->")
     return "\n" + "\n".join(lines)
 
@@ -130,7 +172,8 @@ for path in sorted(glob.glob(os.path.join(HERE, "**", "*.html"), recursive=True)
     html = RE_ROBOTS.sub("", html)
     tm = re.search(r"<title>(.*?)</title>", html, re.S)
     leaf = _html.unescape(re.split(r"\s*\|\s*", tm.group(1).strip())[0]) if tm else "Page"
-    html = re.sub(r"(</title>)", lambda m: m.group(1) + seo_block(path, leaf), html, count=1)
+    wschema = webinar_schema(path, html, leaf)
+    html = re.sub(r"(</title>)", lambda m: m.group(1) + seo_block(path, leaf, wschema), html, count=1)
 
     if html != orig:
         with open(path, "w", encoding="utf-8") as f: f.write(html)
