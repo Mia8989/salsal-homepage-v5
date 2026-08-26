@@ -64,5 +64,82 @@ window.SALSAL_NEWS = [
     title: "SALSAL featured on local news",
     blurb: "Local stations covered our free foot and health screening events. Watch the coverage.",
     href: "news/#in-the-news"
+  },
+  {
+    date: "2025-08-29",
+    tag: "Webinar",
+    title: "Upcoming Webinar: Advancing Education in Limb Salvage",
+    blurb: "Join us for SALSAL's upcoming educational webinar, designed to provide healthcare professionals with the latest insights and strategies in limb...",
+    href: "news/upcoming-webinar-advancing-education-in-limb-salvage/"
+  },
+  {
+    date: "2025-08-29",
+    tag: "Board",
+    title: "SALSAL Welcomes New Board Members",
+    blurb: "The Save A Leg, Save A Life Foundation is proud to announce the appointment of new members to its Board of Directors. Each brings unique expertise and...",
+    href: "news/salsal-welcomes-new-board-members/"
+  },
+  {
+    date: "2025-05-23",
+    tag: "News",
+    title: "Life on MARS: Findings from the Successful Implementation of the Manchester Amputation Reduction System",
+    blurb: "Join us for a compelling discussion featuring Dr. Naseer Ahmad and Kristen Sorensen moderated by Dr. Laura Swoboda on June 25 7:30 PM EST as we explore...",
+    href: "news/webinar-life-on-mars-findings-from/"
+  },
+  {
+    date: "2025-01-21",
+    tag: "Board",
+    title: "Meet the Board Members Advancing The Save A Leg, Save A Life Foundation's Mission",
+    blurb: "The Save a Leg, Save a Life Foundation is proud to announce that Cam Ayala and Dr. Laura Swoboda have been elected to the Board of Directors. Dr. Laura...",
+    href: "news/laura-swoboda-cam-ayala-save-a-leg-save-a-life/"
+  },
+  {
+    date: "2024-12-20",
+    tag: "Campaign",
+    title: "Exciting News from The Save A Leg, Save A Life Foundation!",
+    blurb: "We're thrilled to announce  group discounts  for clinicians supporting our mission to prevent amputations and improve limb health! 5% discount  for groups...",
+    href: "news/group-discounts/"
+  },
+  {
+    date: "2023-10-05",
+    tag: "Board",
+    title: "New Directors Join The Save A Leg, Save A Life Foundation Board",
+    blurb: "Santino Costanzo Elected Vice President Elizabeth Faust, MSN, CRNP, CSWS, CWOCN-AP, MAPWCA and Cyaandi Dove, DPM have been elected to The Save A Leg, Save...",
+    href: "news/new-directors-join-the-save-a/"
+  },
+  {
+    date: "2023-07-19",
+    tag: "Board",
+    title: "High-Profile Board Members Elected to The Save A Leg, Save A Life Foundation",
+    blurb: "Non-profit attracts four prominent members of wound care industry to expand limb-salvage mission The Save A Leg, Save A Life Foundation recently voted in...",
+    href: "news/high-profile-board-members-elected-to/"
+  },
+  {
+    date: "2023-05-16",
+    tag: "Board",
+    title: "New Executive Board Elected",
+    blurb: "New Board Members Also Welcomed Frank Aviles, Jr., P.T., CWS, FACCWS, CLT-LANA, ALM, AWCC, MAPWCA is the new president of the Save A Leg, Save A Life...",
+    href: "news/new-executive-board-elected/"
+  },
+  {
+    date: "2023-03-13",
+    tag: "Campaign",
+    title: "SALSAL to Launch Video Challenge Fundraiser",
+    blurb: "The Save A Leg, Save A Life Foundation announced the launch of a unique fundraising campaign starting March 25 and running through August 2023. The goals,...",
+    href: "news/video-challenge-fundraiser/"
+  },
+  {
+    date: "2022-08-23",
+    tag: "Scholarship",
+    title: "Wound Certification Scholarship Awarded to Ezell Wilson, RN of Oxford, MS",
+    blurb: "Scholarship program is funded by The Save A Leg, Save A Life Foundation The American Board of Wound Management (ABWM) Foundation announced 29-year-old...",
+    href: "news/wound-certification-scholarship-ezell-wilson/"
+  },
+  {
+    date: "2022-06-22",
+    tag: "Board",
+    title: "The Save A Leg, Save A Life Foundation Welcomes New Board Members",
+    blurb: "Dr. M. Mark Melin, Frank Aviles and Carol Barry Elected to Board of Directors M. Mark Melin MD FACS RPVI FACCWS, is a surgeon and Medical Director of the...",
+    href: "news/salsal-adds-new-board-members/"
   }
 ];
