@@ -273,9 +273,8 @@
   .photostory .pshead .eye2::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--sky);}
   .photostory .pshead h2{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.015em;color:var(--navy);margin-bottom:14px;}
   .photostory .pshead p{font-size:17.5px;line-height:1.6;color:#41546b;}
-  .psgrid{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:186px 186px;gap:16px;max-width:960px;margin:0 auto;}
-  .psfig{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 20px 46px rgba(16,35,59,.16);margin:0;min-height:0;background:var(--navy);}
-  .psfig.big{grid-row:1 / span 2;}
+  .psgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1040px;margin:0 auto;}
+  .psfig{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 18px 40px rgba(16,35,59,.14);margin:0;aspect-ratio:4/3;background:var(--navy);}
   .psfig img{width:100%;height:100%;object-fit:cover;display:block;}
   .psfig .pscap{position:absolute;left:0;right:0;bottom:0;padding:34px 22px 16px;color:#fff;font-size:14.5px;line-height:1.4;font-weight:500;
     background:linear-gradient(transparent,rgba(16,35,59,.86));}
@@ -584,17 +583,17 @@
       <p>Not a slogan, a folding table in a church hall. We bring free screenings to the neighborhoods where a caught-in-time problem means a limb saved.</p>
     </div>
     <div class="psgrid">
-      <figure class="psfig big reveal">
-        <img src="assets/photos/SACS3.webp" alt="A busy SALSAL community screening event">
-        <figcaption class="pscap">We bring free screenings into the community, one hall, senior center, and clinic at a time.</figcaption>
+      <figure class="psfig reveal">
+        <img src="assets/photos/comm-01.jpg" alt="A volunteer clinician at a SALSAL community screening table" style="object-position:center 40%;">
+        <figcaption class="pscap">Free screenings run on volunteer clinicians and a folding table.</figcaption>
       </figure>
       <figure class="psfig reveal">
-        <img src="assets/story/story-talk.jpg" alt="A clinician talking with an attendee at a SALSAL screening">
-        <figcaption class="pscap">A few minutes with a clinician can change the course of a limb.</figcaption>
+        <img src="assets/photos/comm-02.jpg" alt="Clinicians checking an attendee's leg at a SALSAL screening" style="object-position:center 38%;">
+        <figcaption class="pscap">A few minutes at a screening can change the course of a limb.</figcaption>
       </figure>
       <figure class="psfig reveal">
-        <img src="assets/story/story-stations.jpg" alt="Volunteer clinicians running screening stations at a SALSAL event">
-        <figcaption class="pscap">Every station checks a different risk, from circulation to mobility.</figcaption>
+        <img src="assets/photos/comm-03.jpg" alt="Volunteers at a vitals and glucose screening station">
+        <figcaption class="pscap">Every station checks a different risk, from vitals to circulation.</figcaption>
       </figure>
     </div>
   </div>
