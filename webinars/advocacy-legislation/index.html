@@ -39,6 +39,11 @@
   .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
   [hidden]{display:none!important;}
   .disclaimer{font-size:12.5px;color:#5b6b7d;line-height:1.55;max-width:60ch;margin:26px auto 0;}
+  .hsplit{display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:center;}
+  .hsplit .htext{max-width:60ch;}
+  .hvid{position:relative;aspect-ratio:9/16;max-width:300px;width:100%;border-radius:18px;overflow:hidden;background:#0b1a2c;box-shadow:0 2px 8px rgba(28,53,87,.10),0 26px 60px rgba(16,35,59,.22);}
+  .hvid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  @media(max-width:820px){.hsplit{grid-template-columns:1fr;gap:28px;} .hvid{max-width:280px;margin:0 auto;}}
   @media(max-width:560px){.gate-fields{grid-template-columns:1fr;}}
 </style>
 </head>
@@ -141,11 +146,16 @@
 
 <main>
   <section class="phero">
-    <div class="wrap" style="max-width:64ch;">
-      <span class="eyebrow"><span class="dot"></span> On-Demand Webinar &middot; June 2026</span>
-      <h1>Advocacy and Legislation in Limb Preservation: <span class="phero-underline">What You Need to Know<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M4,14 C60,6 120,4 180,9 C224,12 268,10 296,6"/></svg></span></h1>
-      <p class="sub">A practical look at how limb-preservation policy gets written and how you can shape it. Rep. Jessica Giannino and Mark Molloy, Esq. walk through active amputation-prevention legislation, how a bill becomes law, and concrete steps clinicians, patients, and advocates can take right now.</p>
-      <div class="cta"><a class="btn red" href="#watch">Watch the recording</a><a class="btn ghost" href="../">All webinars <span class="arw">&rsaquo;</span></a></div>
+    <div class="wrap">
+      <div class="hsplit">
+        <div class="htext">
+          <span class="eyebrow"><span class="dot"></span> On-Demand Webinar &middot; June 2026</span>
+          <h1>Advocacy and Legislation in Limb Preservation: <span class="phero-underline">What You Need to Know<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M4,14 C60,6 120,4 180,9 C224,12 268,10 296,6"/></svg></span></h1>
+          <p class="sub">A practical look at how limb-preservation policy gets written and how you can shape it. Rep. Jessica Giannino and Mark Molloy, Esq. walk through active amputation-prevention legislation, how a bill becomes law, and concrete steps clinicians, patients, and advocates can take right now.</p>
+          <div class="cta"><a class="btn red" href="#watch">Watch the recording</a><a class="btn ghost" href="../">All webinars <span class="arw">&rsaquo;</span></a></div>
+        </div>
+        <div class="hvid reveal"><iframe src="https://player.vimeo.com/video/1221360949?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Dr. Alper on limb-preservation advocacy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      </div>
     </div>
   </section>
 
@@ -371,5 +381,6 @@
     var w=document.getElementById('watchNow'); if(w) w.addEventListener('click',reveal);
   })();
 </script>
+<script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
