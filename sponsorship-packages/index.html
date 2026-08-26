@@ -14,7 +14,11 @@
 <style>
   .pk-note{max-width:760px;margin:0 auto;text-align:center;background:#eef4fb;border:1px solid var(--line);border-radius:16px;padding:20px 24px;color:#38495d;font-size:15.5px;line-height:1.6;}
   .pk-note b{color:var(--navy);}
-  .tiers{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:stretch;}
+  .tiers{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;align-items:stretch;}
+  .tier .tbtn{display:block;text-align:center;margin-top:18px;background:var(--navy);color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:13.5px;padding:12px;border-radius:11px;text-decoration:none;transition:background .18s,transform .18s;}
+  .tier .tbtn:hover{background:#12233c;transform:translateY(-2px);}
+  .tier.feat .tbtn{background:var(--sky);color:#062134;}
+  .tier.feat .tbtn:hover{background:#0296c1;color:#fff;}
   .tier{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 20px;box-shadow:0 1px 2px rgba(28,53,87,.05),0 14px 34px rgba(16,35,59,.07);}
   .tier.feat{border:2px solid var(--navy);box-shadow:0 20px 46px rgba(28,53,87,.16);}
   .tier.feat .lvl{color:var(--navy);}
@@ -152,7 +156,7 @@
   </section>
 
   <section class="band">
-    <div class="wrap">
+    <div class="wrap" style="max-width:1360px;">
       <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Sponsorship levels</span><h2>Choose the level that fits</h2></div>
       <div class="tiers reveal">
         <div class="tier mediarow">
@@ -163,6 +167,7 @@
             <li>Company logo displayed on the website</li>
             <li>Certificate of appreciation</li>
           </ul>
+          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
         </div>
         <div class="tier">
           <div class="lvl">Bronze</div>
@@ -175,6 +180,7 @@
             <li>Certificate of appreciation</li>
             <li>1 social media post highlighting the sponsorship</li>
           </ul>
+          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
         </div>
         <div class="tier">
           <div class="lvl">Silver</div>
@@ -186,6 +192,7 @@
             <li>Logo on the SALSAL newsletter and website for one year</li>
             <li>2 social media posts highlighting the sponsorship</li>
           </ul>
+          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
         </div>
         <div class="tier feat">
           <div class="lvl">Gold</div>
@@ -200,6 +207,7 @@
             <li>Quarterly recognition in the SALSAL newsletter</li>
             <li>Webinar Sponsor recognition: logo during the webinar and verbal acknowledgment</li>
           </ul>
+          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
         </div>
         <div class="tier feat">
           <div class="lvl">Platinum</div>
@@ -215,6 +223,7 @@
             <li>Networking opportunities at community roundtable events</li>
             <li>Guest column or article in the SALSAL newsletter, subject to editor discretion</li>
           </ul>
+          <a class="tbtn" href="https://form.jotform.com/262368988346173" target="_blank" rel="noopener">Become a sponsor</a>
         </div>
       </div>
     </div>
@@ -381,6 +390,18 @@
 </footer>
 <!-- FOOTER:END -->
 
+<script>
+  /* prefill the sponsor form with each tier's level */
+  document.querySelectorAll('.tier').forEach(function(t){
+    var lvl=(t.querySelector('.lvl')||{}).textContent||'';
+    var amt=(t.querySelector('.amt')||{}).textContent||'';
+    var btn=t.querySelector('.tbtn');
+    if(btn && lvl && amt){
+      var opt=lvl.trim()+' ( '+amt.trim()+' )';
+      btn.href='https://form.jotform.com/262368988346173?sponsorshipLevel='+encodeURIComponent(opt);
+    }
+  });
+</script>
 <script>
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));

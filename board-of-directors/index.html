@@ -20,6 +20,22 @@
   .person .role{font-size:12.5px;color:var(--sky);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:3px;}
   .officers .person .ph{border:2px solid rgba(0,174,223,.35);}
   @media(max-width:820px){.people{grid-template-columns:repeat(2,1fr);}}
+  /* click-to-open bios */
+  .person.has-bio{cursor:pointer;}
+  .person.has-bio .ph{position:relative;transition:transform .2s,box-shadow .2s;}
+  .person.has-bio:hover .ph{transform:translateY(-3px);box-shadow:0 20px 42px rgba(16,35,59,.18);}
+  .person.has-bio .ph::after{content:'View bio';position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,rgba(16,35,59,0),rgba(16,35,59,.82));color:#fff;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:26px 10px 10px;text-align:center;opacity:0;transition:opacity .2s;}
+  .person.has-bio:hover .ph::after,.person.has-bio:focus .ph::after{opacity:1;}
+  .bio-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(10,22,38,.62);backdrop-filter:blur(3px);}
+  .bio-modal.open{display:flex;}
+  .bio-card{background:#fff;border-radius:20px;max-width:560px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 30px 80px rgba(4,14,26,.5);position:relative;}
+  .bio-card .bx{position:absolute;top:14px;right:16px;width:34px;height:34px;border:0;border-radius:50%;background:#eef4fb;color:var(--navy);font-size:20px;cursor:pointer;line-height:1;}
+  .bio-card .bhead{display:flex;gap:18px;align-items:center;padding:30px 28px 0;}
+  .bio-card .bph{width:92px;height:110px;flex:none;border-radius:14px;overflow:hidden;background:#e7eef5;}
+  .bio-card .bph img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+  .bio-card h3{font-family:'Fraunces',serif;font-weight:600;font-size:23px;color:var(--navy);margin:0 0 4px;line-height:1.15;}
+  .bio-card .brole{font-size:12.5px;color:var(--sky);font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+  .bio-card .btext{padding:20px 28px 30px;font-size:15px;line-height:1.65;color:#3a4b5e;}
 </style>
 </head>
 <body>
@@ -292,6 +308,45 @@
   </div>
 </footer>
 <!-- FOOTER:END -->
+
+<div class="bio-modal" id="bioModal" aria-hidden="true">
+  <div class="bio-card" role="dialog" aria-modal="true" aria-labelledby="bioName">
+    <button class="bx" id="bioClose" aria-label="Close">&times;</button>
+    <div class="bhead"><div class="bph"><img id="bioImg" src="" alt=""></div><div><h3 id="bioName"></h3><div class="brole" id="bioRole"></div></div></div>
+    <div class="btext" id="bioText"></div>
+  </div>
+</div>
+
+<script src="../assets/board-bios.js"></script>
+<script>
+(function(){
+  var bios=window.SALSAL_BOARD||{};
+  var modal=document.getElementById('bioModal');
+  function openBio(img,name,role,bio){
+    document.getElementById('bioImg').src=img;
+    document.getElementById('bioName').textContent=name;
+    document.getElementById('bioRole').textContent=role;
+    document.getElementById('bioText').textContent=bio;
+    modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+  }
+  function closeBio(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  document.querySelectorAll('.person').forEach(function(p){
+    var img=p.querySelector('img'); if(!img) return;
+    var key=(img.getAttribute('src')||'').split('/').pop().replace(/\.\w+$/,'');
+    var bio=bios[key]; if(!bio) return;
+    p.classList.add('has-bio');
+    p.setAttribute('role','button'); p.setAttribute('tabindex','0');
+    var name=(p.querySelector('b')||{}).textContent||'';
+    var role=(p.querySelector('.role')||{}).textContent||'';
+    function go(){openBio(img.getAttribute('src'),name,role,bio);}
+    p.addEventListener('click',go);
+    p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+  });
+  document.getElementById('bioClose').addEventListener('click',closeBio);
+  modal.addEventListener('click',function(e){if(e.target===modal)closeBio();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBio();});
+})();
+</script>
 <script>
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.08});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));

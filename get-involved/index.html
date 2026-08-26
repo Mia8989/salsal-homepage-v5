@@ -24,6 +24,15 @@
   .gicard .gilnk{color:var(--red);font-weight:700;font-size:14.5px;}
   @media(max-width:760px){.giways{grid-template-columns:1fr;}}
   .jf-embed{max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:10px;box-shadow:0 1px 2px rgba(28,53,87,.05),0 16px 40px rgba(16,35,59,.08);}
+  .nextscreen{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;background:linear-gradient(135deg,#1C3557,#234465);border-radius:22px;padding:32px 38px;box-shadow:0 20px 50px rgba(16,35,59,.25);position:relative;overflow:hidden;}
+  .nextscreen::after{content:'';position:absolute;top:-40%;right:-6%;width:280px;height:280px;background:radial-gradient(circle,rgba(0,174,223,.28),transparent 70%);pointer-events:none;}
+  .nextscreen .ns-copy{position:relative;z-index:1;}
+  .nextscreen .ns-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7fd3ef;margin-bottom:10px;}
+  .nextscreen .ns-dot{width:8px;height:8px;border-radius:50%;background:#E63947;}
+  .nextscreen h2{color:#fff;font-size:27px;margin:0 0 8px;}
+  .nextscreen p{color:#c4d4e3;font-size:15.5px;line-height:1.55;max-width:52ch;margin:0;}
+  .nextscreen .ns-btn{position:relative;z-index:1;flex:none;}
+  @media(max-width:700px){.nextscreen{padding:26px 24px;} .nextscreen h2{font-size:22px;}}
 </style>
 </head>
 <body>
@@ -140,9 +149,13 @@
 
   <section class="band paper">
     <div class="wrap">
-      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Next screening</span><h2>Register for our free health screening</h2><p><strong>Saturday, September 26, 2026 &middot; 9 AM to 2 PM</strong><br>Fifth Ward Multi-Service Center, Houston, TX</p></div>
-      <div class="jf-embed reveal">
-        <iframe id="JotFormIFrame-262166235217151" title="Register to Attend: Houston Community Screening" onload="window.parent.scrollTo(0,0)" allowtransparency="true" allow="geolocation; microphone; camera; fullscreen" src="https://form.jotform.com/262166235217151" frameborder="0" style="min-width:100%;max-width:100%;height:720px;border:none;border-radius:14px;display:block;" scrolling="no"></iframe>
+      <div class="nextscreen reveal">
+        <div class="ns-copy">
+          <span class="ns-tag"><span class="ns-dot"></span> Next free screening</span>
+          <h2>Houston &middot; Saturday, September 26</h2>
+          <p>9 AM to 2 PM at the Fifth Ward Multi-Service Center. A free foot and limb-preservation screening, open to everyone.</p>
+        </div>
+        <a class="btn red ns-btn" href="#register">Register now <span class="arw">&rsaquo;</span></a>
       </div>
     </div>
   </section>
@@ -164,19 +177,28 @@
           <div class="gib"><h3>Spread the word</h3><p>Take the White Sock pledge and share our resources with everyone in your life living with diabetes or PAD.</p><span class="gilnk">Take the pledge &rsaquo;</span></div>
         </a>
         <a class="gicard reveal" href="../provider-education/">
-          <div class="gimg"><img src="../assets/photos/provider-education-inset.webp" alt="SALSAL clinical faculty and volunteers"></div>
+          <div class="gimg"><img src="../assets/photos/provider-education-inset.webp" alt="SALSAL clinical faculty and volunteers" style="object-fit:contain;background:#eef3f8;object-position:center;"></div>
           <div class="gib"><h3>Lend your clinical skills</h3><p>Clinicians and students: join a screening team or help teach. The right eyes, in the right place, change outcomes.</p><span class="gilnk">Get involved as a clinician &rsaquo;</span></div>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="band paper">
+  <section class="band paper" id="register">
+    <div class="wrap">
+      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Register</span><h2>Register for the Houston screening</h2><p><strong>Saturday, September 26, 2026 &middot; 9 AM to 2 PM</strong><br>Fifth Ward Multi-Service Center, Houston, TX</p></div>
+      <div class="jf-embed reveal">
+        <iframe id="JotFormIFrame-262166235217151" title="Register to Attend: Houston Community Screening" onload="window.parent.scrollTo(0,0)" allowtransparency="true" allow="geolocation; microphone; camera; fullscreen" src="https://form.jotform.com/262166235217151" frameborder="0" style="min-width:100%;max-width:100%;height:720px;border:none;border-radius:14px;display:block;" scrolling="no"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
     <div class="wrap" style="text-align:center;max-width:60ch;margin:0 auto;">
       <span class="eyebrow" style="justify-content:center;"><span class="dot"></span> For partners</span>
       <h2>Organizations can do even more</h2>
       <p style="margin-top:12px;color:#4a5d72;">Corporate partners and sponsors fund the screenings, resources, and provider education that catch what an amputation would have cost.</p>
-      <div class="cta" style="justify-content:center;margin-top:22px;"><a class="btn red" href="../sponsorship/">Explore sponsorship</a><a class="btn ghost" href="../shop/">Donate by shopping <span class="arw">&rsaquo;</span></a></div>
+      <div class="cta" style="justify-content:center;gap:16px;margin-top:22px;"><a class="btn red" href="../sponsorship/">Explore sponsorship</a><a class="btn ghost" href="../shop/">Donate by shopping <span class="arw">&rsaquo;</span></a></div>
     </div>
   </section>
 
