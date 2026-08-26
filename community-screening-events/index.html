@@ -39,6 +39,12 @@
   .vsplit .vtext p{color:#4a5d72;font-size:16.5px;line-height:1.6;}
   .vsplit .vwrap.v{max-width:340px;margin:0;}
   @media(max-width:820px){.vsplit{grid-template-columns:1fr;gap:26px;}.vsplit .vwrap.v{max-width:300px;margin:0 auto;}}
+  .vidmore{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:28px;margin-top:38px;}
+  .vclip{margin:0;}
+  .vclip figcaption{text-align:center;font-size:12.5px;font-weight:700;color:var(--sky);text-transform:uppercase;letter-spacing:.05em;margin-top:10px;}
+  .vclip .vwrap.v{max-width:264px;margin:0;}
+  .vwrap43{position:relative;aspect-ratio:4/3;width:100%;max-width:430px;border-radius:18px;overflow:hidden;background:#0b1a2c;box-shadow:0 2px 8px rgba(28,53,87,.10),0 20px 48px rgba(16,35,59,.18);}
+  .vwrap43 iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
   .egal{columns:4 220px;column-gap:12px;}
   .egal img{width:100%;margin:0 0 12px;border-radius:12px;display:block;break-inside:avoid;box-shadow:0 2px 8px rgba(16,35,59,.10);}
   @media(max-width:600px){.egal{columns:2 140px;}}
@@ -164,6 +170,11 @@
           <p>In a few minutes, meet the volunteers and clinicians who turn a community hall into a free limb-preservation screening, and the neighbors who walk in with questions and leave with answers.</p>
         </div>
         <div class="vwrap v reveal"><iframe src="https://player.vimeo.com/video/1221328921?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="A SALSAL community screening" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      </div>
+      <div class="vidmore reveal">
+        <figure class="vclip"><div class="vwrap v"><iframe src="https://player.vimeo.com/video/1221359318?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Detroit screening 2026" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><figcaption>Detroit, 2026</figcaption></figure>
+        <figure class="vclip"><div class="vwrap v"><iframe src="https://player.vimeo.com/video/1221359775?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Buffalo screening May 2026" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><figcaption>Buffalo, May 2026</figcaption></figure>
+        <figure class="vclip"><div class="vwrap43"><iframe src="https://player.vimeo.com/video/1221360476?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="SALSAL screening event" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><figcaption>At the screening</figcaption></figure>
       </div>
     </div>
   </section>
@@ -372,5 +383,6 @@
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
+<script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
