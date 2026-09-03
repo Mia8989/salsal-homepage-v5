@@ -184,3 +184,10 @@ p{line-height:1.65;}
 /* wide promo banner in a hero slot: show the whole flyer, never zoom/stretch it */
 .hero-img.wide{aspect-ratio:auto;background:#eef4f8;}
 .hero-img.wide img{height:auto;object-fit:contain;object-position:center;}
+
+/* sponsor tiers: size + order by contribution (highest value first) */
+.sprow img,.logos img{object-fit:contain;width:auto;}
+.sp-gold{height:56px !important;max-width:250px;}
+.sp-silver{height:44px !important;max-width:200px;}
+.sp-bronze{height:34px !important;max-width:155px;}
+.sp-media{height:28px !important;max-width:125px;}
