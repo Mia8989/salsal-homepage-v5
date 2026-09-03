@@ -634,6 +634,31 @@
   </div>
 </section>
 
+<!-- ===== LIVE COUNTER (hopeful framing, CDC rate) ===== -->
+<section class="band livecount" id="livecount">
+  <style>
+    .livecount{background:var(--paper2);text-align:center;}
+    .livecount .lc-eye{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;font-weight:700;color:var(--blue);margin-bottom:22px;}
+    .livecount .lc-dot{width:9px;height:9px;border-radius:50%;background:#00AEDF;box-shadow:0 0 0 0 rgba(0,174,223,.6);animation:lcpulse 2s infinite;}
+    @keyframes lcpulse{0%{box-shadow:0 0 0 0 rgba(0,174,223,.55);}70%{box-shadow:0 0 0 12px rgba(0,174,223,0);}100%{box-shadow:0 0 0 0 rgba(0,174,223,0);}}
+    .livecount .lc-num{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(56px,10vw,132px);line-height:.95;letter-spacing:-.03em;color:var(--navy);font-variant-numeric:tabular-nums;}
+    .livecount .lc-label{margin:14px auto 0;max-width:34ch;font-size:19px;line-height:1.5;color:#41566c;}
+    .livecount .lc-hope{margin:30px auto 0;max-width:26ch;font-family:'Fraunces',serif;font-weight:600;font-size:clamp(22px,3vw,34px);line-height:1.2;color:var(--navy);}
+    .livecount .lc-hope em{font-style:italic;color:var(--sky);}
+    .livecount .lc-cta{margin-top:30px;}
+    .livecount .lc-src{margin-top:26px;font-size:12.5px;color:#8195a9;max-width:60ch;margin-left:auto;margin-right:auto;}
+    @media(prefers-reduced-motion:reduce){.livecount .lc-dot{animation:none;}}
+  </style>
+  <div class="wrap">
+    <span class="lc-eye reveal"><span class="lc-dot"></span> The opportunity</span>
+    <div class="lc-num reveal" id="lc-num" aria-live="polite">0</div>
+    <p class="lc-label reveal">lower-limb amputations in the U.S. so far this year</p>
+    <p class="lc-hope reveal">Up to <em>85%</em> could have been prevented with early, evidence-based care.</p>
+    <div class="lc-cta reveal"><a class="btn red" href="get-involved/">Find a free screening <span class="arw">&rsaquo;</span></a></div>
+    <p class="lc-src reveal">Source: CDC, approximately 150,000 nontraumatic lower-extremity amputations a year. American Heart Association policy statement, Circulation, 2021.</p>
+  </div>
+</section>
+
 <!-- ===== VERB-FIRST PILLARS (free actions) ===== -->
 <section class="band pillars">
   <div class="wrap">
@@ -991,5 +1016,32 @@
   </div>
 </footer>
 <!-- FOOTER:END -->
+<script>
+(function(){
+  var el=document.getElementById('lc-num'); if(!el) return;
+  var ANNUAL=150000;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ytd(){
+    var now=new Date();
+    var start=new Date(now.getFullYear(),0,1);
+    var yearMs=new Date(now.getFullYear()+1,0,1)-start;
+    return Math.floor(ANNUAL*((now-start)/yearMs));
+  }
+  function fmt(n){return n.toLocaleString('en-US');}
+  var target=ytd();
+  if(reduce){ el.textContent=fmt(target); tick(); return; }
+  // count-up reveal on load, from ~1.5% below to the true value
+  var from=Math.floor(target*0.985), t0=null, dur=1600;
+  function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-p,3);
+    el.textContent=fmt(Math.floor(from+(target-from)*e));
+    if(p<1) requestAnimationFrame(step); else tick(); }
+  // start when the band scrolls into view
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){requestAnimationFrame(step);io.disconnect();}});},{threshold:.4});
+    io.observe(document.getElementById('livecount'));
+  } else { requestAnimationFrame(step); }
+  function tick(){ setInterval(function(){ el.textContent=fmt(ytd()); }, 1000); }
+})();
+</script>
 </body>
 </html>
