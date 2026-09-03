@@ -10,6 +10,14 @@
    ============================================================ */
 window.SALSAL_NEWS = [
   {
+    date: "2026-08-20",
+    tag: "In the news",
+    title: "Dr. Desmond Bell on the WOCTalk Podcast",
+    blurb: "SALSAL founder Dr. Desmond Bell joins the WOCN Society's WOCTalk podcast (Episode 98) to talk amputation prevention, the foundation's campaigns, education, and advocacy. Offers 0.75 CE.",
+    href: "https://www.wocn.org/podcasts/save-a-leg-save-a-life/",
+    cta: "Listen on WOCN"
+  },
+  {
     date: "2026-09-26",
     tag: "Event",
     title: "Free health screening in Houston",

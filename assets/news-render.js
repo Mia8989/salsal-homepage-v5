@@ -26,10 +26,14 @@ function salsalRenderNews(containerId, base, limit, featureFirst){
     var up = isUpcoming(n.date);
     var tag = up ? "Upcoming" : (n.tag || "Update");
     var feat = (featureFirst && i === 0) ? " feat" : "";
-    return '<a class="ncard'+feat+'" href="'+base+n.href+'">'+
+    var abs = /^https?:\/\//.test(n.href);
+    var href = abs ? n.href : base + n.href;
+    var ext = abs ? ' target="_blank" rel="noopener"' : '';
+    var cta = n.cta ? esc(n.cta) : (abs ? "Listen" : "Read more");
+    return '<a class="ncard'+feat+'" href="'+href+'"'+ext+'>'+
       '<div class="nmeta"><span class="ntag'+(up?" up":"")+'">'+esc(tag)+'</span>'+
       '<span class="ndate">'+fmt(n.date)+'</span></div>'+
       '<h3>'+esc(n.title)+'</h3><p>'+esc(n.blurb)+'</p>'+
-      '<span class="ngo">Read more &rsaquo;</span></a>';
+      '<span class="ngo">'+cta+' &rsaquo;</span></a>';
   }).join("");
 }
