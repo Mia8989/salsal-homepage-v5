@@ -202,3 +202,7 @@ p{line-height:1.65;}
 .sptier-lbl.bronze{color:#A9702F;} .sptier-lbl.media{color:var(--blue);}
 .sptier-row{display:flex;flex-wrap:wrap;gap:26px 46px;align-items:center;justify-content:center;}
 .sptier-row img{object-fit:contain;width:auto;}
+
+/* counter + heat-map bands: ensure proper vertical rhythm (ID beats section-level styles) */
+#livecount{padding:96px 0 !important;}
+#heatmap{padding:96px 0 !important;}
