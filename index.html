@@ -301,6 +301,18 @@
   .sprow{display:flex;flex-wrap:wrap;gap:32px 48px;justify-content:center;align-items:center;max-width:980px;margin:0 auto 30px;}
   .sprow img{height:34px;width:auto;}
   .sprow img:hover{opacity:1;filter:none;}
+  /* tiered sponsor wall (inline: homepage does not load site.css) */
+  .sptiers{max-width:820px;margin:0 auto;}
+  .sptier{padding:22px 0;border-top:1px solid rgba(28,53,87,.10);}
+  .sptier:first-child{border-top:none;}
+  .sptier-lbl{font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;text-align:center;color:var(--blue);}
+  .sptier-lbl.platinum{color:#5B6B7A;} .sptier-lbl.gold{color:#B4881F;} .sptier-lbl.silver{color:#7C8A99;} .sptier-lbl.bronze{color:#A9702F;} .sptier-lbl.media{color:var(--blue);}
+  .sptier-row{display:flex;flex-wrap:wrap;gap:22px 44px;align-items:center;justify-content:center;}
+  .sptier-row img{object-fit:contain;width:auto;}
+  .sptier-row .sp-gold{height:46px;max-width:290px;}
+  .sptier-row .sp-silver{height:32px;max-width:165px;}
+  .sptier-row .sp-bronze{height:25px;max-width:125px;}
+  .sptier-row .sp-media{height:18px;max-width:92px;}
 
   /* --- FOOTER drive banner --- */
   footer.drive{background:linear-gradient(165deg,#10233b,#1C3557);color:#dbe7f1;padding:72px 0 40px;position:relative;z-index:2;overflow:hidden;}
