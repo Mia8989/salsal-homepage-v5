@@ -187,10 +187,10 @@ p{line-height:1.65;}
 
 /* sponsor tiers: size + order by contribution (highest value first) */
 .sprow img,.logos img{object-fit:contain;width:auto;}
-.sp-gold{height:56px !important;max-width:250px;}
-.sp-silver{height:44px !important;max-width:200px;}
-.sp-bronze{height:34px !important;max-width:155px;}
-.sp-media{height:28px !important;max-width:125px;}
+.sp-gold{height:64px !important;max-width:400px;}   /* Platinum: biggest; wide max-width so height isn't clamped */
+.sp-silver{height:44px !important;max-width:210px;}
+.sp-bronze{height:34px !important;max-width:165px;}
+.sp-media{height:22px !important;max-width:105px;}  /* Media: clearly the smallest */
 
 /* tiered sponsor wall: labeled tiers, highest on top, sized by tier */
 .sptiers{max-width:900px;margin:0 auto;}
@@ -198,7 +198,7 @@ p{line-height:1.65;}
 .sptier:first-child{border-top:none;}
 .sptier-lbl{font-family:'Inter',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--blue);margin-bottom:16px;text-align:center;}
-.sptier-lbl.gold{color:#B4881F;} .sptier-lbl.silver{color:#7C8A99;}
+.sptier-lbl.platinum{color:#5B6B7A;} .sptier-lbl.gold{color:#B4881F;} .sptier-lbl.silver{color:#7C8A99;}
 .sptier-lbl.bronze{color:#A9702F;} .sptier-lbl.media{color:var(--blue);}
 .sptier-row{display:flex;flex-wrap:wrap;gap:26px 46px;align-items:center;justify-content:center;}
 .sptier-row img{object-fit:contain;width:auto;}
