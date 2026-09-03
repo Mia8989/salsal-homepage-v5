@@ -187,10 +187,10 @@ p{line-height:1.65;}
 
 /* sponsor tiers: size + order by contribution (highest value first) */
 .sprow img,.logos img{object-fit:contain;width:auto;}
-.sp-gold{height:52px !important;max-width:300px;}   /* Platinum */
-.sp-silver{height:38px !important;max-width:200px;}  /* Silver */
-.sp-bronze{height:26px !important;max-width:140px;}  /* Bronze */
-.sp-media{height:18px !important;max-width:95px;}    /* Media */
+.sp-gold{height:54px !important;max-width:300px;}   /* Platinum */
+.sp-silver{height:42px !important;max-width:180px;}  /* Silver */
+.sp-bronze{height:24px !important;max-width:104px;}  /* Bronze */
+.sp-media{height:17px !important;max-width:84px;}    /* Media */
 
 /* tiered sponsor wall: labeled tiers, highest on top, sized by tier */
 .sptiers{max-width:900px;margin:0 auto;}
