@@ -187,10 +187,10 @@ p{line-height:1.65;}
 
 /* sponsor tiers: size + order by contribution (highest value first) */
 .sprow img,.logos img{object-fit:contain;width:auto;}
-.sp-gold{height:46px !important;max-width:290px;}   /* Platinum $25k */
-.sp-silver{height:32px !important;max-width:165px;}  /* Silver $10k */
-.sp-bronze{height:25px !important;max-width:125px;}  /* Bronze $5k */
-.sp-media{height:18px !important;max-width:92px;}    /* Media $2.5k */
+.sp-gold{height:52px !important;max-width:300px;}   /* Platinum */
+.sp-silver{height:38px !important;max-width:200px;}  /* Silver */
+.sp-bronze{height:26px !important;max-width:140px;}  /* Bronze */
+.sp-media{height:18px !important;max-width:95px;}    /* Media */
 
 /* tiered sponsor wall: labeled tiers, highest on top, sized by tier */
 .sptiers{max-width:900px;margin:0 auto;}

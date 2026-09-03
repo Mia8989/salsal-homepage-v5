@@ -281,13 +281,43 @@
   <section class="band paper">
     <div class="wrap">
       <div class="closer reveal">
-        <h2>Stay in the <span class="uln">loop</span>.</h2>
+        <h2>Sign up for our <span class="uln">newsletter</span>.</h2>
         <p>Get SALSAL news, new webinars, and event alerts in your inbox.</p>
-        <div class="cta"><a class="btn red" href="../get-involved/">Get involved</a></div>
+        <div class="cta"><button class="btn red" type="button" id="nlOpen">Sign up for our newsletter</button></div>
+      </div>
       </div>
     </div>
   </section>
 </main>
+
+<!-- newsletter signup modal (Jotform) -->
+<div class="nlmodal" id="nlModal" hidden>
+  <div class="nlback" data-nlclose></div>
+  <div class="nlbox" role="dialog" aria-modal="true" aria-label="Sign up for the SALSAL newsletter">
+    <button class="nlclose" type="button" data-nlclose aria-label="Close">&times;</button>
+    <iframe id="nlFrame" title="SALSAL newsletter signup" data-src="https://form.jotform.com/252934217187462" src="about:blank" allow="geolocation; microphone; camera; fullscreen" frameborder="0"></iframe>
+  </div>
+</div>
+<style>
+  .nlmodal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .nlmodal[hidden]{display:none;}
+  .nlback{position:absolute;inset:0;background:rgba(11,26,46,.55);backdrop-filter:blur(2px);}
+  .nlbox{position:relative;z-index:2;background:#fff;border-radius:18px;width:min(640px,100%);max-height:90vh;overflow:hidden;box-shadow:0 30px 80px rgba(6,20,38,.4);}
+  .nlbox iframe{display:block;width:100%;height:min(760px,80vh);border:0;}
+  .nlclose{position:absolute;top:8px;right:12px;z-index:3;background:#fff;border:1px solid var(--line);border-radius:50%;width:34px;height:34px;font-size:22px;line-height:1;color:var(--navy);cursor:pointer;box-shadow:0 4px 12px rgba(16,35,59,.14);}
+  .nlclose:hover{background:#f4f8fc;}
+</style>
+<script>
+(function(){
+  var open=document.getElementById('nlOpen'), modal=document.getElementById('nlModal'), frame=document.getElementById('nlFrame');
+  if(!open||!modal) return;
+  function show(){ if(frame.src==='about:blank'||!frame.src) frame.src=frame.getAttribute('data-src'); modal.hidden=false; document.documentElement.style.overflow='hidden'; }
+  function hide(){ modal.hidden=true; document.documentElement.style.overflow=''; }
+  open.addEventListener('click',show);
+  modal.querySelectorAll('[data-nlclose]').forEach(function(b){b.addEventListener('click',hide);});
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !modal.hidden) hide(); });
+})();
+</script>
 
 <!-- FOOTER:START -->
 <!-- SALSAL canonical footer (ribbon design). Single source of truth.
