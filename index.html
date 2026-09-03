@@ -1028,19 +1028,20 @@
     return Math.floor(ANNUAL*((now-start)/yearMs));
   }
   function fmt(n){return n.toLocaleString('en-US');}
-  var target=ytd();
-  if(reduce){ el.textContent=fmt(target); tick(); return; }
-  // count-up reveal on load, from ~1.5% below to the true value
-  var from=Math.floor(target*0.985), t0=null, dur=1600;
-  function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-p,3);
-    el.textContent=fmt(Math.floor(from+(target-from)*e));
-    if(p<1) requestAnimationFrame(step); else tick(); }
-  // start when the band scrolls into view
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){requestAnimationFrame(step);io.disconnect();}});},{threshold:.4});
+  // always show the correct value immediately and keep it live (no rAF dependency)
+  el.textContent=fmt(ytd());
+  setInterval(function(){ el.textContent=fmt(ytd()); }, 1000);
+  // optional count-up flourish when the band scrolls into view (skipped if reduced motion)
+  if(!reduce && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){
+      if(!en.isIntersecting) return; io.disconnect();
+      var target=ytd(), from=Math.floor(target*0.985), t0=null, dur=1500, done=false;
+      function step(ts){ if(done) return; if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-p,3);
+        el.textContent=fmt(Math.floor(from+(target-from)*e)); if(p<1) requestAnimationFrame(step); else done=true; }
+      requestAnimationFrame(step);
+    });},{threshold:.4});
     io.observe(document.getElementById('livecount'));
-  } else { requestAnimationFrame(step); }
-  function tick(){ setInterval(function(){ el.textContent=fmt(ytd()); }, 1000); }
+  }
 })();
 </script>
 </body>
