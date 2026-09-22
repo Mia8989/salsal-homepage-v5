@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="../assets/site.css">
 <style>
   .phero.hevid{position:relative;overflow:hidden;}
-  .hero-vid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+  .hero-vid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(135deg,#12233c,#1C3557 55%,#22456a);}
   .hero-vid iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:max(100%,177.78vh);height:max(100%,56.25vw);min-width:100%;min-height:100%;border:0;}
   .hero-vid::after{content:"";position:absolute;inset:0;background:rgba(244,247,251,.80);}
   .phero.hevid .wrap{position:relative;z-index:1;}
@@ -173,6 +173,7 @@
         <span class="ddt">Impact <span class="caret">&#9662;</span></span>
         <div class="ddmenu">
           <a class="ddi" href="../community-screening-events/"><b>Screening &amp; Events</b><span>Free community screenings</span></a>
+          <a class="ddi" href="../register-community-screening/"><b>Request an Event</b><span>Bring a free screening to your community</span></a>
           <a class="ddi" href="../white-sock-campaign/"><b>The White Sock Campaign</b><span>Take the pledge for PAD Awareness Month</span></a>
           <a class="ddi" href="../toba/"><b>TOBA</b><span>Time Out Before Amputation</span></a>
           <a class="ddi" href="../advocacy/"><b>Advocacy</b><span>Policy reform for limb preservation</span></a>
@@ -240,7 +241,7 @@
 <main>
   <section class="phero hevid">
     <div class="hero-vid" aria-hidden="true">
-      <iframe src="https://player.vimeo.com/video/1221351637?background=1&amp;muted=1&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="US Capitol building"></iframe>
+      <iframe data-src="https://player.vimeo.com/video/1221351637?background=1&amp;muted=1&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="US Capitol building" loading="lazy" style="opacity:0;transition:opacity .8s ease;"></iframe>
     </div>
     <div class="wrap">
       <div style="max-width:64ch;">
@@ -450,6 +451,13 @@
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
-<script src="https://player.vimeo.com/api/player.js"></script>
+<script>
+(function(){
+  var f=document.querySelector('.hero-vid iframe[data-src]'); if(!f) return;
+  function go(){ f.src=f.getAttribute('data-src'); f.addEventListener('load',function(){f.style.opacity=1;}); }
+  var start=function(){ ('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1200); };
+  if(document.readyState==='complete') start(); else window.addEventListener('load',start);
+})();
+</script>
 </body>
 </html>
