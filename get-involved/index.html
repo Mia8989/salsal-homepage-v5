@@ -52,6 +52,16 @@
   .nextscreen p{color:#c4d4e3;font-size:15.5px;line-height:1.55;max-width:52ch;margin:0;}
   .nextscreen .ns-btn{position:relative;z-index:1;flex:none;}
   @media(max-width:700px){.nextscreen{padding:26px 24px;} .nextscreen h2{font-size:22px;}}
+
+  .give{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto;}
+  .gcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px;text-align:center;box-shadow:0 1px 2px rgba(28,53,87,.05),0 12px 30px rgba(16,35,59,.06);}
+  .gcard.feature{border:2px solid var(--red);}
+  .gcard .tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sky);}
+  .gcard .amt{font-family:'Fraunces',serif;font-weight:600;font-size:46px;color:var(--navy);line-height:1;margin:10px 0;}
+  .gcard .amt span{font-size:18px;color:#4a5d72;}
+  .gcard p{font-size:14.5px;color:#4a5d72;margin-bottom:20px;line-height:1.5;}
+  #give,#supporter{scroll-margin-top:100px;}
+  @media(max-width:700px){.give{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -226,9 +236,29 @@
           <span class="eyebrow"><span class="dot"></span> Get Involved</span>
           <h1>Prevention needs <span class="phero-underline">people<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M4,14 C60,6 120,4 180,9 C224,12 268,10 296,6"/></svg></span>, not just funding.</h1>
           <p class="sub">Whether you have five minutes or a clinical license, there is a way to help us reach the next community before the next amputation.</p>
-          <div class="cta"><a class="btn red" href="../donate/">Donate</a><a class="btn ghost" href="../donate/#supporter">Become a Supporter</a><a class="btn ghost" href="../community-screening-events/">See our screenings <span class="arw">&rsaquo;</span></a></div>
+          <div class="cta"><a class="btn red" href="#give">Donate</a><a class="btn ghost" href="#supporter">Become a Supporter</a><a class="btn ghost" href="../community-screening-events/">See our screenings <span class="arw">&rsaquo;</span></a></div>
         </div>
         <div class="hero-img"><img src="../assets/photos/team-group.jpg" alt="SALSAL volunteers and clinicians at a community event"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band paper" id="give">
+    <div class="wrap">
+      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Give</span><h2>Two ways to fund prevention</h2></div>
+      <div class="give">
+        <div class="gcard reveal">
+          <div class="tag">One-time gift</div>
+          <div class="amt">Any amount</div>
+          <p>Give once. Every dollar goes straight to prevention.</p>
+          <a class="btn red" href="https://donate.stripe.com/14A3cvex6dNO64R2992ZO01?locale=en&amp;__embed_source=buy_btn_1SagjYGxDRqsdW1LGFM170jM" target="_blank" rel="noopener">Give now</a>
+        </div>
+        <div class="gcard feature reveal" id="supporter">
+          <div class="tag">Become a Supporter</div>
+          <div class="amt">$49<span>/year</span></div>
+          <p>A full-color SALSAL certificate plus an enamel lapel pin to wear the mission proudly.</p>
+          <a class="btn red" href="https://buy.stripe.com/8x2bJ1bkUcJK1OB8xx2ZO00?locale=en&amp;__embed_source=buy_btn_1Sag70GxDRqsdW1LoxKqDChI" target="_blank" rel="noopener">Become a supporter</a>
+        </div>
       </div>
     </div>
   </section>
