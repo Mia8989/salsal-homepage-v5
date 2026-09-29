@@ -19,10 +19,10 @@ window.SALSAL_NEWS = [
   },
   {
     date: "2026-09-26",
-    tag: "Event",
-    title: "Free health screening in Houston",
-    blurb: "Join us Saturday, September 26 at the Fifth Ward Multi-Service Center in Houston for a free limb-preservation screening, 9 AM to 2 PM.",
-    href: "get-involved/"
+    tag: "Recap",
+    title: "Free screenings reach Houston",
+    blurb: "Our team brought free foot and limb-preservation screenings to the Fifth Ward Multi-Service Center in Houston. See where we are headed next.",
+    href: "community-screening-events/"
   },
   {
     date: "2026-09-01",

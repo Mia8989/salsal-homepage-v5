@@ -77,6 +77,18 @@
   .egal{columns:4 220px;column-gap:12px;}
   .egal img{width:100%;margin:0 0 12px;border-radius:12px;display:block;break-inside:avoid;box-shadow:0 2px 8px rgba(16,35,59,.10);}
   @media(max-width:600px){.egal{columns:2 140px;}}
+  .giways{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .gicard{display:block;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;text-decoration:none;box-shadow:0 1px 2px rgba(28,53,87,.05),0 14px 34px rgba(16,35,59,.08);transition:transform .2s,box-shadow .2s;}
+  .gicard:hover{transform:translateY(-5px);box-shadow:0 26px 54px rgba(16,35,59,.14);}
+  .gicard .gimg{aspect-ratio:16/10;overflow:hidden;background:#e7eef5;}
+  .gicard .gimg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform .35s;}
+  .gicard:hover .gimg img{transform:scale(1.05);}
+  .gicard .gib{padding:24px 26px 26px;}
+  .gicard .gib h3{font-family:'Fraunces',serif;font-weight:600;font-size:24px;color:var(--navy);margin-bottom:8px;}
+  .gicard .gib p{font-size:15px;color:#4a5d72;line-height:1.55;margin-bottom:14px;}
+  .gicard .gilnk{color:var(--red);font-weight:700;font-size:14.5px;}
+  @media(max-width:760px){.giways{grid-template-columns:1fr;}}
+  #ways-to-help{scroll-margin-top:100px;}
 </style>
 </head>
 <body>
@@ -250,7 +262,7 @@
         <span class="eyebrow"><span class="dot"></span> Impact &middot; Screening &amp; Events</span>
         <h1>A few minutes with a clinician can change the <span class="phero-underline">course of a life<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M4,14 C60,6 120,4 180,9 C224,12 268,10 296,6"/></svg></span>.</h1>
         <p class="sub">Not a slogan, a folding table in a community hall. We bring free limb screenings into the neighborhoods where a caught-in-time problem means a limb saved.</p>
-        <div class="cta"><a class="btn red" href="../get-involved/">Bring a screening to your community</a></div>
+        <div class="cta"><a class="btn red" href="#ways-to-help">Bring a screening to your community</a></div>
       </div>
       <div class="hero-full"><img src="../assets/photos/salsal-community-screening-2023.webp" alt="A SALSAL community screening event in a gymnasium"></div>
     </div>
@@ -330,6 +342,30 @@
         <img src="../assets/screening-gallery/moment-19.jpg" alt="SALSAL community screening" loading="lazy">
         <img src="../assets/screening-gallery/moment-20.jpg" alt="SALSAL community screening" loading="lazy">
         <img src="../assets/screening-gallery/moment-21.jpg" alt="SALSAL community screening" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="band paper" id="ways-to-help">
+    <div class="wrap">
+      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Ways to help</span><h2>You don't need a medical degree to save a limb.</h2><p>Whatever you can give, five minutes or a clinical license, there is a place for you here.</p></div>
+      <div class="giways">
+        <a class="gicard reveal" href="../volunteer/">
+          <div class="gimg"><img src="../assets/photos/team-salsal.jpg" alt="SALSAL volunteers at a community screening"></div>
+          <div class="gib"><h3>Volunteer at an event</h3><p>Welcome attendees, guide them through a screening, and be a friendly face on a day that changes lives.</p><span class="gilnk">Sign up to volunteer &rsaquo;</span></div>
+        </a>
+        <a class="gicard reveal" href="../register-community-screening/">
+          <div class="gimg"><img src="../assets/photos/screening-venue-wide.jpg" alt="A SALSAL community screening in a gymnasium"></div>
+          <div class="gib"><h3>Host a screening</h3><p>Bring free limb screenings to your city, senior center, or clinic. If you know a community that needs us, start here.</p><span class="gilnk">Bring one to your city &rsaquo;</span></div>
+        </a>
+        <a class="gicard reveal" href="../white-sock-campaign/">
+          <div class="gimg"><img src="../assets/photos/white-sock/wsEgyptcopy.webp" alt="Supporters wearing white socks for the campaign"></div>
+          <div class="gib"><h3>Spread the word</h3><p>Take the White Sock pledge and share our resources with everyone in your life living with diabetes or PAD.</p><span class="gilnk">Take the pledge &rsaquo;</span></div>
+        </a>
+        <a class="gicard reveal" href="../provider-education/">
+          <div class="gimg"><img src="../assets/photos/lend-clinical-skills.jpg" alt="SALSAL clinical faculty and volunteers at a community screening" style="object-fit:cover;object-position:center 25%;"></div>
+          <div class="gib"><h3>Lend your clinical skills</h3><p>Clinicians and students: join a screening team or help teach. The right eyes, in the right place, change outcomes.</p><span class="gilnk">Get involved as a clinician &rsaquo;</span></div>
+        </a>
       </div>
     </div>
   </section>
