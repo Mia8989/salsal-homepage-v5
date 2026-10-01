@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /
+Disallow:
 
-Sitemap: https://mia8989.github.io/salsal-homepage-v5/sitemap.xml
+Sitemap: https://thesalsal.org/sitemap.xml
