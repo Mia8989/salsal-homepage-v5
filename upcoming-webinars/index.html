@@ -306,41 +306,12 @@
           <a class="sf-btn ghost" href="../shop/">Donate by shopping</a>
         </div>
       </div>
-      <form class="sf-news" id="newsletter" action="https://thesalsal.us11.list-manage.com/subscribe/post?u=c31278d2251f4b5f2bd3fa1f4&amp;id=cf440d2f8b&amp;f_id=00d596e0f0" method="post" novalidate>
-        <label for="sf-news-email">Get SALSAL news and event alerts</label>
-        <div class="sf-news-row">
-          <input type="text" name="FNAME" placeholder="First name" autocomplete="given-name" required>
-          <input type="text" name="LNAME" placeholder="Last name" autocomplete="family-name" required>
-          <input id="sf-news-email" type="email" name="EMAIL" placeholder="Your email address" autocomplete="email" required>
-          <button type="submit">Sign up for our newsletter</button>
-        </div>
-        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_c31278d2251f4b5f2bd3fa1f4_cf440d2f8b" tabindex="-1" value=""></div>
-        <p class="sf-fine" id="sf-news-msg">No spam. Unsubscribe anytime.</p>
-      </form>
-      <script>
-      (function(){
-        var f=document.getElementById('newsletter'); if(!f) return;
-        var msg=document.getElementById('sf-news-msg');
-        f.addEventListener('submit',function(e){
-          e.preventDefault();
-          var get=function(n){var el=f.querySelector('[name="'+n+'"]');return el?el.value.trim():'';};
-          var email=get('EMAIL'), fn=get('FNAME'), ln=get('LNAME');
-          if(!email||!fn||!ln){ if(msg) msg.textContent='Please add your first name, last name, and email.'; return; }
-          var cb='mcjsonp_'+Date.now();
-          var url=f.getAttribute('action').replace('/post?','/post-json?')
-                  +'&EMAIL='+encodeURIComponent(email)+'&FNAME='+encodeURIComponent(fn)+'&LNAME='+encodeURIComponent(ln)+'&c='+cb;
-          var s=document.createElement('script'); s.src=url;
-          window[cb]=function(data){
-            var ok=data&&data.result==='success';
-            if(msg) msg.innerHTML = ok ? 'Thanks! Check your inbox to confirm your subscription.'
-                                       : (data&&data.msg ? data.msg.replace(/^\s*\d+\s*-\s*/,'') : 'Something went wrong. Please try again.');
-            if(ok){ var row=f.querySelector('.sf-news-row'); if(row) row.style.display='none'; }
-            try{ document.head.removeChild(s); }catch(_){} try{ delete window[cb]; }catch(_){}
-          };
-          document.head.appendChild(s);
-        });
-      })();
-      </script>
+      <div class="sf-news" id="newsletter">
+        <label>Get SALSAL news and event alerts</label>
+        <p style="font-size:15px;line-height:1.6;color:#b9cbdd;margin:0 0 16px;">News, new webinars, and event alerts in your inbox.</p>
+        <button class="sf-btn red" type="button" data-nlopen>Sign up for our newsletter</button>
+        <p class="sf-fine" style="margin-top:12px;">No spam. Unsubscribe anytime.</p>
+      </div>
     </div>
 
     <div class="sf-cols">
@@ -404,6 +375,35 @@
     </span>
   </div>
 </footer>
+
+<!-- Global newsletter signup modal (Jotform) -->
+<div class="nlmodal" id="nlModal" hidden>
+  <div class="nlback" data-nlclose></div>
+  <div class="nlbox" role="dialog" aria-modal="true" aria-label="Sign up for the SALSAL newsletter">
+    <button class="nlclose" type="button" data-nlclose aria-label="Close">&times;</button>
+    <iframe id="nlFrame" title="SALSAL newsletter signup" data-src="https://form.jotform.com/252934217187462" src="about:blank" allow="geolocation; microphone; camera; fullscreen" frameborder="0"></iframe>
+  </div>
+</div>
+<style>
+  .nlmodal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .nlmodal[hidden]{display:none;}
+  .nlback{position:absolute;inset:0;background:rgba(11,26,46,.55);backdrop-filter:blur(2px);}
+  .nlbox{position:relative;z-index:2;background:#fff;border-radius:18px;width:min(640px,100%);max-height:90vh;overflow:hidden;box-shadow:0 30px 80px rgba(6,20,38,.4);}
+  .nlbox iframe{display:block;width:100%;height:min(760px,80vh);border:0;}
+  .nlclose{position:absolute;top:8px;right:12px;z-index:3;background:#fff;border:1px solid rgba(28,53,87,.14);border-radius:50%;width:34px;height:34px;font-size:22px;line-height:1;color:#1C3557;cursor:pointer;box-shadow:0 4px 12px rgba(16,35,59,.14);}
+  .nlclose:hover{background:#f4f8fc;}
+</style>
+<script>
+(function(){
+  var modal=document.getElementById('nlModal'); if(!modal) return;
+  var frame=document.getElementById('nlFrame');
+  function show(){ if(frame&&(frame.src==='about:blank'||!frame.src)) frame.src=frame.getAttribute('data-src'); modal.hidden=false; document.documentElement.style.overflow='hidden'; }
+  function hide(){ modal.hidden=true; document.documentElement.style.overflow=''; }
+  document.querySelectorAll('[data-nlopen]').forEach(function(b){ b.addEventListener('click',show); });
+  modal.querySelectorAll('[data-nlclose]').forEach(function(b){ b.addEventListener('click',hide); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !modal.hidden) hide(); });
+})();
+</script>
 <!-- FOOTER:END -->
 <script>
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
