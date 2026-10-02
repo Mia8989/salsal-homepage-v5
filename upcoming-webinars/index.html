@@ -306,7 +306,7 @@
           <a class="sf-btn ghost" href="../shop/">Donate by shopping</a>
         </div>
       </div>
-      <form class="sf-news" id="newsletter" action="https://thesalsal.us11.list-manage.com/subscribe/post?u=c31278d2251f4b5f2bd3fa1f4&amp;id=cf440d2f8b&amp;f_id=00d596e0f0" method="post" target="_blank" novalidate>
+      <form class="sf-news" id="newsletter" action="https://thesalsal.us11.list-manage.com/subscribe/post?u=c31278d2251f4b5f2bd3fa1f4&amp;id=cf440d2f8b&amp;f_id=00d596e0f0" method="post" novalidate>
         <label for="sf-news-email">Get SALSAL news and event alerts</label>
         <div class="sf-news-row">
           <input type="text" name="FNAME" placeholder="First name" autocomplete="given-name" required>
@@ -315,8 +315,32 @@
           <button type="submit">Sign up for our newsletter</button>
         </div>
         <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_c31278d2251f4b5f2bd3fa1f4_cf440d2f8b" tabindex="-1" value=""></div>
-        <p class="sf-fine">No spam. Unsubscribe anytime.</p>
+        <p class="sf-fine" id="sf-news-msg">No spam. Unsubscribe anytime.</p>
       </form>
+      <script>
+      (function(){
+        var f=document.getElementById('newsletter'); if(!f) return;
+        var msg=document.getElementById('sf-news-msg');
+        f.addEventListener('submit',function(e){
+          e.preventDefault();
+          var get=function(n){var el=f.querySelector('[name="'+n+'"]');return el?el.value.trim():'';};
+          var email=get('EMAIL'), fn=get('FNAME'), ln=get('LNAME');
+          if(!email||!fn||!ln){ if(msg) msg.textContent='Please add your first name, last name, and email.'; return; }
+          var cb='mcjsonp_'+Date.now();
+          var url=f.getAttribute('action').replace('/post?','/post-json?')
+                  +'&EMAIL='+encodeURIComponent(email)+'&FNAME='+encodeURIComponent(fn)+'&LNAME='+encodeURIComponent(ln)+'&c='+cb;
+          var s=document.createElement('script'); s.src=url;
+          window[cb]=function(data){
+            var ok=data&&data.result==='success';
+            if(msg) msg.innerHTML = ok ? 'Thanks! Check your inbox to confirm your subscription.'
+                                       : (data&&data.msg ? data.msg.replace(/^\s*\d+\s*-\s*/,'') : 'Something went wrong. Please try again.');
+            if(ok){ var row=f.querySelector('.sf-news-row'); if(row) row.style.display='none'; }
+            try{ document.head.removeChild(s); }catch(_){} try{ delete window[cb]; }catch(_){}
+          };
+          document.head.appendChild(s);
+        });
+      })();
+      </script>
     </div>
 
     <div class="sf-cols">
