@@ -53,6 +53,21 @@
   .spk p{font-size:15.5px;color:#41546b;line-height:1.62;max-width:70ch;}
   .disclaimer{font-size:12.5px;color:#5b6b7d;line-height:1.55;max-width:60ch;margin:26px auto 0;}
   @media(max-width:600px){.spk .s{grid-template-columns:66px 1fr;gap:18px;padding:26px 2px;}.spk .ph{width:66px;height:66px;}}
+
+  /* email gate (embedded Jotform) + reveal */
+  .jfwrap{max-width:740px;margin:0 auto;}
+  .jfwrap iframe{width:1px;min-width:100%;max-width:100%;border:none;border-radius:16px;background:#fff;box-shadow:0 2px 8px rgba(28,53,87,.08),0 18px 44px rgba(16,35,59,.10);}
+  .gate-fine{font-size:12.5px;color:#5b6b7d;margin:16px auto 0;line-height:1.55;max-width:56ch;text-align:center;}
+  .gate-fallback{text-align:center;margin-top:12px;font-size:13.5px;color:var(--blue);font-weight:600;}
+  .gate-fallback a{color:var(--red);text-decoration:underline;cursor:pointer;}
+  .player-wrap{max-width:940px;margin:0 auto;}
+  .player-ok{text-align:center;font-family:'Fraunces',serif;color:#2f9e5f;font-weight:600;font-size:19px;margin-bottom:16px;}
+  .ce{max-width:640px;margin:30px auto 0;text-align:center;padding-top:28px;border-top:1px solid var(--line);}
+  .ce h3{font-size:21px;margin-bottom:8px;} .ce p{font-size:15px;color:#41546b;line-height:1.6;max-width:54ch;margin:0 auto 16px;}
+  .ce-mail{font-size:13.5px;color:#5b6b7d;margin:12px 0 0;}
+  .video{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#0b1a2c;box-shadow:0 2px 8px rgba(28,53,87,.10),0 26px 60px rgba(16,35,59,.22);}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  [hidden]{display:none!important;}
 </style>
 </head>
 <body>
@@ -227,8 +242,8 @@
     <div class="wrap">
       <div class="grid">
         <div>
-          <span class="eyebrow"><span class="dot"></span> On-Demand Webinar &middot; September 2026</span>
-          <h1>IPC for PAD: <span class="phero-underline">A Proven Technology, Revitalized<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M4,14 C60,6 120,4 180,9 C224,12 268,10 296,6"/></svg></span></h1>
+          <span class="eyebrow"><span class="dot"></span> On-Demand Webinar</span>
+          <h1>IPC for PAD: A Proven Technology, <span class="phero-underline">Revitalized<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M4,14 C60,6 120,4 180,9 C224,12 268,10 296,6"/></svg></span></h1>
           <p class="sub">A free session for podiatrists and lower-extremity clinicians: the latest AHA/ACC PAD guidance, podiatry&#x27;s role in managing PAD, and a look at the ARTAIRA intermittent pneumatic compression device.</p>
           <div class="cta"><a class="btn red" href="#watch">Watch the recording</a><a class="btn ghost" href="../">All webinars <span class="arw">&rsaquo;</span></a></div>
         </div>
@@ -237,14 +252,27 @@
     </div>
   </section>
 
-  <!-- WATCH -->
+  <!-- WATCH (gated) -->
   <section class="band paper" id="watch">
     <div class="wrap">
-      <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Free &middot; On demand</span><h2>Watch the full session</h2></div>
-      <div class="reveal" style="max-width:860px;margin:0 auto;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0b1a2c;display:grid;place-items:center;text-align:center;color:#9fb6cc;font-size:15px;padding:20px;">Recording is being posted. Check back shortly.</div>
-      <div class="reveal" style="max-width:720px;margin:28px auto 0;text-align:center;">
-        <h3 style="font-family:'Fraunces',Georgia,serif;color:var(--navy);font-size:24px;margin-bottom:8px;">Need continuing education credit?</h3>
-        <p style="color:#4a5d72;">Free CE is available for this session. After watching the full recording, apply for your continuing education credit.</p>
+      <div class="band-head reveal">
+        <span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Free &middot; On demand</span>
+        <h2>Watch the full session</h2>
+        <p>Enter your name and email to unlock the recording. We will send you future SALSAL sessions and limb-preservation resources, and you can unsubscribe anytime.</p>
+      </div>
+      <div class="jfwrap reveal" id="gate">
+        <iframe id="JotFormIFrame-253371364681056" title="SALSAL Webinar Recording" allowtransparency="true" allow="geolocation; microphone; camera; fullscreen" src="https://form.jotform.com/253371364681056?webinar=ipc-for-pad" frameborder="0" style="min-width:100%;max-width:100%;height:640px;border:none;" scrolling="no"></iframe>
+        <p class="gate-fine">Your details go to SALSAL only. This information is for educational purposes only and is not intended to replace professional medical advice.</p>
+        <p class="gate-fallback">Already registered? <a id="watchNow">Watch the recording &rsaquo;</a></p>
+      </div>
+      <div class="player-wrap reveal" id="player" hidden>
+        <div class="player-ok">You're in. Enjoy the session.</div>
+        <div class="video" style="display:grid;place-items:center;text-align:center;color:#9fb6cc;font-size:15px;padding:20px;">Recording is being added. Check back shortly.</div>
+        <div class="ce">
+          <h3>Need continuing education credit?</h3>
+          <p>Free CE is available for this session. After watching the full recording, apply for your continuing education credit.</p>
+          <p class="ce-mail">CE application link coming soon.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -434,6 +462,15 @@
 <script>
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+<script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+<script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-253371364681056']","https://form.jotform.com");</script>
+<script>
+(function(){
+  function reveal(){var g=document.getElementById('gate');if(g)g.hidden=true;var p=document.getElementById('player');if(!p)return;p.hidden=false;p.scrollIntoView({behavior:'smooth',block:'center'});}
+  window.addEventListener('message',function(e){if(!e||typeof e.origin!=='string'||e.origin.indexOf('jotform')===-1)return;var d=e.data;var s=typeof d==='string'?d:(d&&d.action?String(d.action):'');if(/submissionCompleted|submission-completed|formSubmitted|thankyou|thank-you/i.test(s))reveal();});
+  var w=document.getElementById('watchNow');if(w)w.addEventListener('click',reveal);
+})();
 </script>
 </body>
 </html>
