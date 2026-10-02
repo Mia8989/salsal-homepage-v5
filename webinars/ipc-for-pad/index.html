@@ -342,7 +342,7 @@
     .site-footer .sf-btn{font-weight:700;font-size:14.5px;border-radius:12px;padding:12px 22px;display:inline-flex;align-items:center;gap:8px;border:2px solid transparent;transition:transform .18s;}
     .site-footer .sf-btn.red{background:#E63947;color:#fff;} .site-footer .sf-btn.red:hover{transform:translateY(-2px);}
     .site-footer .sf-btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3);} .site-footer .sf-btn.ghost:hover{border-color:#fff;transform:translateY(-2px);}
-    .site-footer .sf-news{min-width:280px;flex:1;max-width:420px;}
+    .site-footer .sf-news{min-width:280px;flex:1;max-width:420px;scroll-margin-top:120px;}
     .site-footer .sf-news label{display:block;font-weight:600;font-size:13px;color:#eaf3fa;margin-bottom:8px;}
     .site-footer .sf-news-row{display:flex;flex-direction:column;gap:10px;}
     .site-footer .sf-news input{flex:1;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;border-radius:10px;padding:11px 14px;font-size:14px;}
@@ -385,9 +385,11 @@
           <a class="sf-btn ghost" href="../../shop/">Donate by shopping</a>
         </div>
       </div>
-      <form class="sf-news" action="https://thesalsal.us11.list-manage.com/subscribe/post?u=c31278d2251f4b5f2bd3fa1f4&amp;id=cf440d2f8b&amp;f_id=00d596e0f0" method="post" target="_blank" novalidate>
+      <form class="sf-news" id="newsletter" action="https://thesalsal.us11.list-manage.com/subscribe/post?u=c31278d2251f4b5f2bd3fa1f4&amp;id=cf440d2f8b&amp;f_id=00d596e0f0" method="post" target="_blank" novalidate>
         <label for="sf-news-email">Get SALSAL news and event alerts</label>
         <div class="sf-news-row">
+          <input type="text" name="FNAME" placeholder="First name" autocomplete="given-name" required>
+          <input type="text" name="LNAME" placeholder="Last name" autocomplete="family-name" required>
           <input id="sf-news-email" type="email" name="EMAIL" placeholder="Your email address" autocomplete="email" required>
           <button type="submit">Sign up for our newsletter</button>
         </div>
