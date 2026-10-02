@@ -246,7 +246,16 @@
   <section class="band">
     <div class="wrap">
       <div class="band-head reveal"><span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Watch</span><h2>See the campaign in action</h2></div>
-      <div class="vwrap reveal"><iframe src="https://www.youtube.com/embed/VpemVH8jGwU" title="The White Sock Campaign" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      <style>
+        .ws-vids{display:grid;grid-template-columns:3.16fr 1fr;gap:20px;max-width:1060px;margin:0 auto;align-items:start;}
+        .ws-vids .vwrap{max-width:none;margin:0;}
+        .ws-vids .vwrap.short{aspect-ratio:9/16;}
+        @media(max-width:760px){.ws-vids{grid-template-columns:1fr;gap:24px;} .ws-vids .vwrap.short{max-width:340px;width:100%;margin:0 auto;}}
+      </style>
+      <div class="ws-vids reveal">
+        <div class="vwrap"><iframe src="https://www.youtube.com/embed/VpemVH8jGwU" title="The White Sock Campaign" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div class="vwrap short"><iframe src="https://www.youtube.com/embed/rXG_6hxGFOI" title="The White Sock Campaign on The Frank and Lizzie Show" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+      </div>
     </div>
   </section>
 
