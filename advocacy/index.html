@@ -31,11 +31,12 @@
   <meta name="twitter:description" content="Advocacy is how limb-preservation gets written into law. Learn the 2026 legislation to know, how a bill becomes law, and seven ways you can take action.">
   <meta name="twitter:image" content="https://thesalsal.org/assets/og/advocacy.png">
   <!-- OG:END -->
+<link rel="preconnect" href="https://player.vimeo.com" crossorigin><link rel="preconnect" href="https://i.vimeocdn.com" crossorigin><link rel="preconnect" href="https://f.vimeocdn.com" crossorigin><link rel="preload" as="image" href="../assets/photos/advocacy-capitol-poster.jpg" fetchpriority="high">
 <meta name="description" content="Advocacy is how limb-preservation gets written into law. Learn the 2026 legislation to know, how a bill becomes law, and seven ways you can take action.">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
   .phero.hevid{position:relative;overflow:hidden;}
-  .hero-vid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(135deg,#12233c,#1C3557 55%,#22456a);}
+  .hero-vid{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#1C3557 url(../assets/photos/advocacy-capitol-poster.jpg) center/cover no-repeat;}
   .hero-vid iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:max(100%,177.78vh);height:max(100%,56.25vw);min-width:100%;min-height:100%;border:0;}
   .hero-vid::after{content:"";position:absolute;inset:0;background:rgba(244,247,251,.80);}
   .phero.hevid .wrap{position:relative;z-index:1;}
@@ -247,7 +248,7 @@
 <main>
   <section class="phero hevid">
     <div class="hero-vid" aria-hidden="true">
-      <iframe data-src="https://player.vimeo.com/video/1221351637?background=1&amp;muted=1&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="US Capitol building" loading="lazy" style="opacity:0;transition:opacity .8s ease;"></iframe>
+      <iframe data-src="https://player.vimeo.com/video/1221351637?background=1&amp;muted=1&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="US Capitol building" style="opacity:0;transition:opacity .8s ease;"></iframe>
     </div>
     <div class="wrap">
       <div style="max-width:64ch;">
@@ -496,9 +497,17 @@
 <script>
 (function(){
   var f=document.querySelector('.hero-vid iframe[data-src]'); if(!f) return;
-  function go(){ f.src=f.getAttribute('data-src'); f.addEventListener('load',function(){f.style.opacity=1;}); }
-  var start=function(){ ('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1200); };
-  if(document.readyState==='complete') start(); else window.addEventListener('load',start);
+  var shown=false, show=function(){ if(!shown){ shown=true; f.style.opacity=1; } };
+  // fade the video in only once Vimeo reports it is playing (poster stays visible until then)
+  window.addEventListener('message',function(e){
+    if(!/vimeo\.com$/.test((e.origin||'').replace(/^https?:\/\//,''))) return;
+    var d=e.data; try{ if(typeof d==='string') d=JSON.parse(d); }catch(_){ return; }
+    if(!d) return;
+    if(d.event==='ready'){ ['play','playing','timeupdate'].forEach(function(ev){ f.contentWindow.postMessage(JSON.stringify({method:'addEventListener',value:ev}),'https://player.vimeo.com'); }); }
+    if(d.event==='play'||d.event==='playing'||d.event==='timeupdate') show();
+  });
+  f.addEventListener('load',function(){ setTimeout(show,4000); });
+  f.src=f.getAttribute('data-src');
 })();
 </script>
 </body>
